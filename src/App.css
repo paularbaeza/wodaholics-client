@@ -1,0 +1,31 @@
+.App {
+  text-align: center;
+}
+
+.nav-bar{
+  display:flex;
+  flex-direction: row;
+  align-items: center;
+  justify-content: space-evenly;
+  background-color: #F7B655;
+  color:white;
+  text-decoration: none;
+  font-weight: bold;
+  font-size: 120%;
+  height:50px
+}
+
+.link-home{
+  text-decoration: none;
+  color:white
+}
+
+
+.navbar-btn{
+  background-color: #F7B655;
+  border:none;
+  color:white;
+  font-weight: bold;
+  font-size: 20px;
+}
+
