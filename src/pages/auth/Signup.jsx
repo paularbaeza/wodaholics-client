@@ -38,10 +38,8 @@ function Signup() {
     await signupService(user)
       navigate("/login")
     }catch (error){
-        console.log(error.response.status)
-        console.log(error.response.data.errorMessage)
+
         if (error.response.status === 400) {
-          // le digo al usuario que debe hacer
           setErrorMessage(error.response.data.errorMessage)
         } else {
           navigate("/error")
