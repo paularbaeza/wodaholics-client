@@ -9,7 +9,7 @@ import Error from "./pages/Error"
 import NotFound from "./pages/NotFound"
 import WodsList from "./pages/wods/WodsList";
 import WodDetails from "./pages/wods/WodDetails";
-import LandingPage from "./pages/wods/LandingPage";
+import LandingPage from "./pages/LandingPage";
 
 function App() {
   return (

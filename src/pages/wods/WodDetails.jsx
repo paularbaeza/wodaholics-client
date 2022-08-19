@@ -23,7 +23,8 @@ function WodDetails() {
     getWodDetails();
     getBenchmarks();
   }, []);
-
+  
+  
   //* traer los detalles del wod
 
   const getWodDetails = async () => {
@@ -52,28 +53,31 @@ function WodDetails() {
     return <h3>Loading wod details</h3>;
   }
 
-  //*añadir benchmark
-
 
   const toggleFormShowing=() => {
         setIsFormShowed(!isFormShowed)
   }
 
-  const { creator, wodType, name, description, exercises, equipment, _id } =
+  const { creator, wodType, name, category, description, exercises, equipment, _id } =
     allWodDetails;
 
-  return (
+    //console.log(allWodDetails)
+
+    return (
     <div>
-      <h1>{name} </h1>
+    <div id="wod-explanation">
+      <h1 className="wodType">{name} </h1>
       <h4>{description}</h4>
       {exercises.map((eachExercise) => {
-        return <li>{eachExercise}</li>;
+        return <p key= {eachExercise._id} id="exercises">- {eachExercise}</p>;
       })}
-      <h4>Benchmarks:</h4>
+      </div>
+      <h4>{benchmark.length !== 0 ? "Benchmarks:" : "" }</h4>
       {benchmark.map((eachBenchmark) => {
+        
         return (
           <div>
-            <p>User: {eachBenchmark.user}</p>
+            <p>User: {eachBenchmark.user[0].username}</p>
             <p>Score: {eachBenchmark.score}</p>
             <p>Date: {eachBenchmark.date}</p>
           </div>
@@ -82,7 +86,7 @@ function WodDetails() {
 
       <br />
       <button onClick={toggleFormShowing}>{isFormShowed===true? "X" :"Add benchmark"}</button>
-      {isFormShowed === true ? <AddBenchmarkForm toggleFormFunction={toggleFormShowing}/>: null}
+      {isFormShowed === true ? <AddBenchmarkForm toggleFormFunction={toggleFormShowing} category={category} getBenchmarks={getBenchmarks}/>: null}
 
       </div>
   );

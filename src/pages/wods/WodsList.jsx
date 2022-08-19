@@ -34,13 +34,15 @@ function WodsList() {
       }
 //console.log(allWods)
   return (
-    <div>
-    <h1>{type.toUpperCase()}</h1>
+    <div id={type === "girls" ? "the-girls" : "heroes"}>
+    <h1 className="wodType">{type.toUpperCase()}</h1>
+    <div id="wods-list">
     {allWods.map((eachWod)=> {
-        return <p key={eachWod._id}>
-          <Link to={`/${eachWod._id}/details`}>{eachWod.name}</Link>
-        </p>
+        return <Link to={`/${eachWod._id}/details`} id="each-wod-list"><p key={eachWod._id} id="wod-list-link">
+          {eachWod.name}</p></Link>
+        
     })}
+    </div>
     </div>
   )
 }

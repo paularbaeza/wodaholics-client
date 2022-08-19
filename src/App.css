@@ -1,3 +1,5 @@
+@import url('https://fonts.googleapis.com/css2?family=Black+Ops+One&family=Dawning+of+a+New+Day&family=Indie+Flower&family=Passion+One:wght@700&family=Rubik+Dirt&display=swap');
+
 .App {
   text-align: center;
 }
@@ -15,11 +17,34 @@
   height:50px
 }
 
+
+
 .link-home{
   text-decoration: none;
-  color:white
+  color:white;
 }
 
+.link-dropdown{
+  text-decoration: none;
+  color:#F7B655;
+  font-weight: bold;
+  padding: 5px;
+  text-shadow: 2px 2px 10px #D0CECB;
+
+}
+
+#demo-positioned-button{
+  background-color: #F7B655;
+  border:none;
+  color:white;
+  font-weight: bold;
+  font-size: 20px;
+  text-transform:capitalize;
+}
+
+#demo-positioned-menu{
+  margin-left:11%;
+}
 
 .navbar-btn{
   background-color: #F7B655;
@@ -27,5 +52,73 @@
   color:white;
   font-weight: bold;
   font-size: 20px;
+}
+
+.wodType{
+  font-family: Rubik Dirt;
+  font-weight: lighter;
+  font-size:300%;
+  color:white
+}
+
+#exercises{
+font-family: Indie Flower;
+font-size: 200%;
+color:white;
+margin-bottom:-1%;
+margin-top:-1%
+}
+
+#wod-explanation{
+  background-image: url("../public/images/blackboard-modified.png");
+  background-repeat: no-repeat;
+  background-size:cover;
+  height: max-content;
+  width:inherit;
+  background-color: black;
+  background-position: center;
+  color:white;
+  border-radius: 70px;
+  padding: 15px 15px 45px 15px;
+  margin-top:5%;
+  margin:10%;
+  font-size: 80%;
+  box-shadow: 5px 5px 7px #D0CECB;
+}
+
+#wod-explanation h4{
+  font-size: 200%;
+}
+
+#wods-list{
+  display:flex;
+  flex-wrap: wrap;
+  justify-content: center;
+
+}
+
+#each-wod-list{
+  background-color: rgb(208, 206, 203, 0.5);
+  margin:5%;
+  padding:3%;
+  width:15%;
+  border-radius: 20px;
+  text-decoration: none;
+  box-shadow: 5px 5px 7px #D0CECB;
+
+}
+
+#wod-list-link{
+  color:#F7B655;
+  font-weight: bolder;
+
+}
+
+#the-girls{
+  background-image: url("../public/images/the-girls-annie.jpg");
+  background-repeat: no-repeat;
+  background-size:cover;
+  background-position: center;
+
 }
 
