@@ -71,7 +71,7 @@ function WodDetails() {
       {exercises.map((eachExercise) => {
         return <p key= {eachExercise._id} id="exercises">- {eachExercise}</p>;
       })}
-      </div>
+      
       <h4>{benchmark.length !== 0 ? "Benchmarks:" : "" }</h4>
       {benchmark.map((eachBenchmark) => {
         
@@ -85,9 +85,9 @@ function WodDetails() {
       })}
 
       <br />
-      <button onClick={toggleFormShowing}>{isFormShowed===true? "X" :"Add benchmark"}</button>
+      <button className= "benchmark-btn" onClick={toggleFormShowing}>{isFormShowed===true? "x" :"Add benchmark"}</button>
       {isFormShowed === true ? <AddBenchmarkForm toggleFormFunction={toggleFormShowing} category={category} getBenchmarks={getBenchmarks}/>: null}
-
+</div>
       </div>
   );
 }

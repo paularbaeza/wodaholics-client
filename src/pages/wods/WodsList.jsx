@@ -32,9 +32,20 @@ function WodsList() {
     if (isFetching === true) {
         return <h3>Loading List of wods</h3>
       }
+
+    const handleId= () =>{
+        if(type==="girls"){
+            return "the-girls"
+        }else if(type=== "heroes"){
+        return "heroes"
+    }else if(type=== "weights")
+    return "weights"
+    }
+
 //console.log(allWods)
   return (
-    <div id={type === "girls" ? "the-girls" : "heroes"}>
+    <div id={handleId()}>
+
     <h1 className="wodType">{type.toUpperCase()}</h1>
     <div id="wods-list">
     {allWods.map((eachWod)=> {

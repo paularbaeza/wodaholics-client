@@ -49,8 +49,9 @@ function AddBenchmarkForm(props) {
 
 
   return (
-    <div>
+    <div id="benchmark-form">
       <form onSubmit={handleBenchmark}>
+      <div id="score">
         <label htmlFor="score">Score:</label>
         <input
           type={category === "for time" ? "time" : "text"}
@@ -59,9 +60,9 @@ function AddBenchmarkForm(props) {
           onChange={handleScoreChange}
           placeholder={category === "for time" ? "00:00" : 0}
         />
-        <label htmlFor="score">{category === "max-kg" && "KG"}{(category === "AMRAP" || category=== "EMOM") && "reps"}</label>
-        <br />
-        <br />
+          <label htmlFor="score">{category === "max-kg" && "KG"}{(category === "AMRAP" || category=== "EMOM") && "reps"}</label>
+        </div>
+        <div id="date">
         <label htmlFor="date">Date</label>
         <input
           type="date"
@@ -69,11 +70,11 @@ function AddBenchmarkForm(props) {
           value={date}
           onChange={handleDateChange}
         />
-
-        <br />
+        </div>
+       <div id="error-message">
         {errorMessage ? <p>{errorMessage}</p> : null}
-        <br />
-        <button>Add Benchmark</button>
+</div>
+        <button className= "benchmark-form-btn">Add Benchmark</button>
       </form>
     </div>
   );
