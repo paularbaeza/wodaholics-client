@@ -8,4 +8,14 @@ const deleteFriendService = (userId) => {
     return service.post (`/profile/${userId}/delete-friend`)
 }
 
-export { getAllFriendsService, deleteFriendService};
+const addFriendService = (userId) => {
+  return service.post (`/profile/${userId}/delete-friend`)
+}
+
+const getFavWodsService = () => {
+  return service.get("/profile/fav-wods");
+};
+
+
+
+export { getAllFriendsService, deleteFriendService, addFriendService, getFavWodsService};

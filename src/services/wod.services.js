@@ -8,4 +8,16 @@ const getWodDetailsService = (wodId) => {
   return service.get(`wods/${wodId}/details`);
 };
 
-export { getWodsListService, getWodDetailsService };
+
+const deleteFavWodService = (wodId) => {
+  return service.post (`/wods/${wodId}/delete-fav`)
+}
+
+const addFavWodService = (wodId) => {
+return service.post (`/wods/${wodId}/add-fav`)
+}
+
+
+
+
+export { getWodsListService, getWodDetailsService, deleteFavWodService, addFavWodService };

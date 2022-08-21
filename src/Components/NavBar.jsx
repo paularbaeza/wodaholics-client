@@ -133,7 +133,7 @@ function NavBar() {
               </Link>
             </MenuItem>
             <MenuItem onClick={handleProfileClose}>
-              <Link to="/profile" className="link-dropdown">
+              <Link to="/profile/fav-wods" className="link-dropdown">
                 My Wods
               </Link>
             </MenuItem>

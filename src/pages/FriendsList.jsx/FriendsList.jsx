@@ -28,7 +28,7 @@ function FriendsList() {
 
   const deleteFriend = async (userId) => {
     try {
-        const response = await deleteFriendService(userId)
+        await deleteFriendService(userId)
         //console.log(response.data)
         getFriends()
     } catch (error) {
