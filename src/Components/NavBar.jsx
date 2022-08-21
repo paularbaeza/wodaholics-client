@@ -118,22 +118,27 @@ function NavBar() {
           >
             <p className="link-dropdown">{user.username}</p>
             <MenuItem onClick={handleProfileClose}>
+              <Link to="/profile" className="link-dropdown">
+                My Profile
+              </Link>
+            </MenuItem>
+            <MenuItem onClick={handleProfileClose}>
               <Link to="/profile/friends" className="link-dropdown">
-                My friends
+                My Friends
               </Link>
             </MenuItem>
             <MenuItem onClick={handleProfileClose}>
               <Link to="/profile/benchmarks" className="link-dropdown">
-                My benchmars
+                My Benchmars
               </Link>
             </MenuItem>
             <MenuItem onClick={handleProfileClose}>
               <Link to="/profile" className="link-dropdown">
-                My profile
+                My Wods
               </Link>
             </MenuItem>
             <MenuItem onClick={handleProfileClose}>
-              <button onClick={handleLogout} className="navbar-btn">
+              <button onClick={handleLogout} >
                 Log out
               </button>
             </MenuItem>
