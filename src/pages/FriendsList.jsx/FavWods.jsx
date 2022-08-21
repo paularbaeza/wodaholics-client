@@ -53,7 +53,7 @@ function FavWods() {
       {favWodsList.map((eachWod) => {
         return (
           <div key={eachWod._id}>
-            <p>{eachWod.name}</p>
+            <Link to={`/${eachWod._id}/details`}>{eachWod.name}</Link>
             <button onClick={() => deleteFavWod(eachWod._id)}>Delete</button>
           </div>
         );

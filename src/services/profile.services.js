@@ -16,6 +16,9 @@ const getFavWodsService = () => {
   return service.get("/profile/fav-wods");
 };
 
+const getProfileDataService = () => {
+  return service.get("/profile/info");
 
+}
 
-export { getAllFriendsService, deleteFriendService, addFriendService, getFavWodsService};
+export { getAllFriendsService, deleteFriendService, addFriendService, getFavWodsService, getProfileDataService};

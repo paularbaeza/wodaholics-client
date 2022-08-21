@@ -8,4 +8,6 @@ const getAllBenchmarksService = (wodId) => {
   return service.get (`benchmarks/${wodId}`)
 }
 
+
+
 export { createBenchmarkService, getAllBenchmarksService };

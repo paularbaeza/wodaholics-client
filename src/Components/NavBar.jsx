@@ -4,7 +4,7 @@ import { useContext } from "react";
 
 import { AuthContext } from "../context/auth.context";
 
-//Bootstrap
+
 import Button from "../../node_modules/@mui/material/Button";
 import Menu from "../../node_modules/@mui/material/Menu";
 import MenuItem from "../../node_modules/@mui/material/MenuItem";
@@ -19,7 +19,6 @@ function NavBar() {
 
   const openWods = Boolean(anchorEl);
   const openProfile = Boolean(anchorEl2);
-
 
 
   const handleWodsClick = (event) => {
@@ -99,7 +98,7 @@ function NavBar() {
             aria-expanded={openProfile ? "true" : undefined}
             onClick={handleProfileClick}
           >
-            La foto {user.img}
+            <img src={user.img} width="12%" border-radius="15px" alt="profile" />
           </Button>
           <Menu
             id="demo-positioned-menu"
@@ -129,7 +128,7 @@ function NavBar() {
             </MenuItem>
             <MenuItem onClick={handleProfileClose}>
               <Link to="/profile/benchmarks" className="link-dropdown">
-                My Benchmars
+                My Benchmarks
               </Link>
             </MenuItem>
             <MenuItem onClick={handleProfileClose}>
