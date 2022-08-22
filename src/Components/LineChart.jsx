@@ -32,8 +32,8 @@ const {userBenchmarks, dateOfBenchmark} = props
 
   const labels = dateOfBenchmark;
   const scores = userBenchmarks;
-console.log(labels)
-console.log(scores)
+//console.log(labels)
+//console.log(scores)
 
 
   const options = {

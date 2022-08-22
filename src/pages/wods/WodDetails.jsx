@@ -23,7 +23,6 @@ function WodDetails() {
   const [isFetching, setIsFetching] = useState(true);
   const [isFormShowed, setIsFormShowed] = useState(false);
 
-  const [benchmark, setBenchmark] = useState([]);
   const [topScores, setTopScores] = useState([]);
   const [isFav, setIsFav] = useState(false);
 
@@ -32,7 +31,7 @@ function WodDetails() {
 
   useEffect(() => {
     getWodDetails();
-    getBenchmarks();
+
     getTopScores();
     getMyBenchmarks();
   }, []);
@@ -50,16 +49,7 @@ function WodDetails() {
     }
   };
 
-  //*TODO ESTO HACERLO EN GRAFICA Y SOLO LOS DEL USUARIO traer los benchmarks del wod
-  const getBenchmarks = async () => {
-    try {
-      const response = await getAllBenchmarksService(wodId);
-      setBenchmark(response.data);
-      getTopScores();
-    } catch (error) {
-      navigate("/error");
-    }
-  };
+
 
   //*traer las mejores puntuaciones del wod
   const getTopScores = async () => {
@@ -138,7 +128,7 @@ function WodDetails() {
       navigate("/error");
     }
   };
-console.log(topScores)
+//console.log(topScores)
   const handleRanking = () => {
 
     if(topScores.length === 1){
@@ -230,7 +220,6 @@ console.log(topScores)
             chartFunction = {getMyBenchmarks}
             toggleFormFunction={toggleFormShowing}
             category={category}
-            getBenchmarks={getBenchmarks}
             getTopScores={getTopScores}
           />
         ) : null}

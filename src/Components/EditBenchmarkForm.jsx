@@ -7,6 +7,10 @@ function EditBenchmarkForm(props) {
   const navigate = useNavigate();
   const { toggleFormFunction, getBenchmarks, benchmarkId, category } = props;
 
+
+//console.log(category)
+//console.log(benchmarkId)
+
   const [score, setScore] = useState(null);
   const [date, setDate] = useState(null);
   const [errorMessage, setErrorMessage] = useState("");
@@ -29,7 +33,6 @@ function EditBenchmarkForm(props) {
       date: date,
     };
 
-    console.log(category)
     try {
       await updateBenchmarkService(benchmarkId, updatedBenchmark);
       toggleFormFunction();

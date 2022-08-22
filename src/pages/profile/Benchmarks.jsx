@@ -5,7 +5,7 @@ import {
 } from "../../services/profile.services.js";
 import { deleteBenchmarkService, updateBenchmarkService } from "../../services/benchmark.services.js";
 import { Link, useNavigate } from "react-router-dom";
-import EditBenchmarkForm from "../../Components/EditBenchmarkFrom.jsx";
+import EditBenchmarkForm from "../../Components/EditBenchmarkForm.jsx";
 
 
 
@@ -59,7 +59,7 @@ function Benchmarks() {
   if (isFetching === true) {
     return <h3>Loading Benchmark List</h3>;
   }
-
+//console.log(benchmarksList)
   return (
     <div>
     <h1>My benchmarks</h1>
@@ -68,14 +68,14 @@ function Benchmarks() {
     return <div key={eachBenchmark._id}>
     <p>{eachBenchmark.wod[0].name}</p>
     <p>{eachBenchmark.score}</p>
-    <button onClick={toggleFormShowing}>
+    <button key={eachBenchmark._id} onClick={toggleFormShowing}>
           {isFormShowed === true ? "x" : "Edit"}
         </button>
         {isFormShowed === true ? (
           <EditBenchmarkForm
             toggleFormFunction={toggleFormShowing}
             getBenchmarks={getBenchmarks}
-            benchMaridId={eachBenchmark._id}
+            benchmarkId={eachBenchmark._id}
             category={eachBenchmark.wod[0].category}
           />
         ) : null}
