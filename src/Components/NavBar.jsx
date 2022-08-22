@@ -2,9 +2,8 @@ import React, { useState } from "react";
 import { Link, useNavigate } from "react-router-dom";
 import { useContext } from "react";
 
-import { AuthContext } from "../context/auth.context"
+import { AuthContext } from "../context/auth.context";
 import { searchUsersService } from "../services/profile.services";
-
 
 import Button from "../../node_modules/@mui/material/Button";
 import Menu from "../../node_modules/@mui/material/Menu";
@@ -16,14 +15,11 @@ function NavBar() {
   const { isUserActive, user, authenticateUser } = useContext(AuthContext);
 
   const [anchorEl, setAnchorEl] = React.useState(null);
-  const [anchorEl2, setAnchorEl2] = React.useState(null)
-  const [search, setSearch] = useState ("")
-  const [userSearch, setUserSearch] = useState(null)
-
+  const [anchorEl2, setAnchorEl2] = React.useState(null);
+  const [search, setSearch] = useState("");
 
   const openWods = Boolean(anchorEl);
   const openProfile = Boolean(anchorEl2);
-
 
   const handleWodsClick = (event) => {
     setAnchorEl(event.currentTarget);
@@ -45,24 +41,14 @@ function NavBar() {
   };
 
   const handleSearch = async (event) => {
-    let searchValue = event.target.value
+    let searchValue = event.target.value;
     //console.log(event.target.value)
-    setSearch(searchValue)
-    };
-//! MIRAR COMO PASAR LOS AMIGOS FILTRADOS
-    const filterFriends = async () => {
-      //console.log(search);
-      let response = await searchUsersService();
-      //console.log(response.data);
-      let users = response.data;
-      let searchResults = users.filter((eachUser) => {
-        return eachUser.username.includes(search);
-      });
-      setUserSearch(searchResults)
-    };
-  
-//console.log(userSearch)
+    setSearch(searchValue);
+  };
 
+
+
+  //console.log(userSearch)
 
   if (isUserActive === true) {
     return (
@@ -113,13 +99,20 @@ function NavBar() {
             </MenuItem>
           </Menu>
         </div>
+
         <div id="search">
-
-        <input value={search} type="text" name ="search" onChange={handleSearch}/>
-          <Link to="/search-results"><button>Search</button></Link>
+          <form>
+            <input
+              value={search}
+              type="text"
+              name="search"
+              onChange={handleSearch}
+            />
+            <Link to={`/search/${search}`}>
+              <button type="submit">Search</button>
+            </Link>
+          </form>
         </div>
-
-
 
         <div>
           <Button
@@ -129,7 +122,12 @@ function NavBar() {
             aria-expanded={openProfile ? "true" : undefined}
             onClick={handleProfileClick}
           >
-            <img src={user.img} width="12%" border-radius="15px" alt="profile" />
+            <img
+              src={user.img}
+              width="12%"
+              border-radius="15px"
+              alt="profile"
+            />
           </Button>
           <Menu
             id="demo-positioned-menu"
@@ -168,13 +166,10 @@ function NavBar() {
               </Link>
             </MenuItem>
             <MenuItem onClick={handleProfileClose}>
-              <button onClick={handleLogout} >
-                Log out
-              </button>
+              <button onClick={handleLogout}>Log out</button>
             </MenuItem>
           </Menu>
         </div>
-
       </div>
     );
   } else {

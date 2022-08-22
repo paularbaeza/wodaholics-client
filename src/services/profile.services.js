@@ -28,6 +28,10 @@ const searchUsersService = () => {
   return service.get ("profile/search-users")
 }
 
+const getAllMyBenchmarksService = () => {
+ return service.get ("profile/mybenchmarks")
+}
+
 export {
   getAllFriendsService,
   deleteFriendService,
@@ -35,5 +39,6 @@ export {
   getFavWodsService,
   getProfileDataService,
   changeProfileDataService,
-  searchUsersService
+  searchUsersService,
+  getAllMyBenchmarksService
 };

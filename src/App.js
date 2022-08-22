@@ -34,7 +34,7 @@ function App() {
         <Route path="/profile/friends" element={<FriendsList/>} />
         <Route path="/profile/fav-wods" element={<FavWods/>} />
         <Route path="/profile/benchmarks" element={<Benchmarks/>} />
-        <Route path="/search-results" element={<SearchResults/>} />
+        <Route path="/search/:search" element={<SearchResults/>} />
 
 
 

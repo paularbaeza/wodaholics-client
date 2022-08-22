@@ -1,13 +1,10 @@
 import { useEffect, useState } from "react";
 import {
-  getAllFriendsService,
-  deleteFriendService,
   getFavWodsService,
 } from "../../services/profile.services";
 
 import {
   deleteFavWodService,
-  addFavWodService,
 } from "../../services/wod.services";
 
 import { Link, useNavigate } from "react-router-dom";

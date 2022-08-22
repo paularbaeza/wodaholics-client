@@ -27,7 +27,6 @@ function WodDetails() {
   useEffect(() => {
     getWodDetails();
     getBenchmarks();
-
     //getTopScores()
   }, []);
 
@@ -37,6 +36,7 @@ function WodDetails() {
     try {
       const response = await getWodDetailsService(wodId);
       setAllWodDetails(response.data);
+      getTopScores()
       setIsFetching(false);
     } catch (error) {
       navigate("/error");
@@ -48,36 +48,42 @@ function WodDetails() {
     try {
       const response = await getAllBenchmarksService(wodId);
       setBenchmark(response.data);
+
     } catch (error) {
       navigate("/error");
     }
   };
+
+
   //console.log(allWodDetails)
-  //console.log(topScores);
+  console.log(topScores);
 
   //!traer las mejores puntuaciones del wod
   const getTopScores = async () => {
-    try {
-      if (allWodDetails.category === "for time") {
-        const response = await getLowerTimesService(wodId);
-        setTopScores(response.data);
-        setIsFetching(false);
-
-        console.log("fortimeeee");
-        if (
-          allWodDetails.category === "max-kg" ||
-          allWodDetails.category === "AMRAP" ||
-          allWodDetails.category === "EMOM"
-        ) {
-          const response = await getHigherBenchmarksService(wodId);
-          setTopScores(response.data);
-          setIsFetching(false);
-        }
-      }
-    } catch (error) {
-      navigate("/error");
+    if(allWodDetails!==null){
+        try {
+            if (allWodDetails.category === "for time") {
+              const response = await getLowerTimesService(wodId);
+              setTopScores(response.data);
+      
+              console.log("fortimeeee");
+              if (
+                allWodDetails.category === "max-kg" ||
+                allWodDetails.category === "AMRAP" ||
+                allWodDetails.category === "EMOM"
+              ) {
+                const response = await getHigherBenchmarksService(wodId);
+                setTopScores(response.data);
+              }
+            }
+          } catch (error) {
+            navigate("/error");
+          }
     }
+   
   };
+
+//getTopScores()
 
   if (isFetching === true) {
     return <h3>Loading wod details</h3>;
@@ -118,11 +124,7 @@ function WodDetails() {
     try {
       const response = await getFavWodsService();
       const favWods = response.data;
-      //console.log(favWods)
-      //console.log(_id)
-      //console.log(favWods.includes(_id))
       let isWodFav = favWods.filter((favWods) => favWods._id === _id);
-      console.log(isWodFav.length)
       if (isWodFav.length === 1) {
         setIsFav (true);
       } else {
@@ -153,6 +155,9 @@ function WodDetails() {
           );
         })}
         <h5>Top Scores:</h5>
+        {topScores.map((eachScore)=> {
+            return <p>{eachScore.user[0]}</p>
+        })}
         <h4>{benchmark.length !== 0 ? "Benchmarks:" : ""}</h4>
         {benchmark.map((eachBenchmark) => {
           return (

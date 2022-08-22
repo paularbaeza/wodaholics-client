@@ -49,7 +49,7 @@ function WodsList() {
     <h1 className="wodType">{type.toUpperCase()}</h1>
     <div id="wods-list">
     {allWods.map((eachWod)=> {
-        return <Link to={`/${eachWod._id}/details`} id="each-wod-list"><p key={eachWod._id} id="wod-list-link">
+        return <Link to={`/${eachWod._id}/details`} key={eachWod._id} id="each-wod-list"><p key={eachWod._id} id="wod-list-link">
           {eachWod.name}</p></Link>
         
     })}

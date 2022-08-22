@@ -16,4 +16,10 @@ const getLowerTimesService = (wodId) => {
   return service.get (`benchmarks/${wodId}/lower-time`)
 }
 
-export { createBenchmarkService, getAllBenchmarksService, getHigherBenchmarksService, getLowerTimesService };
+const getAllUserBenchmarksService = (userId) => {
+  return service.get (`benchmarks/${userId}`)
+}
+
+
+
+export { createBenchmarkService, getAllBenchmarksService, getHigherBenchmarksService, getLowerTimesService, getAllUserBenchmarksService };
