@@ -10,6 +10,7 @@ import {
 import { addFavWodService, deleteFavWodService } from "../../services/wod.services";
 import AddBenchmarkForm from "../../Components/AddBenchmarkForm";
 import { getFavWodsService } from "../../services/profile.services";
+import LineChart from "../../Components/LineChart";
 
 function WodDetails() {
   const navigate = useNavigate();
@@ -30,13 +31,14 @@ function WodDetails() {
     //getTopScores()
   }, []);
 
+
   //* traer los detalles del wod
 
   const getWodDetails = async () => {
     try {
       const response = await getWodDetailsService(wodId);
       setAllWodDetails(response.data);
-      getTopScores()
+      getTopScores(response.data)
       setIsFetching(false);
     } catch (error) {
       navigate("/error");
@@ -48,20 +50,20 @@ function WodDetails() {
     try {
       const response = await getAllBenchmarksService(wodId);
       setBenchmark(response.data);
-
+      getTopScores()
     } catch (error) {
       navigate("/error");
     }
   };
 
 
-  //console.log(allWodDetails)
-  console.log(topScores);
+
 
   //!traer las mejores puntuaciones del wod
-  const getTopScores = async () => {
-    if(allWodDetails!==null){
+  const getTopScores = async (allWodDetails) => {
+    
         try {
+          if(allWodDetails!==null){
             if (allWodDetails.category === "for time") {
               const response = await getLowerTimesService(wodId);
               setTopScores(response.data);
@@ -76,13 +78,17 @@ function WodDetails() {
                 setTopScores(response.data);
               }
             }
+          }
           } catch (error) {
             navigate("/error");
           }
-    }
-   
-  };
+        }
+    
+      
+  
 
+  console.log(allWodDetails)
+  console.log(topScores);
 //getTopScores()
 
   if (isFetching === true) {
@@ -154,14 +160,15 @@ function WodDetails() {
             </p>
           );
         })}
+        <LineChart/>
         <h5>Top Scores:</h5>
-        {topScores.map((eachScore)=> {
+        {/* {topScores.map((eachScore)=> {
             return <p>{eachScore.user[0]}</p>
-        })}
+        })} */}
         <h4>{benchmark.length !== 0 ? "Benchmarks:" : ""}</h4>
         {benchmark.map((eachBenchmark) => {
           return (
-            <div>
+            <div key={eachBenchmark._id}>
               <p>User: {eachBenchmark.user[0].username}</p>
               <p>Score: {eachBenchmark.score}</p>
               <p>Date: {eachBenchmark.date}</p>

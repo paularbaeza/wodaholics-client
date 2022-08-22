@@ -43,10 +43,16 @@ function NavBar() {
   const handleSearch = async (event) => {
     let searchValue = event.target.value;
     //console.log(event.target.value)
+    // navigate()
     setSearch(searchValue);
   };
 
+const handleSearchBtn = async (event) => {
+  event.preventDefault()
+  navigate(`/search/${search}`)
+  setSearch("");
 
+}
 
   //console.log(userSearch)
 
@@ -108,9 +114,9 @@ function NavBar() {
               name="search"
               onChange={handleSearch}
             />
-            <Link to={`/search/${search}`}>
-              <button type="submit">Search</button>
-            </Link>
+         
+              <button type="submit" onClick={handleSearchBtn}>Search</button>
+ 
           </form>
         </div>
 
