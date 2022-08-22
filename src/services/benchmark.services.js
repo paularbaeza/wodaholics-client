@@ -8,13 +8,6 @@ const getAllBenchmarksService = (wodId) => {
   return service.get (`benchmarks/${wodId}`)
 }
 
-// const getHigherBenchmarksService = (wodId) => {
-//   return service.get (`benchmarks/${wodId}/higher`)
-// }
-
-// const getLowerTimesService = (wodId) => {
-//   return service.get (`benchmarks/${wodId}/lower-time`)
-// }
 
 const getAllUserBenchmarksService = (userId) => {
   return service.get (`benchmarks/${userId}`)
@@ -24,5 +17,9 @@ const getHighscoresService = (wodId) =>{
   return service.get (`benchmarks/${wodId}/highscores`)
 }
 
+const getUserBenchmarksOfAWod = (wodId) => {
+  return service.get (`benchmarks/${wodId}/all`)
+}
 
-export { createBenchmarkService, getAllBenchmarksService, getHighscoresService, getAllUserBenchmarksService };
+
+export { createBenchmarkService, getAllBenchmarksService, getHighscoresService, getAllUserBenchmarksService,getUserBenchmarksOfAWod };

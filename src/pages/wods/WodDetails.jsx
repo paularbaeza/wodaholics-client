@@ -4,7 +4,7 @@ import { useParams, useNavigate } from "react-router-dom";
 import { getWodDetailsService } from "../../services/wod.services";
 import {
   getAllBenchmarksService,
-  getHighscoresService,
+  getHighscoresService, getUserBenchmarksOfAWod
 } from "../../services/benchmark.services";
 import {
   addFavWodService,
@@ -27,10 +27,14 @@ function WodDetails() {
   const [topScores, setTopScores] = useState([]);
   const [isFav, setIsFav] = useState(false);
 
+  const [userBenchmarks, setUserBenchmarks] = useState([]);
+  const [dateOfBenchmark, setDateOfBenchmark] = useState([])
+
   useEffect(() => {
     getWodDetails();
     getBenchmarks();
     getTopScores();
+    getMyBenchmarks();
   }, []);
 
   //* traer los detalles del wod
@@ -67,8 +71,26 @@ function WodDetails() {
     }
   };
 
-  //console.log(allWodDetails);
-  console.log(topScores);
+//* traer mis benchmarks de este wod
+  const getMyBenchmarks = async () => {
+    try {
+      const response = await getUserBenchmarksOfAWod(wodId);
+      //console.log(response.data)
+      const benchmarksArr = response.data
+      const onlyScores = benchmarksArr.map((eachBenchmark)=> {
+        return eachBenchmark.score
+      })
+      //console.log(onlyScores)
+      setUserBenchmarks(onlyScores);
+      const onlyDates = benchmarksArr.map((eachBenchmark)=> {
+        return eachBenchmark.date
+      })
+      //console.log(onlyDates)
+      setDateOfBenchmark(onlyDates);
+    } catch (error) {
+      navigate("/error");
+    }
+  }
 
   if (isFetching === true) {
     return <h3>Loading wod details</h3>;
@@ -117,6 +139,7 @@ function WodDetails() {
     }
   };
 
+
   handleFavButton();
 
   return (
@@ -129,7 +152,7 @@ function WodDetails() {
         >
           {isFav === true ? "❤️" : "🤍"}
         </button>
-
+        
         <h4>{description}</h4>
         {exercises.map((eachExercise) => {
           return (
@@ -138,25 +161,31 @@ function WodDetails() {
             </p>
           );
         })}
-        <LineChart />
         <h5>Top Scores:</h5>
-         {topScores.map((eachScore)=> {
-            return <div>
-            <img src={eachScore.user[0].img} alt="user" width="100px" />
-            <p>{eachScore.user[0].username}</p>
-            <p>{eachScore.score}</p>
-            </div>
-        })}
-        <h4>{benchmark.length !== 0 ? "Benchmarks:" : ""}</h4>
-        {benchmark.map((eachBenchmark) => {
-          return (
-            <div key={eachBenchmark._id}>
-              <p>User: {eachBenchmark.user[0].username}</p>
-              <p>Score: {eachBenchmark.score}</p>
-              <p>Date: {eachBenchmark.date}</p>
-            </div>
-          );
-        })}
+        <div id="highscores">
+        
+        <div>
+        <p>🥇</p>
+        <img src={topScores[0].user[0].img} alt="user" width="100px"/>
+        <p>{topScores[0].user[0].username}</p>
+        <p>{topScores[0].user[0].score}</p>
+        </div>
+        <div>
+        <p>🥈 </p>
+        <img src={topScores[1].user[0].img} alt="user" width="100px"/>
+        <p>{topScores[1].user[0].username}</p>
+        <p>{topScores[1].user[0].score}</p>
+        </div>
+        <div>
+        <p>🥉 </p>
+        <img src={topScores[2].user[0].img} alt="user" width="100px"/>
+        <p>{topScores[2].user[0].username}</p>
+        <p>{topScores[2].user[0].score}</p>
+        </div>
+        </div>
+
+        <LineChart userBenchmarks={userBenchmarks} dateOfBenchmark={dateOfBenchmark}/>
+
 
         <br />
         <button className="benchmark-btn" onClick={toggleFormShowing}>
@@ -164,9 +193,11 @@ function WodDetails() {
         </button>
         {isFormShowed === true ? (
           <AddBenchmarkForm
+            chartFunction = {getMyBenchmarks}
             toggleFormFunction={toggleFormShowing}
             category={category}
             getBenchmarks={getBenchmarks}
+            getTopScores={getTopScores}
           />
         ) : null}
       </div>

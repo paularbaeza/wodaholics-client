@@ -192,3 +192,13 @@
   height:90vh;
   color:white
 }
+
+#highscores {
+  display:flex;
+  flex-direction: row;
+  margin-bottom:30px
+}
+
+#highscores div{
+  margin:10px
+}

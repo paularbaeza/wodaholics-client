@@ -6,7 +6,7 @@ import { createBenchmarkService } from "../services/benchmark.services";
 function AddBenchmarkForm(props) {
   const navigate = useNavigate();
   const { wodId } = useParams();
-  const { toggleFormFunction, category, getBenchmarks } = props;
+  const { toggleFormFunction, category, getBenchmarks, getTopScores, chartFunction } = props;
   //console.log(props)
   //console.log(wodId)
 
@@ -37,6 +37,8 @@ function AddBenchmarkForm(props) {
       await createBenchmarkService(wodId, newBenchmark);
       toggleFormFunction();
       getBenchmarks();
+      getTopScores();
+      chartFunction()
     } catch (error) {
       if (error.response.status === 400) {
         console.log(error.response.data.errorMessage);
@@ -51,8 +53,8 @@ function AddBenchmarkForm(props) {
     if (category === "for time") {
       return "00:00";
     } else if (category === "max-kg") {
-      return "0 KG";
-    } else if (category === "AMRAP" || category === "EMOM") return "0 reps";
+      return "0";
+    } else if (category === "AMRAP" || category === "EMOM") return "0 ";
   };
 
   return (
@@ -68,6 +70,10 @@ function AddBenchmarkForm(props) {
             placeholder={handlePlaceholder()}
           />
 
+          <label htmlFor="score">
+            {category === "max-kg" && "KG"}
+            {(category === "AMRAP" || category === "EMOM") && "reps"}
+          </label>
         </div>
         <div id="date">
           <label htmlFor="date">Date</label>
