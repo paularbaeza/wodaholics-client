@@ -1,5 +1,5 @@
 import { useEffect, useState } from "react";
-import { useParams, useNavigate } from "react-router-dom";
+import { Link, useParams, useNavigate } from "react-router-dom";
 
 import { getWodDetailsService } from "../../services/wod.services";
 import {
@@ -136,7 +136,7 @@ function WodDetails() {
         
         <div>
         <p>🥇</p>
-        <img src={topScores[0].user[0].img} alt="user" width="100px"/>
+        <Link to= {`/benchmarks/${topScores[0].user[0]._id}`}><img src={topScores[0].user[0].img} alt="user" width="100px"/></Link>
         <p>{topScores[0].user[0].username}</p>
         <p>{topScores[0].score}</p>
         </div>
@@ -147,13 +147,13 @@ function WodDetails() {
         return <div className="highscores">
         <div>
         <p>🥇</p>
-        <img src={topScores[0].user[0].img} alt="user" width="100px"/>
+        <Link to= {`/benchmarks/${topScores[0].user[0]._id}`}><img src={topScores[0].user[0].img} alt="user" width="100px"/></Link>
         <p>{topScores[0].user[0].username}</p>
         <p>{topScores[0].score}</p>
         </div>
         <div>
         <p>🥈 </p>
-        <img src={topScores[1].user[0].img} alt="user" width="100px"/>
+        <Link to= {`/benchmarks/${topScores[1].user[0]._id}`}><img src={topScores[1].user[0].img} alt="user" width="100px"/></Link>
         <p>{topScores[1].user[0].username}</p>
         <p>{topScores[1].score}</p>
         </div>
@@ -165,19 +165,19 @@ function WodDetails() {
 
 <div>
         <p>🥇</p>
-        <img src={topScores[0].user[0].img} alt="user" width="100px"/>
+        <Link to= {`/benchmarks/${topScores[0].user[0]._id}`}><img src={topScores[0].user[0].img} alt="user" width="100px"/></Link>
         <p>{topScores[0].user[0].username}</p>
         <p>{topScores[0].score}</p>
         </div>
         <div>
         <p>🥈 </p>
-        <img src={topScores[1].user[0].img} alt="user" width="100px"/>
+        <Link to= {`/benchmarks/${topScores[1].user[0]._id}`}><img src={topScores[1].user[0].img} alt="user" width="100px"/></Link>
         <p>{topScores[1].user[0].username}</p>
         <p>{topScores[1].score}</p>
         </div>
         <div>
         <p>🥉 </p>
-        <img src={topScores[2].user[0].img} alt="user" width="100px"/>
+        <Link to= {`/benchmarks/${topScores[2].user[0]._id}`}><img src={topScores[2].user[0].img} alt="user" width="100px"/></Link>
         <p>{topScores[2].user[0].username}</p>
         <p>{topScores[2].score}</p>
         </div>

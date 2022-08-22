@@ -29,5 +29,9 @@ const getUserBenchmarksOfAWod = (wodId) => {
   return service.get (`benchmarks/${wodId}/all`)
 }
 
+const getBenchmarksOfUsersService = (userId) => {
+  return service.get (`benchmarks/all/${userId}`)
 
-export { createBenchmarkService, getAllBenchmarksService, getHighscoresService, getAllUserBenchmarksService,getUserBenchmarksOfAWod, deleteBenchmarkService, updateBenchmarkService };
+}
+
+export { createBenchmarkService, getAllBenchmarksService, getHighscoresService, getAllUserBenchmarksService,getUserBenchmarksOfAWod, deleteBenchmarkService, updateBenchmarkService, getBenchmarksOfUsersService };

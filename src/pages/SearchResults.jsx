@@ -1,6 +1,6 @@
 import { useEffect, useState } from "react";
-import { useParams, useNavigate } from "react-router-dom";
-import { searchUsersService } from "../../services/profile.services";
+import { Link, useParams, useNavigate } from "react-router-dom";
+import { searchUsersService } from "../services/profile.services";
 
 function SearchResults() {
   const { search } = useParams();
@@ -33,9 +33,10 @@ function SearchResults() {
       {userSearch.map((eachUser) => {
         return (
           <div key={eachUser._id}>
-            <img src={eachUser.img} alt="user" width="150px" />
+          <Link to= {`/benchmarks/${eachUser._id}`}><img src={eachUser.img} alt="user" width="100px"/></Link>
             <p>{eachUser.role}</p>
             <p>{eachUser.username}</p>
+            <button>Add friend</button>
           </div>
         );
       })}
