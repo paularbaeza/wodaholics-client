@@ -7,7 +7,7 @@ function AddBenchmarkForm(props) {
   const navigate = useNavigate();
   const { wodId } = useParams();
   const { toggleFormFunction, category, getBenchmarks } = props;
-    //console.log(props)
+  //console.log(props)
   //console.log(wodId)
 
   const [score, setScore] = useState(null);
@@ -36,7 +36,7 @@ function AddBenchmarkForm(props) {
     try {
       await createBenchmarkService(wodId, newBenchmark);
       toggleFormFunction();
-      getBenchmarks()
+      getBenchmarks();
     } catch (error) {
       if (error.response.status === 400) {
         console.log(error.response.data.errorMessage);
@@ -47,34 +47,41 @@ function AddBenchmarkForm(props) {
     }
   };
 
+  const handlePlaceholder = () => {
+    if (category === "for time") {
+      return "00:00";
+    } else if (category === "max-kg") {
+      return "0 KG";
+    } else if (category === "AMRAP" || category === "EMOM") return "0 reps";
+  };
 
   return (
     <div id="benchmark-form">
       <form onSubmit={handleBenchmark}>
-      <div id="score">
-        <label htmlFor="score">Score:</label>
-        <input
-          type={category === "for time" ? "time" : "text"}
-          name="score"
-          value={score}
-          onChange={handleScoreChange}
-          placeholder={category === "for time" ? "00:00" : 0}
-        />
-          <label htmlFor="score">{category === "max-kg" && "KG"}{(category === "AMRAP" || category=== "EMOM") && "reps"}</label>
+        <div id="score">
+          <label htmlFor="score">Score:</label>
+          <input
+            type={category === "for time" ? "time" : "text"}
+            name="score"
+            value={score}
+            onChange={handleScoreChange}
+            placeholder={handlePlaceholder()}
+          />
+
         </div>
         <div id="date">
-        <label htmlFor="date">Date</label>
-        <input
-          type="date"
-          name="date"
-          value={date}
-          onChange={handleDateChange}
-        />
+          <label htmlFor="date">Date</label>
+          <input
+            type="date"
+            name="date"
+            value={date}
+            onChange={handleDateChange}
+          />
         </div>
-       <div id="error-message">
-        {errorMessage ? <p>{errorMessage}</p> : null}
-</div>
-        <button className= "benchmark-form-btn">Add Benchmark</button>
+        <div id="error-message">
+          {errorMessage ? <p>{errorMessage}</p> : null}
+        </div>
+        <button className="benchmark-form-btn">Add Benchmark</button>
       </form>
     </div>
   );

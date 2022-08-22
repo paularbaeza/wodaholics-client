@@ -51,7 +51,6 @@ const handleSearchBtn = async (event) => {
   event.preventDefault()
   navigate(`/search/${search}`)
   setSearch("");
-
 }
 
   //console.log(userSearch)

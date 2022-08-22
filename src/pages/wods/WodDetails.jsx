@@ -4,10 +4,12 @@ import { useParams, useNavigate } from "react-router-dom";
 import { getWodDetailsService } from "../../services/wod.services";
 import {
   getAllBenchmarksService,
-  getLowerTimesService,
-  getHigherBenchmarksService,
+  getHighscoresService,
 } from "../../services/benchmark.services";
-import { addFavWodService, deleteFavWodService } from "../../services/wod.services";
+import {
+  addFavWodService,
+  deleteFavWodService,
+} from "../../services/wod.services";
 import AddBenchmarkForm from "../../Components/AddBenchmarkForm";
 import { getFavWodsService } from "../../services/profile.services";
 import LineChart from "../../Components/LineChart";
@@ -23,14 +25,13 @@ function WodDetails() {
 
   const [benchmark, setBenchmark] = useState([]);
   const [topScores, setTopScores] = useState([]);
-  const [isFav, setIsFav] = useState(false)
+  const [isFav, setIsFav] = useState(false);
 
   useEffect(() => {
     getWodDetails();
     getBenchmarks();
-    //getTopScores()
+    getTopScores();
   }, []);
-
 
   //* traer los detalles del wod
 
@@ -38,7 +39,7 @@ function WodDetails() {
     try {
       const response = await getWodDetailsService(wodId);
       setAllWodDetails(response.data);
-      getTopScores(response.data)
+      getTopScores(response.data);
       setIsFetching(false);
     } catch (error) {
       navigate("/error");
@@ -50,46 +51,24 @@ function WodDetails() {
     try {
       const response = await getAllBenchmarksService(wodId);
       setBenchmark(response.data);
-      getTopScores()
+      getTopScores();
     } catch (error) {
       navigate("/error");
     }
   };
 
+  //*traer las mejores puntuaciones del wod
+  const getTopScores = async () => {
+    try {
+      const response = await getHighscoresService(wodId);
+      setTopScores(response.data);
+    } catch (error) {
+      navigate("/error");
+    }
+  };
 
-
-
-  //!traer las mejores puntuaciones del wod
-  const getTopScores = async (allWodDetails) => {
-    
-        try {
-          if(allWodDetails!==null){
-            if (allWodDetails.category === "for time") {
-              const response = await getLowerTimesService(wodId);
-              setTopScores(response.data);
-      
-              console.log("fortimeeee");
-              if (
-                allWodDetails.category === "max-kg" ||
-                allWodDetails.category === "AMRAP" ||
-                allWodDetails.category === "EMOM"
-              ) {
-                const response = await getHigherBenchmarksService(wodId);
-                setTopScores(response.data);
-              }
-            }
-          }
-          } catch (error) {
-            navigate("/error");
-          }
-        }
-    
-      
-  
-
-  console.log(allWodDetails)
+  //console.log(allWodDetails);
   console.log(topScores);
-//getTopScores()
 
   if (isFetching === true) {
     return <h3>Loading wod details</h3>;
@@ -111,19 +90,16 @@ function WodDetails() {
   } = allWodDetails;
 
   const addFav = async () => {
-    try{ 
-        if(isFav===true){
-            await deleteFavWodService(_id)
-        }else if( isFav===false){
-            await addFavWodService(_id);
-        }
-        handleFavButton()
-
-    } catch (error) {
-        navigate("/error");
+    try {
+      if (isFav === true) {
+        await deleteFavWodService(_id);
+      } else if (isFav === false) {
+        await addFavWodService(_id);
       }
-    
-
+      handleFavButton();
+    } catch (error) {
+      navigate("/error");
+    }
   };
 
   const handleFavButton = async () => {
@@ -132,11 +108,10 @@ function WodDetails() {
       const favWods = response.data;
       let isWodFav = favWods.filter((favWods) => favWods._id === _id);
       if (isWodFav.length === 1) {
-        setIsFav (true);
+        setIsFav(true);
       } else {
-        setIsFav (false);
+        setIsFav(false);
       }
-
     } catch (error) {
       navigate("/error");
     }
@@ -148,7 +123,10 @@ function WodDetails() {
     <div>
       <div id="wod-explanation">
         <h1 className="wodType">{name} </h1>
-        <button onClick={addFav} style={{fontSize:35, background:"none", border:"none"}}>
+        <button
+          onClick={addFav}
+          style={{ fontSize: 35, background: "none", border: "none" }}
+        >
           {isFav === true ? "❤️" : "🤍"}
         </button>
 
@@ -160,11 +138,15 @@ function WodDetails() {
             </p>
           );
         })}
-        <LineChart/>
+        <LineChart />
         <h5>Top Scores:</h5>
-        {/* {topScores.map((eachScore)=> {
-            return <p>{eachScore.user[0]}</p>
-        })} */}
+         {topScores.map((eachScore)=> {
+            return <div>
+            <img src={eachScore.user[0].img} alt="user" width="100px" />
+            <p>{eachScore.user[0].username}</p>
+            <p>{eachScore.score}</p>
+            </div>
+        })}
         <h4>{benchmark.length !== 0 ? "Benchmarks:" : ""}</h4>
         {benchmark.map((eachBenchmark) => {
           return (
