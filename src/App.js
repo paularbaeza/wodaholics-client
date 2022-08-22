@@ -10,10 +10,13 @@ import NotFound from "./pages/NotFound"
 import WodsList from "./pages/wods/WodsList";
 import WodDetails from "./pages/wods/WodDetails";
 import LandingPage from "./pages/LandingPage";
-import FavWods from "./pages/FriendsList.jsx/FavWods";
-import MyProfile from "./pages/FriendsList.jsx/MyProfile";
-import Benchmarks from "./pages/FriendsList.jsx/Benchmarks";
-import FriendsList from "./pages/FriendsList.jsx/FriendsList";
+import MyProfile from "./pages/profile/MyProfile";
+import FriendsList from "./pages/profile/FriendsList";
+import FavWods from "./pages/profile/FavWods";
+import Benchmarks from "./pages/profile/Benchmarks";
+
+import SearchResults from "./pages/profile/SearchResults";
+
 
 function App() {
   return (
@@ -27,10 +30,11 @@ function App() {
         <Route path="/:wodId/details" element={<WodDetails />} />
         <Route path="/signup" element={<Signup />} />
         <Route path="/login" element={<Login />} />
-        <Route path="/profile" element={<MyProfile/>} />
+        <Route path="/profile" element= {<MyProfile/>} />
         <Route path="/profile/friends" element={<FriendsList/>} />
         <Route path="/profile/fav-wods" element={<FavWods/>} />
         <Route path="/profile/benchmarks" element={<Benchmarks/>} />
+        <Route path="/search-results" element={<SearchResults/>} />
 
 
 

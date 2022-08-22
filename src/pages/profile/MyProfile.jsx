@@ -1,5 +1,5 @@
 import { useEffect, useState } from "react";
-import { getProfileDataService } from "../../services/profile.services";
+import { getProfileDataService, changeProfileDataService } from "../../services/profile.services";
 
 import { Link, useNavigate } from "react-router-dom";
 
@@ -25,7 +25,11 @@ function MyProfile() {
   };
 
   const handleInfoChange = async() => {
-    
+    try{
+      await changeProfileDataService()
+    }catch (error) {
+      navigate("/error");
+    }
   }
 
   if (isFetching === true) {

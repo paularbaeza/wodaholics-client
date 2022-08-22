@@ -180,3 +180,14 @@
 #benchmark-form label{
   font-weight: bold;
 }
+
+#landing-page{
+  padding-top: 20px;
+
+  background-image: url(../public/images/kettlebell.jpg);
+  background-repeat: no-repeat;
+  background-size: cover;
+  background-position: center;
+  height:90vh;
+  color:white
+}

@@ -1,8 +1,9 @@
-import React from "react";
+import React, { useState } from "react";
 import { Link, useNavigate } from "react-router-dom";
 import { useContext } from "react";
 
-import { AuthContext } from "../context/auth.context";
+import { AuthContext } from "../context/auth.context"
+import { searchUsersService } from "../services/profile.services";
 
 
 import Button from "../../node_modules/@mui/material/Button";
@@ -16,6 +17,9 @@ function NavBar() {
 
   const [anchorEl, setAnchorEl] = React.useState(null);
   const [anchorEl2, setAnchorEl2] = React.useState(null)
+  const [search, setSearch] = useState ("")
+  const [userSearch, setUserSearch] = useState(null)
+
 
   const openWods = Boolean(anchorEl);
   const openProfile = Boolean(anchorEl2);
@@ -39,6 +43,26 @@ function NavBar() {
     authenticateUser();
     navigate("/");
   };
+
+  const handleSearch = async (event) => {
+    let searchValue = event.target.value
+    //console.log(event.target.value)
+    setSearch(searchValue)
+    };
+//! MIRAR COMO PASAR LOS AMIGOS FILTRADOS
+    const filterFriends = async () => {
+      //console.log(search);
+      let response = await searchUsersService();
+      //console.log(response.data);
+      let users = response.data;
+      let searchResults = users.filter((eachUser) => {
+        return eachUser.username.includes(search);
+      });
+      setUserSearch(searchResults)
+    };
+  
+//console.log(userSearch)
+
 
   if (isUserActive === true) {
     return (
@@ -89,6 +113,13 @@ function NavBar() {
             </MenuItem>
           </Menu>
         </div>
+        <div id="search">
+
+        <input value={search} type="text" name ="search" onChange={handleSearch}/>
+          <Link to="/search-results"><button>Search</button></Link>
+        </div>
+
+
 
         <div>
           <Button

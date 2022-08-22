@@ -18,7 +18,6 @@ function FriendsList() {
   const getFriends = async () => {
     try {
       const response = await getAllFriendsService();
-      //console.log(response.data);
       setFriendsList(response.data);
       setIsFetching(false);
     } catch (error) {
@@ -29,7 +28,6 @@ function FriendsList() {
   const deleteFriend = async (userId) => {
     try {
         await deleteFriendService(userId)
-        //console.log(response.data)
         getFriends()
     } catch (error) {
       navigate("/error");
