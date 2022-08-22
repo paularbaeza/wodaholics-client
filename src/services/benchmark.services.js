@@ -4,6 +4,10 @@ const createBenchmarkService = (wodId, newBenchmark) => {
   return service.post(`benchmarks/${wodId}`, newBenchmark);
 };
 
+const deleteBenchmarkService = (benchmarkId) => {
+  return service.delete(`benchmarks/${benchmarkId}`)
+}
+
 const getAllBenchmarksService = (wodId) => {
   return service.get (`benchmarks/${wodId}`)
 }
@@ -22,4 +26,4 @@ const getUserBenchmarksOfAWod = (wodId) => {
 }
 
 
-export { createBenchmarkService, getAllBenchmarksService, getHighscoresService, getAllUserBenchmarksService,getUserBenchmarksOfAWod };
+export { createBenchmarkService, getAllBenchmarksService, getHighscoresService, getAllUserBenchmarksService,getUserBenchmarksOfAWod, deleteBenchmarkService };

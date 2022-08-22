@@ -193,12 +193,12 @@
   color:white
 }
 
-#highscores {
+.highscores {
   display:flex;
   flex-direction: row;
   margin-bottom:30px
 }
 
-#highscores div{
+.highscores div{
   margin:10px
 }

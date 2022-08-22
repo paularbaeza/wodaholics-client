@@ -138,7 +138,62 @@ function WodDetails() {
       navigate("/error");
     }
   };
+console.log(topScores)
+  const handleRanking = () => {
 
+    if(topScores.length === 1){
+    return <div className="highscores">
+        
+        <div>
+        <p>🥇</p>
+        <img src={topScores[0].user[0].img} alt="user" width="100px"/>
+        <p>{topScores[0].user[0].username}</p>
+        <p>{topScores[0].score}</p>
+        </div>
+
+        </div>
+        }
+      if (topScores.length === 2 ){
+        return <div className="highscores">
+        <div>
+        <p>🥇</p>
+        <img src={topScores[0].user[0].img} alt="user" width="100px"/>
+        <p>{topScores[0].user[0].username}</p>
+        <p>{topScores[0].score}</p>
+        </div>
+        <div>
+        <p>🥈 </p>
+        <img src={topScores[1].user[0].img} alt="user" width="100px"/>
+        <p>{topScores[1].user[0].username}</p>
+        <p>{topScores[1].score}</p>
+        </div>
+        </div>
+      }
+
+      if (topScores.length >= 3){
+        return <div className="highscores">
+
+<div>
+        <p>🥇</p>
+        <img src={topScores[0].user[0].img} alt="user" width="100px"/>
+        <p>{topScores[0].user[0].username}</p>
+        <p>{topScores[0].score}</p>
+        </div>
+        <div>
+        <p>🥈 </p>
+        <img src={topScores[1].user[0].img} alt="user" width="100px"/>
+        <p>{topScores[1].user[0].username}</p>
+        <p>{topScores[1].score}</p>
+        </div>
+        <div>
+        <p>🥉 </p>
+        <img src={topScores[2].user[0].img} alt="user" width="100px"/>
+        <p>{topScores[2].user[0].username}</p>
+        <p>{topScores[2].score}</p>
+        </div>
+        </div>
+      }
+  }
 
   handleFavButton();
 
@@ -161,28 +216,7 @@ function WodDetails() {
             </p>
           );
         })}
-        <h5>Top Scores:</h5>
-        <div id="highscores">
-        
-        <div>
-        <p>🥇</p>
-        <img src={topScores[0].user[0].img} alt="user" width="100px"/>
-        <p>{topScores[0].user[0].username}</p>
-        <p>{topScores[0].user[0].score}</p>
-        </div>
-        <div>
-        <p>🥈 </p>
-        <img src={topScores[1].user[0].img} alt="user" width="100px"/>
-        <p>{topScores[1].user[0].username}</p>
-        <p>{topScores[1].user[0].score}</p>
-        </div>
-        <div>
-        <p>🥉 </p>
-        <img src={topScores[2].user[0].img} alt="user" width="100px"/>
-        <p>{topScores[2].user[0].username}</p>
-        <p>{topScores[2].user[0].score}</p>
-        </div>
-        </div>
+        {handleRanking()}
 
         <LineChart userBenchmarks={userBenchmarks} dateOfBenchmark={dateOfBenchmark}/>
 

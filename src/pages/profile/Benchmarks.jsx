@@ -3,7 +3,7 @@ import {
   getAllMyBenchmarksService,
   getAllUserBenchmarks,
 } from "../../services/profile.services.js";
-
+import { deleteBenchmarkService } from "../../services/benchmark.services.js";
 import { Link, useNavigate } from "react-router-dom";
 
 
@@ -31,15 +31,15 @@ function Benchmarks() {
     }
   };
 
-  
-  const deleteBenchmark = async (benchmarkId) => {
+  const handleDelete = async (benchmarkId) => {
     try {
-        await deleteBenchmark(benchmarkId)
+        await deleteBenchmarkService(benchmarkId)
         getBenchmarks()
     } catch (error) {
       navigate("/error");
     }
   };
+  
 
   if (isFetching === true) {
     return <h3>Loading Benchmark List</h3>;
@@ -53,6 +53,7 @@ function Benchmarks() {
     return <div>
     <p>{eachBenchmark.wod[0].name}</p>
     <p>{eachBenchmark.score}</p>
+    <button onClick={() => handleDelete(eachBenchmark._id)}>Delete</button>
     </div>
     })}
     
