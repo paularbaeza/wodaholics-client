@@ -22,7 +22,6 @@ function FavWods() {
   const getFavWods = async () => {
     try {
       const response = await getFavWodsService();
-      //console.log(response.data);
       setFavWodsList(response.data);
       setIsFetching(false);
     } catch (error) {
@@ -33,7 +32,6 @@ function FavWods() {
   const deleteFavWod = async (wodId) => {
     try {
       await deleteFavWodService(wodId);
-      //console.log(response.data)
       getFavWods();
     } catch (error) {
       navigate("/error");

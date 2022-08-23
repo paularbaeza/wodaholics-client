@@ -1,6 +1,5 @@
 import { useMemo } from "react";
 
-
 import {
   Chart as ChartJS,
   CategoryScale,
@@ -26,15 +25,11 @@ ChartJS.register(
 );
 
 function LineChart(props) {
-
-const {userBenchmarks, dateOfBenchmark} = props
-
+  const { userBenchmarks, dateOfBenchmark } = props;
+  
 
   const labels = dateOfBenchmark;
   const scores = userBenchmarks;
-//console.log(labels)
-//console.log(scores)
-
 
   const options = {
     fill: true,
@@ -51,6 +46,7 @@ const {userBenchmarks, dateOfBenchmark} = props
     },
   };
 
+  
   const data = useMemo(function () {
     return {
       datasets: [
@@ -67,9 +63,6 @@ const {userBenchmarks, dateOfBenchmark} = props
       labels,
     };
   }, []);
-
-  
-  
 
   return <Line data={data} options={options} />;
 }

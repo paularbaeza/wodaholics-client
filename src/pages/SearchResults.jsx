@@ -14,7 +14,6 @@ function SearchResults() {
 
   const filterFriends = async () => {
     let response = await searchUsersService();
-    //console.log(response.data);
     let users = response.data;
     let searchResults = users.filter((eachUser) => {
       return eachUser.username.includes(search);

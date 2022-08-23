@@ -34,4 +34,8 @@ const getBenchmarksOfUsersService = (userId) => {
 
 }
 
-export { createBenchmarkService, getAllBenchmarksService, getHighscoresService, getAllUserBenchmarksService,getUserBenchmarksOfAWod, deleteBenchmarkService, updateBenchmarkService, getBenchmarksOfUsersService };
+const getBestTimeOfUserService = (wodId) => {
+  return service.get (`benchmarks/${wodId}/fortime/highscore`)
+}
+
+export { createBenchmarkService, getAllBenchmarksService, getHighscoresService, getAllUserBenchmarksService,getUserBenchmarksOfAWod, deleteBenchmarkService, updateBenchmarkService, getBenchmarksOfUsersService, getBestTimeOfUserService };

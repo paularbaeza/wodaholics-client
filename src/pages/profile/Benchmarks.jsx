@@ -59,7 +59,7 @@ function Benchmarks() {
   if (isFetching === true) {
     return <h3>Loading Benchmark List</h3>;
   }
-//console.log(benchmarksList)
+
   return (
     <div>
     <h1>My benchmarks</h1>

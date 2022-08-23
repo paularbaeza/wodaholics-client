@@ -7,20 +7,17 @@ function AddBenchmarkForm(props) {
   const navigate = useNavigate();
   const { wodId } = useParams();
   const { toggleFormFunction, category, getTopScores, chartFunction } = props;
-  //console.log(props)
-  //console.log(wodId)
+
 
   const [score, setScore] = useState(null);
   const [date, setDate] = useState(null);
   const [errorMessage, setErrorMessage] = useState("");
 
   const handleScoreChange = (event) => {
-    //console.log(event.target.value)
     setScore(event.target.value);
   };
 
   const handleDateChange = (event) => {
-    //console.log(event.target.value)
     setDate(event.target.value);
   };
 
@@ -32,7 +29,6 @@ function AddBenchmarkForm(props) {
       score: score,
       date: date,
     };
-
     try {
       await createBenchmarkService(wodId, newBenchmark);
       toggleFormFunction();

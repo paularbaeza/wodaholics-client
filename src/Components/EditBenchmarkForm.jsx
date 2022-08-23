@@ -8,20 +8,17 @@ function EditBenchmarkForm(props) {
   const { toggleFormFunction, getBenchmarks, benchmarkId, category } = props;
 
 
-//console.log(category)
-//console.log(benchmarkId)
+
 
   const [score, setScore] = useState(null);
   const [date, setDate] = useState(null);
   const [errorMessage, setErrorMessage] = useState("");
 
   const handleScoreChange = (event) => {
-    //console.log(event.target.value)
     setScore(event.target.value);
   };
 
   const handleDateChange = (event) => {
-    //console.log(event.target.value)
     setDate(event.target.value);
   };
 

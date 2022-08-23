@@ -22,7 +22,6 @@ function MyProfile() {
     try {
       const response = await getProfileDataService();
       setProfileData(response.data);
-      console.log(response.data);
       setIsFetching(false);
     } catch (error) {
       navigate("/error");
@@ -39,7 +38,6 @@ function MyProfile() {
   };
 
   const handleImgUpload = async (event) => {
-    console.log(event.target.files[0]);
 
     const form = new FormData()
     form.append("image", event.target.files[0])
@@ -53,7 +51,6 @@ function MyProfile() {
     }
   };
 
-console.log(imageUrl)
 
   if (isFetching === true) {
     return <h3>Loading Fav Wods List</h3>;

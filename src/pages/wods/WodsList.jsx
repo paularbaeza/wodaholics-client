@@ -20,7 +20,6 @@ function WodsList() {
     const getWods = async () => {
         try{
             const response = await getWodsListService(type)
-            //console.log(response.data)
             setAllWods(response.data)
             setIsFetching(false)
         }catch (error) {
@@ -42,7 +41,6 @@ function WodsList() {
     return "weights"
     }
 
-//console.log(allWods)
   return (
     <div id={handleId()}>
 

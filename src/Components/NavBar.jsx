@@ -42,8 +42,6 @@ function NavBar() {
 
   const handleSearch = async (event) => {
     let searchValue = event.target.value;
-    //console.log(event.target.value)
-    // navigate()
     setSearch(searchValue);
   };
 
@@ -53,7 +51,6 @@ const handleSearchBtn = async (event) => {
   setSearch("");
 }
 
-  //console.log(userSearch)
 
   if (isUserActive === true) {
     return (

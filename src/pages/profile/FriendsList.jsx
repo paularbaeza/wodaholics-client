@@ -15,6 +15,8 @@ function FriendsList() {
     getFriends();
   }, []);
 
+  //*traer todos los amigos del usuario conectado
+
   const getFriends = async () => {
     try {
       const response = await getAllFriendsService();
@@ -25,6 +27,8 @@ function FriendsList() {
     }
   };
 
+  //*eliminar amigos de la lista de amigos
+  
   const deleteFriend = async (userId) => {
     try {
         await deleteFriendService(userId)
@@ -45,7 +49,7 @@ function FriendsList() {
         return (
           <div key={eachFriend._id}>
             
-            <img src={eachFriend.img} width="150px" alt="profile" />
+          <Link to= {`/benchmarks/${eachFriend._id}`}><img src={eachFriend.img} width="150px" alt="profile" /></Link>
             <p>{eachFriend.username}</p>
             <button onClick={() => deleteFriend(eachFriend._id)}>Delete</button>
           </div>

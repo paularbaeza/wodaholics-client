@@ -4,7 +4,7 @@ import { Link, useParams, useNavigate } from "react-router-dom";
 import { getWodDetailsService } from "../../services/wod.services";
 import {
   getAllBenchmarksService,
-  getHighscoresService, getUserBenchmarksOfAWod
+  getHighscoresService, getUserBenchmarksOfAWod, 
 } from "../../services/benchmark.services";
 import {
   addFavWodService,
@@ -13,6 +13,8 @@ import {
 import AddBenchmarkForm from "../../Components/AddBenchmarkForm";
 import { getFavWodsService } from "../../services/profile.services";
 import LineChart from "../../Components/LineChart";
+import Ranking from "../../Components/Ranking";
+import MyBestTime from "../../Components/MyBestTime";
 
 function WodDetails() {
   const navigate = useNavigate();
@@ -61,21 +63,18 @@ function WodDetails() {
     }
   };
 
-//* traer mis benchmarks de este wod
+//* traer mis benchmarks de este wod para la gráfica
   const getMyBenchmarks = async () => {
     try {
       const response = await getUserBenchmarksOfAWod(wodId);
-      //console.log(response.data)
       const benchmarksArr = response.data
       const onlyScores = benchmarksArr.map((eachBenchmark)=> {
         return eachBenchmark.score
       })
-      //console.log(onlyScores)
       setUserBenchmarks(onlyScores);
       const onlyDates = benchmarksArr.map((eachBenchmark)=> {
         return eachBenchmark.date
       })
-      //console.log(onlyDates)
       setDateOfBenchmark(onlyDates);
     } catch (error) {
       navigate("/error");
@@ -128,62 +127,7 @@ function WodDetails() {
       navigate("/error");
     }
   };
-//console.log(topScores)
-  const handleRanking = () => {
 
-    if(topScores.length === 1){
-    return <div className="highscores">
-        
-        <div>
-        <p>🥇</p>
-        <Link to= {`/benchmarks/${topScores[0].user[0]._id}`}><img src={topScores[0].user[0].img} alt="user" width="100px"/></Link>
-        <p>{topScores[0].user[0].username}</p>
-        <p>{topScores[0].score}</p>
-        </div>
-
-        </div>
-        }
-      if (topScores.length === 2 ){
-        return <div className="highscores">
-        <div>
-        <p>🥇</p>
-        <Link to= {`/benchmarks/${topScores[0].user[0]._id}`}><img src={topScores[0].user[0].img} alt="user" width="100px"/></Link>
-        <p>{topScores[0].user[0].username}</p>
-        <p>{topScores[0].score}</p>
-        </div>
-        <div>
-        <p>🥈 </p>
-        <Link to= {`/benchmarks/${topScores[1].user[0]._id}`}><img src={topScores[1].user[0].img} alt="user" width="100px"/></Link>
-        <p>{topScores[1].user[0].username}</p>
-        <p>{topScores[1].score}</p>
-        </div>
-        </div>
-      }
-
-      if (topScores.length >= 3){
-        return <div className="highscores">
-
-<div>
-        <p>🥇</p>
-        <Link to= {`/benchmarks/${topScores[0].user[0]._id}`}><img src={topScores[0].user[0].img} alt="user" width="100px"/></Link>
-        <p>{topScores[0].user[0].username}</p>
-        <p>{topScores[0].score}</p>
-        </div>
-        <div>
-        <p>🥈 </p>
-        <Link to= {`/benchmarks/${topScores[1].user[0]._id}`}><img src={topScores[1].user[0].img} alt="user" width="100px"/></Link>
-        <p>{topScores[1].user[0].username}</p>
-        <p>{topScores[1].score}</p>
-        </div>
-        <div>
-        <p>🥉 </p>
-        <Link to= {`/benchmarks/${topScores[2].user[0]._id}`}><img src={topScores[2].user[0].img} alt="user" width="100px"/></Link>
-        <p>{topScores[2].user[0].username}</p>
-        <p>{topScores[2].score}</p>
-        </div>
-        </div>
-      }
-  }
 
   handleFavButton();
 
@@ -206,9 +150,11 @@ function WodDetails() {
             </p>
           );
         })}
-        {handleRanking()}
+        <Ranking topScores={topScores}/>
 
-        <LineChart userBenchmarks={userBenchmarks} dateOfBenchmark={dateOfBenchmark}/>
+        {userBenchmarks.length !== 0 && dateOfBenchmark.length !== 0 && category !== "for time" && <LineChart userBenchmarks={userBenchmarks} dateOfBenchmark={dateOfBenchmark} chartFunction={getMyBenchmarks}/>}
+        {category === "for time" && <MyBestTime/>}
+        
 
 
         <br />
