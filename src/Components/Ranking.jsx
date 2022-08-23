@@ -1,7 +1,7 @@
 import { Link} from "react-router-dom";
 
 function Ranking(props) {
-    const {topScores} = props
+    const {topScores, getTopScores} = props
 console.log(topScores)
     if(topScores.length === 1){
         return <div className="highscores">
@@ -9,7 +9,7 @@ console.log(topScores)
             <div>
             <p>🥇</p>
             <Link to= {`/benchmarks/${topScores[0].user[0]._id}`}><img src={topScores[0].user[0].img} alt="user" width="100px"/></Link>
-            <p>{topScores[0].user[0].username}</p>
+            <p className="ranking-username">{topScores[0].user[0].username}</p>
             <p>{topScores[0].score}</p>
             </div>
     
@@ -20,13 +20,13 @@ console.log(topScores)
         <div>
         <p>🥇</p>
         <Link to= {`/benchmarks/${topScores[0].user[0]._id}`}><img src={topScores[0].user[0].img} alt="user" width="100px"/></Link>
-        <p>{topScores[0].user[0].username}</p>
+        <p className="ranking-username">{topScores[0].user[0].username}</p>
         <p>{topScores[0].score}</p>
         </div>
         <div>
         <p>🥈 </p>
         <Link to= {`/benchmarks/${topScores[1].user[0]._id}`}><img src={topScores[1].user[0].img} alt="user" width="100px"/></Link>
-        <p>{topScores[1].user[0].username}</p>
+        <p className="ranking-username">{topScores[1].user[0].username}</p>
         <p>{topScores[1].score}</p>
         </div>
         </div>
@@ -38,19 +38,19 @@ console.log(topScores)
 <div>
         <p>🥇</p>
         <Link to= {`/benchmarks/${topScores[0].user[0]._id}`}><img src={topScores[0].user[0].img} alt="user" width="100px"/></Link>
-        <p>{topScores[0].user[0].username}</p>
+        <p className="ranking-username">{topScores[0].user[0].username}</p>
         <p>{topScores[0].score}</p>
         </div>
         <div>
         <p>🥈 </p>
         <Link to= {`/benchmarks/${topScores[1].user[0]._id}`}><img src={topScores[1].user[0].img} alt="user" width="100px"/></Link>
-        <p>{topScores[1].user[0].username}</p>
+        <p className="ranking-username">{topScores[1].user[0].username}</p>
         <p>{topScores[1].score}</p>
         </div>
         <div>
         <p>🥉 </p>
         <Link to= {`/benchmarks/${topScores[2].user[0]._id}`}><img src={topScores[2].user[0].img} alt="user" width="100px"/></Link>
-        <p>{topScores[2].user[0].username}</p>
+        <p className="ranking-username">{topScores[2].user[0].username}</p>
         <p>{topScores[2].score}</p>
         </div>
         </div>

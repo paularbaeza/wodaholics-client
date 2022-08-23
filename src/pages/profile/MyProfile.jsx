@@ -53,8 +53,6 @@ function MyProfile() {
       navigate("/error");
     }
   };
-  console.log(profileData)
-  console.log(imageUrl.imageUrl);
   if (isFetching === true) {
     return <h3>Loading Fav Wods List</h3>;
   }
@@ -62,10 +60,10 @@ function MyProfile() {
   const { username, email, img } = profileData;
 
   return (
-    <div>
+    <div id="profile-info">
       <h1>My profile</h1>
       <img src={img} width="150px" alt="profile" />
-      <p>{username}</p>
+      <h3>{username}</h3>
       <p>{email}</p>
 
       <br></br>
@@ -73,7 +71,7 @@ function MyProfile() {
       <div>
         <input type="file" onChange={handleImgUpload} />
         <br />
-        <button onClick={ handleInfoChange}>Edit picture</button>
+        <button className="benchmark-form-btn" onClick={ handleInfoChange}>Edit picture</button>
       </div>
     </div>
   );

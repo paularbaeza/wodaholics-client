@@ -45,8 +45,10 @@ function Benchmarks() {
   };
 
 
-  const toggleFormShowing = (eachBenchmarkId) => {
-    setIsFormShowed(!isFormShowed);
+  const toggleFormShowing = (eachBenchmarkId, benchmarkId) => {
+    if(eachBenchmarkId === benchmarkId)
+    {setIsFormShowed(!isFormShowed);}
+    
   };
 
   if (isFetching === true) {
@@ -56,6 +58,7 @@ function Benchmarks() {
   return (
     <div>
     <h1>My benchmarks</h1>
+    
     
     {benchmarksList.map((eachBenchmark)=> {
     return <div key={eachBenchmark._id}>

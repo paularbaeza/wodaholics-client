@@ -51,7 +51,6 @@ const handleSearchBtn = async (event) => {
   setSearch("");
 }
 
-
   if (isUserActive === true) {
     return (
       <div className="nav-bar">

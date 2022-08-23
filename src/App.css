@@ -202,3 +202,15 @@
 .highscores div{
   margin:10px
 }
+
+.highscores img{
+  border-radius:100px
+}
+
+.ranking-username{
+  font-weight: bold;
+}
+
+#profile-info img{
+  border-radius:100px
+}

@@ -42,7 +42,7 @@ if (isFetching === true) {
   return <h3>Loading user's benchmarks</h3>;
 }
 
-
+console.log(userBenchmarks)
 
 //*comprobar si el usuario tiene benchmarks que mostrar
 
@@ -56,6 +56,7 @@ const handleBenchmarks = () => {
     }
     else{
         return <div>
+        
         {userBenchmarks.map((eachBenchmark) => {
             return <div key={eachBenchmark._id}>
             <h3>{eachBenchmark.wod[0].name}</h3>

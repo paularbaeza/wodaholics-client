@@ -19,6 +19,7 @@ function EditBenchmarkForm(props) {
   };
 
   const handleDateChange = (event) => {
+    //console.log(event.target.value)
     setDate(event.target.value);
   };
 

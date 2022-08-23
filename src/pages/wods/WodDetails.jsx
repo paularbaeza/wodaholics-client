@@ -152,7 +152,7 @@ function WodDetails() {
             </p>
           );
         })}
-        <Ranking topScores={topScores}/>
+        <Ranking topScores={topScores} getTopScores={getTopScores}/>
 
         {userBenchmarks.length !== 0 && dateOfBenchmark.length !== 0 && category !== "for time" && <LineChart userBenchmarks={userBenchmarks} dateOfBenchmark={dateOfBenchmark} chartFunction={getMyBenchmarks}/>}
         {userBenchmarks.length >=1 && dateOfBenchmark.length >=1 && category === "for time" && <MyBestTime/>}

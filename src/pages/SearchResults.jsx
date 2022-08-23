@@ -27,7 +27,6 @@ function SearchResults() {
 const handleFriend = async (userId) =>{
 try{
  await addFriendService(userId)
- console.log("friendaddar")
 } catch (error) {
   navigate("/error");
 }
