@@ -12,7 +12,7 @@ import {
 
 function FavWods() {
   const [favWodsList, setFavWodsList] = useState("");
-  const [isFetching, setIsFetching] = useState("");
+  const [isFetching, setIsFetching] = useState(true);
 
   const navigate = useNavigate();
 
@@ -45,15 +45,19 @@ function FavWods() {
 
   return (
     <div>
-      <h2>My favWods</h2>
+      <h2 className="dirt-font">My favWods</h2>
+      <div id="all-favWods">
       {favWodsList.map((eachWod) => {
         return (
-          <div key={eachWod._id}>
-            <Link to={`/${eachWod._id}/details`}>{eachWod.name}</Link>
-            <button onClick={() => deleteFavWod(eachWod._id)}>Delete</button>
+          <div id="each-favWod" key={eachWod._id}>
+            <Link to={`/${eachWod._id}/details`} id="wods-link">{eachWod.name}</Link>
+            <Link to={`/${eachWod._id}/details`} ><button id="see-wod">See wod</button></Link>
+
+            <button onClick={() => deleteFavWod(eachWod._id)} id="delete-favWod">Delete</button>
           </div>
         );
       })}
+    </div>
     </div>
   );
 }

@@ -57,15 +57,15 @@ function Benchmarks() {
   }
 
   return (
-    <div>
-    <h1>My benchmarks</h1>
-    
+    <div id="my-benchmarks">
+    <h1 className="dirt-font">My benchmarks</h1>
+    <div className="user-benchmarks">
     
     {benchmarksList.map((eachBenchmark)=> {
-    return <div key={eachBenchmark._id}>
-    <p>{eachBenchmark.wod[0].name}</p>
+    return <div className="each-benchmark" key={eachBenchmark._id}>
+    <p id="wod-name">{eachBenchmark.wod[0].name}</p>
     <p>{eachBenchmark.score}</p>
-    <button key={eachBenchmark._id} onClick={()=> toggleFormShowing(eachBenchmark._id)}>
+    <button id="edit-benchmark" key={eachBenchmark._id} onClick={()=> toggleFormShowing(eachBenchmark._id)}>
           {isFormShowed === true ? "x" : "Edit"}
         </button>
         {isFormShowed === true ? (
@@ -77,10 +77,11 @@ function Benchmarks() {
           />
         ) : null}
       
-    <button onClick={() => handleDelete(eachBenchmark._id)}>Delete</button>
+    <button id="delete-benchmark" onClick={() => handleDelete(eachBenchmark._id)}>Delete</button>
     </div>
     })}
     
+    </div>
     </div>
   )
 }

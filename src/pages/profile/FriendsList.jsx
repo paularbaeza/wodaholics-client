@@ -44,10 +44,11 @@ function FriendsList() {
 
   return (
     <div>
-    <h2>My friends</h2>
+    <h2 className="dirt-font">My friends</h2>
+    <div id="friends-list">
       {friendsList.map((eachFriend) => {
         return (
-          <div key={eachFriend._id}>
+          <div id="each-friend" key={eachFriend._id}>
             
           <Link to= {`/benchmarks/${eachFriend._id}`}><img src={eachFriend.img} width="150px" alt="profile" /></Link>
             <p>{eachFriend.username}</p>
@@ -55,6 +56,7 @@ function FriendsList() {
           </div>
         );
       })}
+    </div>
     </div>
   );
 }

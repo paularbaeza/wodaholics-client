@@ -81,7 +81,7 @@ function EditBenchmarkForm(props) {
         <div id="error-message">
           {errorMessage ? <p>{errorMessage}</p> : null}
         </div>
-        <button onClick={handleBenchmark} className="benchmark-form-btn">Edit Benchmark</button>
+        <button  onClick={handleBenchmark} className="benchmark-form-btn">Edit Benchmark</button>
       </form>
     </div>
   );

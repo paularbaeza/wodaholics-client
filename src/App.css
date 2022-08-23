@@ -19,6 +19,7 @@
 
 .nav-bar img {
   border-radius: 50px;
+  box-shadow: 3px 3px 5px rgb(78, 77, 77, 0.9);
 }
 
 .nav-bar input {
@@ -288,62 +289,196 @@
   box-shadow: 3px 3px 5px rgb(189, 189, 189, 0.9);
 }
 
-#best-time{
-  background-color: rgb(194, 194, 194,  0.4);
+#best-time {
+  background-color: rgb(194, 194, 194, 0.4);
   border-radius: 35px;
-  padding:25px
+  padding: 25px;
 }
-#best-time h1{
-  color:white;
+#best-time h1 {
+  color: white;
   font-size: 150%;
   margin-bottom: 20px;
 }
 
-#best-time p{
-  background-color: rgb(194, 194, 194,  0.4);
+#best-time p {
+  background-color: rgb(194, 194, 194, 0.4);
   border-radius: 15px;
-  padding:15px;
+  padding: 15px;
   font-weight: bold;
-  width:50%;
-  margin-left:20%
+  width: 50%;
+  margin-left: 20%;
 }
 
 #search-results {
-display:flex;
-flex-direction: row;
-align-items:center;
-margin:5%;
-justify-content: center;
-flex-wrap: wrap;
-
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+  margin: 5%;
+  justify-content: center;
+  flex-wrap: wrap;
 }
 
 #search-results img {
-  border-radius:50px;
+  border-radius: 50px;
   box-shadow: 3px 3px 5px rgb(189, 189, 189, 0.9);
-
 }
 
 #search-results button {
-  border-radius:15px;
-  border:none;
-  padding:15px;
+  border-radius: 15px;
+  border: none;
+  padding: 15px;
   font-weight: bold;
   box-shadow: 3px 3px 5px rgb(189, 189, 189, 0.9);
-  background-color: #E4E3E1 ;
-
+  background-color: #e4e3e1;
+}
+.h1-search {
+  font-size: 180%;
 }
 
-.username  {
-  border:none;
-  padding:15px;
+.username {
+  border: none;
+  padding: 15px;
   font-weight: bold;
-  margin-top:-25px
-  
+  margin-top: -25px;
 }
 
-#each-user{
-  background-color: #F3F3F3;
-  padding:20px;
+#each-user {
+  background-color: #f3f3f3;
+  padding: 20px;
   border-radius: 20px;
+}
+
+.user-benchmarks {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: center;
+}
+
+.each-benchmark {
+  background-color: #f3f3f3;
+  margin: 20px;
+  border-radius: 15px;
+  padding: 20px;
+  box-shadow: 3px 3px 5px rgb(189, 189, 189, 0.9);
+}
+
+#user-profile {
+  margin: 30px;
+}
+
+#role {
+  margin-top: -20px;
+}
+
+#user-profile img {
+  border-radius: 50%;
+  box-shadow: 3px 3px 5px rgb(189, 189, 189, 0.9);
+}
+
+#each-friend {
+}
+
+#each-friend img {
+  border-radius: 50%;
+  box-shadow: 3px 3px 5px rgb(189, 189, 189, 0.9);
+}
+
+#each-friend button {
+  border-radius: 15px;
+  border: none;
+  padding: 15px;
+  font-weight: bold;
+  box-shadow: 3px 3px 5px rgb(189, 189, 189, 0.9);
+  background-color: #ff4f15;
+  color: white;
+}
+
+#friends-list {
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+  margin: 5%;
+  justify-content: center;
+  flex-wrap: wrap;
+}
+
+.dirt-font {
+  font-family: Rubik Dirt;
+  font-weight: lighter;
+  font-size: 40px;
+}
+
+#delete-benchmark {
+  border-radius: 15px;
+  border: none;
+  padding: 10px;
+  font-weight: bold;
+  box-shadow: 3px 3px 5px rgb(189, 189, 189, 0.9);
+  background-color: #ff4f15;
+  color: white;
+  margin-left: 10px;
+}
+
+#edit-benchmark {
+  border-radius: 15px;
+  border: none;
+  padding: 10px;
+  font-weight: bold;
+  box-shadow: 3px 3px 5px rgb(189, 189, 189, 0.9);
+  background-color: #ffb000;
+  color: white;
+}
+
+#wod-name {
+  font-weight: bold;
+}
+
+#all-favWods {
+  display: flex;
+  flex-direction: row;
+  justify-content: center;
+}
+
+#each-favWod {
+  display: flex;
+  flex-direction: column;
+  margin: 15px;
+}
+
+#each-favWod {
+  display: flex;
+  flex-direction: column;
+  margin: 15px;
+  align-items: center;
+}
+
+#wods-link {
+  text-decoration: none;
+  font-family: Rubik Dirt;
+  font-weight: lighter;
+  font-size: 20px;
+  color: black;
+  margin-bottom:20px
+}
+
+#delete-favWod {
+  border-radius: 15px;
+  border: none;
+  padding: 10px;
+  font-weight: bold;
+  box-shadow: 3px 3px 5px rgb(189, 189, 189, 0.9);
+  background-color: #ff4f15;
+  color: white;
+  width: 60px;
+  margin:20px
+}
+
+#see-wod {
+  border-radius: 15px;
+  border: none;
+  padding: 15px;
+  font-weight: bold;
+  box-shadow: 3px 3px 5px rgb(189, 189, 189, 0.9);
+  background-color: #ffb000;
+  color: white;
 }

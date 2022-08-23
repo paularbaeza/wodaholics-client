@@ -4,13 +4,14 @@ import {
 import { getUsersInfoService } from "../../services/profile.services";
 import { useParams, Link, useNavigate } from "react-router-dom";
 import { useEffect, useState } from "react";
+import UserBenchmarks from "../../Components/UserBenchmarks";
 
 function UsersBenchmarks() {
   const navigate = useNavigate();
 
   const { userId } = useParams();
 
-  const [userBenchmarks, setUserBenchmarks] = useState([]);
+  const [benchmarks, setBenchmarks] = useState([]);
   const [isFetching, setIsFetching] = useState(true);
   const [ userInfo, setUserInfo] = useState ([])
 
@@ -23,7 +24,7 @@ function UsersBenchmarks() {
   const getUserInfo = async () => {
     try {
       const response = await getBenchmarksOfUsersService(userId);
-      setUserBenchmarks(response.data);
+      setBenchmarks(response.data);
       const response2 = await getUsersInfoService(userId);
       setUserInfo(response2.data);
       setIsFetching(false);
@@ -38,48 +39,19 @@ function UsersBenchmarks() {
 
 //* traer la info de usuarios
 
-if (isFetching === true) {
-  return <h3>Loading user's benchmarks</h3>;
-}
 
 
-//*comprobar si el usuario tiene benchmarks que mostrar
-
-const handleBenchmarks = () => {
-
-
-
-    if (userBenchmarks.length === 0){
-
-        return <h1>"This user hasn't added any benchmark yet"</h1>
-    }
-    else{
-        return <div>
-        
-        {userBenchmarks.map((eachBenchmark) => {
-            return <div key={eachBenchmark._id}>
-            <h3>{eachBenchmark.wod[0].name}</h3>
-            <p>{eachBenchmark.score}</p>
-            <p>{eachBenchmark.date}</p>
-    
-            </div>
-        })}
-        </div>
-    }
-    
-}
   const {username, role, img, favWods, friends} = userInfo
 
 
 
-  return <div>
+  return <div id="user-profile">
   <img src={img} alt="profile" width="150px"/>
   <h1>{username}</h1>
-  <p>{role}</p>
+  <p id="role">{role}</p>
 
 
-    {handleBenchmarks()}
-
+<UserBenchmarks benchmarks={benchmarks}/>
 
   </div>;
 }
