@@ -22,7 +22,7 @@ function WodDetails() {
 
   const { wodId } = useParams();
 
-  const [allWodDetails, setAllWodDetails] = useState(null);
+  const [allWodDetails, setAllWodDetails] = useState("");
   const [isFetching, setIsFetching] = useState(true);
   const [isFormShowed, setIsFormShowed] = useState(false);
 
@@ -135,6 +135,7 @@ function WodDetails() {
   return (
     <div>
       <div id="wod-explanation">
+      <div id="wodname-favbtn">
         <h1 className="wodType">{name} </h1>
         <button
           onClick={addFav}
@@ -142,7 +143,7 @@ function WodDetails() {
         >
           {isFav === true ? "❤️" : "🤍"}
         </button>
-
+</div>
         <h4>{description}</h4>
         {exercises.map((eachExercise) => {
           return (
@@ -156,11 +157,13 @@ function WodDetails() {
         {userBenchmarks.length !== 0 &&
           dateOfBenchmark.length !== 0 &&
           category !== "for time" && (
+            <div id="line-chart">
             <LineChart
               userBenchmarks={userBenchmarks}
               dateOfBenchmark={dateOfBenchmark}
               chartFunction={getMyBenchmarks}
             />
+            </div>
           )}
         {userBenchmarks.length >= 1 &&
           dateOfBenchmark.length >= 1 &&

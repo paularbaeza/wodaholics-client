@@ -6,7 +6,7 @@ import {
 import { Link, useNavigate } from "react-router-dom";
 
 function FriendsList() {
-  const [friendsList, setFriendsList] = useState(null);
+  const [friendsList, setFriendsList] = useState("");
   const [isFetching, setIsFetching] = useState(true);
 
   const navigate = useNavigate();

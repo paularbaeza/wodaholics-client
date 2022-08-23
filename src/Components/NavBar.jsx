@@ -110,13 +110,13 @@ const handleSearchBtn = async (event) => {
               onChange={handleSearch}
             />
          
-              <button type="submit" onClick={handleSearchBtn}>Search</button>
+              <button type="submit" id="search-btn" onClick={handleSearchBtn}>Search</button>
  
           </form>
         </div>
 
         <div>
-          <Button
+          <Button 
             id="demo-positioned-button"
             aria-controls={openProfile ? "demo-positioned-menu" : undefined}
             aria-haspopup="true"
@@ -131,6 +131,7 @@ const handleSearchBtn = async (event) => {
           </Button>
           <Menu
             id="demo-positioned-menu"
+            className="profile-dropdown"
             aria-labelledby="demo-positioned-button"
             anchorEl={anchorEl2}
             open={openProfile}

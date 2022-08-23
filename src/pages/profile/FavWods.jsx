@@ -1,17 +1,18 @@
 import { useEffect, useState } from "react";
+import { Link, useNavigate } from "react-router-dom";
+
+//services
 import {
   getFavWodsService,
 } from "../../services/profile.services";
-
 import {
   deleteFavWodService,
 } from "../../services/wod.services";
 
-import { Link, useNavigate } from "react-router-dom";
 
 function FavWods() {
-  const [favWodsList, setFavWodsList] = useState(null);
-  const [isFetching, setIsFetching] = useState(true);
+  const [favWodsList, setFavWodsList] = useState("");
+  const [isFetching, setIsFetching] = useState("");
 
   const navigate = useNavigate();
 
