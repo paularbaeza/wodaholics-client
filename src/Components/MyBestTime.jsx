@@ -18,7 +18,6 @@ function MyBestTime() {
     try {
 
         const response = await getBestTimeOfUserService(wodId)
-        console.log(response.data)
         setBestTime(response.data)
         setIsFetching(false);
 
@@ -34,7 +33,6 @@ function MyBestTime() {
     return <h3>Loading wod details</h3>;
   }
 
-  console.log(bestTime)
   return (
     <div>
       <h1>MY BEST TIME</h1>

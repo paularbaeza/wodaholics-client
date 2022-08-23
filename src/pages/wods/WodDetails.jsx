@@ -1,21 +1,21 @@
 import { useEffect, useState } from "react";
-import { Link, useParams, useNavigate } from "react-router-dom";
+import { useParams, useNavigate } from "react-router-dom";
+import AddBenchmarkForm from "../../Components/AddBenchmarkForm";
+import LineChart from "../../Components/LineChart";
+import Ranking from "../../Components/Ranking";
+import MyBestTime from "../../Components/MyBestTime";
 
-import { getWodDetailsService } from "../../services/wod.services";
+//all services
 import {
-  getAllBenchmarksService,
-  getHighscoresService, getUserBenchmarksOfAWod, 
+  getHighscoresService,
+  getUserBenchmarksOfAWod,
 } from "../../services/benchmark.services";
 import {
   addFavWodService,
   deleteFavWodService,
+  getWodDetailsService,
 } from "../../services/wod.services";
-import AddBenchmarkForm from "../../Components/AddBenchmarkForm";
 import { getFavWodsService } from "../../services/profile.services";
-import LineChart from "../../Components/LineChart";
-import Ranking from "../../Components/Ranking";
-import MyBestTime from "../../Components/MyBestTime";
-import UsersBenchmarks from "../benchmarks/UsersBenchmarks";
 
 function WodDetails() {
   const navigate = useNavigate();
@@ -30,12 +30,10 @@ function WodDetails() {
   const [isFav, setIsFav] = useState(false);
 
   const [userBenchmarks, setUserBenchmarks] = useState([]);
-  const [dateOfBenchmark, setDateOfBenchmark] = useState([])
+  const [dateOfBenchmark, setDateOfBenchmark] = useState([]);
 
   useEffect(() => {
     getWodDetails();
-
-    getTopScores();
     getMyBenchmarks();
   }, []);
 
@@ -52,35 +50,38 @@ function WodDetails() {
     }
   };
 
-
-
   //*traer las mejores puntuaciones del wod
   const getTopScores = async () => {
     try {
       const response = await getHighscoresService(wodId);
       setTopScores(response.data);
+      setIsFetching(false);
     } catch (error) {
       navigate("/error");
     }
   };
 
-//* traer mis benchmarks de este wod para la gráfica
+  //* traer mis benchmarks de este wod para la gráfica
   const getMyBenchmarks = async () => {
     try {
       const response = await getUserBenchmarksOfAWod(wodId);
-      const benchmarksArr = response.data
-      const onlyScores = benchmarksArr.map((eachBenchmark)=> {
-        return eachBenchmark.score
-      })
+      const benchmarksArr = response.data;
+      const onlyScores = benchmarksArr.map((eachBenchmark) => {
+        return eachBenchmark.score;
+      });
       setUserBenchmarks(onlyScores);
-      const onlyDates = benchmarksArr.map((eachBenchmark)=> {
-        return eachBenchmark.date
-      })
+      setIsFetching(false);
+
+      const onlyDates = benchmarksArr.map((eachBenchmark) => {
+        return eachBenchmark.date;
+      });
       setDateOfBenchmark(onlyDates);
+      setIsFetching(false);
+
     } catch (error) {
       navigate("/error");
     }
-  }
+  };
 
   if (isFetching === true) {
     return <h3>Loading wod details</h3>;
@@ -91,8 +92,6 @@ function WodDetails() {
   };
 
   const {
-    creator,
-    wodType,
     name,
     category,
     description,
@@ -143,7 +142,7 @@ function WodDetails() {
         >
           {isFav === true ? "❤️" : "🤍"}
         </button>
-        
+
         <h4>{description}</h4>
         {exercises.map((eachExercise) => {
           return (
@@ -152,11 +151,20 @@ function WodDetails() {
             </p>
           );
         })}
-        <Ranking topScores={topScores} getTopScores={getTopScores}/>
+        <Ranking topScores={topScores}/>
 
-        {userBenchmarks.length !== 0 && dateOfBenchmark.length !== 0 && category !== "for time" && <LineChart userBenchmarks={userBenchmarks} dateOfBenchmark={dateOfBenchmark} chartFunction={getMyBenchmarks}/>}
-        {userBenchmarks.length >=1 && dateOfBenchmark.length >=1 && category === "for time" && <MyBestTime/>}
-        
+        {userBenchmarks.length !== 0 &&
+          dateOfBenchmark.length !== 0 &&
+          category !== "for time" && (
+            <LineChart
+              userBenchmarks={userBenchmarks}
+              dateOfBenchmark={dateOfBenchmark}
+              chartFunction={getMyBenchmarks}
+            />
+          )}
+        {userBenchmarks.length >= 1 &&
+          dateOfBenchmark.length >= 1 &&
+          category === "for time" && <MyBestTime />}
 
         <br />
         <button className="benchmark-btn" onClick={toggleFormShowing}>
@@ -164,7 +172,7 @@ function WodDetails() {
         </button>
         {isFormShowed === true ? (
           <AddBenchmarkForm
-            chartFunction = {getMyBenchmarks}
+            chartFunction={getMyBenchmarks}
             toggleFormFunction={toggleFormShowing}
             category={category}
             getTopScores={getTopScores}

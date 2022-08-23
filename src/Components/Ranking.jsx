@@ -1,8 +1,7 @@
 import { Link} from "react-router-dom";
 
 function Ranking(props) {
-    const {topScores, getTopScores} = props
-console.log(topScores)
+    const {topScores} = props
     if(topScores.length === 1){
         return <div className="highscores">
             

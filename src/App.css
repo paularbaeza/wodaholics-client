@@ -14,7 +14,7 @@
   text-decoration: none;
   font-weight: bold;
   font-size: 2vw;
-  height: 15%;
+  height: 20%;
 }
 
 .link-home {
@@ -67,7 +67,7 @@
 }
 
 #wod-explanation {
-  background-image: url("../public/images/blackboard-modified.png");
+  background-image: url("../src/assets/images/blackboard-modified.png");
   background-repeat: no-repeat;
   background-size: cover;
   background-position: center;
@@ -113,7 +113,7 @@
 #the-girls {
   padding-top: 20px;
 
-  background-image: url("../public/images/the-girls-annie.jpg");
+  background-image: url("../src/assets/images/the-girls-annie.jpg");
   background-repeat: no-repeat;
   background-size: cover;
   background-position: center;
@@ -121,7 +121,7 @@
 
 #heroes {
   padding-top: 20px;
-  background-image: url("../public/images/heroes.jpg");
+  background-image: url("../src/assets/images/heroes.jpg");
   background-repeat: no-repeat;
   background-size: cover;
   background-position: center;
@@ -130,7 +130,7 @@
 #weights {
   padding-top: 20px;
 
-  background-image: url("../public/images/weights.jpg");
+  background-image: url("../src/assets/images/weights.jpg");
   background-repeat: no-repeat;
   background-size: cover;
   background-position: center;
@@ -185,12 +185,30 @@
 #landing-page{
   padding-top: 20px;
 
-  background-image: url(../public/images/kettlebell.jpg);
+  background-image: url(../src/assets/images/kettlebell.jpg);
   background-repeat: no-repeat;
   background-size: cover;
   background-position: center;
   height:90vh;
   color:white
+}
+
+#landing-page img{
+  margin-top:100px;
+  border-radius: 70px;
+
+}
+
+.landing-btn {
+  padding: 20px 50px;
+  border: none;
+  border-radius: 20px;
+  background-color: #f7b655;
+  font-size: 20px;
+  font-weight: bold;
+  color: blackwhite;
+  margin: 30px;
+
 }
 
 .highscores {

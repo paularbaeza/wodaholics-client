@@ -125,8 +125,7 @@ const handleSearchBtn = async (event) => {
           >
             <img
               src={user.img}
-              width="12%"
-              border-radius="15px"
+              width="50px"
               alt="profile"
             />
           </Button>

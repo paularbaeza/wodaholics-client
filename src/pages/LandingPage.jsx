@@ -2,6 +2,7 @@ import React from 'react'
 import {Link} from "react-router-dom"
 import { useContext } from "react";
 import { AuthContext } from "../context/auth.context"
+import Logo from "../assets/images/logo.png"
 
 function LandingPage() {
 
@@ -10,9 +11,9 @@ function LandingPage() {
 
     return(
     <div id="landing-page">
-    <h1>WODAHOLICS</h1>
-    <h3>Everything you need to keep track of your progress</h3>
-    <Link to={isUserActive? "/home": "/login"}><button>Enter</button></Link>
+    <img src={Logo} alt="wodaholics"></img>
+    <br />
+    <Link to={isUserActive? "/home": "/login"}><button className='landing-btn'>Enter</button></Link>
     </div>
     )
   
