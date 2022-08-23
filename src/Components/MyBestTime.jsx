@@ -34,9 +34,9 @@ function MyBestTime() {
   }
 
   return (
-    <div>
-      <h1>MY BEST TIME</h1>
-      <p>{bestTime[0].score}</p>
+    <div id="best-time">
+      <h1>My personal record</h1>
+      <p>Time: {bestTime[0].score}</p>
       <p>{bestTime[0].date}</p>
     </div>
   );

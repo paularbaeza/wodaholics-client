@@ -27,6 +27,7 @@ function SearchResults() {
 const handleFriend = async (userId) =>{
 try{
  await addFriendService(userId)
+ navigate("/profile/friends")
 } catch (error) {
   navigate("/error");
 }
@@ -38,18 +39,20 @@ try{
   }
 
   return (
-    <div>
-      <h1>Search results</h1>
+    <div><h1>Search results for "{search}"</h1>
+    <div id="search-results">
+      
       {userSearch.map((eachUser) => {
         return (
-          <div key={eachUser._id}>
+          <div key={eachUser._id} id="each-user">
           <Link to= {`/benchmarks/${eachUser._id}`}><img src={eachUser.img} alt="user" width="100px"/></Link>
             <p>{eachUser.role}</p>
-            <p>{eachUser.username}</p>
+            <p className="username">{eachUser.username}</p>
             <button onClick={()=>handleFriend(eachUser._id)}>Add friend</button>
           </div>
         );
       })}
+    </div>
     </div>
   );
 }

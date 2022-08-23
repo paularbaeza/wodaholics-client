@@ -128,7 +128,6 @@ function WodDetails() {
     }
   };
 
-  //console.log(userBenchmarks)
 
   handleFavButton();
 

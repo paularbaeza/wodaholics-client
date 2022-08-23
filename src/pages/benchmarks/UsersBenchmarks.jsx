@@ -42,7 +42,6 @@ if (isFetching === true) {
   return <h3>Loading user's benchmarks</h3>;
 }
 
-console.log(userBenchmarks)
 
 //*comprobar si el usuario tiene benchmarks que mostrar
 
@@ -70,7 +69,6 @@ const handleBenchmarks = () => {
     
 }
   const {username, role, img, favWods, friends} = userInfo
-  console.log(userInfo)
 
 
 
