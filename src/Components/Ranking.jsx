@@ -2,7 +2,7 @@ import { Link} from "react-router-dom";
 
 function Ranking(props) {
     const {topScores} = props
-
+console.log(topScores)
     if(topScores.length === 1){
         return <div className="highscores">
             

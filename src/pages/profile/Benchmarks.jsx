@@ -3,7 +3,7 @@ import {
   getAllMyBenchmarksService,
   getAllUserBenchmarks,
 } from "../../services/profile.services.js";
-import { deleteBenchmarkService, updateBenchmarkService } from "../../services/benchmark.services.js";
+import { deleteBenchmarkService } from "../../services/benchmark.services.js";
 import { Link, useNavigate } from "react-router-dom";
 import EditBenchmarkForm from "../../Components/EditBenchmarkForm.jsx";
 
@@ -14,6 +14,7 @@ function Benchmarks() {
   const [benchmarksList, setBenchmarksList] = useState(null);
   const [isFetching, setIsFetching] = useState(true);
   const [isFormShowed, setIsFormShowed] = useState(false);
+  const [benchmarkId, setBenchmarId]= useState (null)
 
 
   const navigate = useNavigate();
@@ -43,16 +44,8 @@ function Benchmarks() {
     }
   };
 
-  const handleUpdate = async (benchmarkId)=> {
-    try {
-      await updateBenchmarkService(benchmarkId)
-      getBenchmarks()
-  } catch (error) {
-    navigate("/error");
-  }
-  }
 
-  const toggleFormShowing = () => {
+  const toggleFormShowing = (eachBenchmarkId) => {
     setIsFormShowed(!isFormShowed);
   };
 
@@ -68,7 +61,7 @@ function Benchmarks() {
     return <div key={eachBenchmark._id}>
     <p>{eachBenchmark.wod[0].name}</p>
     <p>{eachBenchmark.score}</p>
-    <button key={eachBenchmark._id} onClick={toggleFormShowing}>
+    <button key={eachBenchmark._id} onClick={()=> toggleFormShowing(eachBenchmark._id)}>
           {isFormShowed === true ? "x" : "Edit"}
         </button>
         {isFormShowed === true ? (

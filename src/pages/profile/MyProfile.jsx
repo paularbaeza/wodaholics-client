@@ -29,8 +29,13 @@ function MyProfile() {
   };
 
   const handleInfoChange = async () => {
+
+    const updatedProfile= {
+      img:imageUrl.imageUrl
+    }
     try {
-      await changeProfileDataService();
+      await changeProfileDataService(updatedProfile);
+
       getProfileData();
     } catch (error) {
       navigate("/error");
@@ -38,20 +43,18 @@ function MyProfile() {
   };
 
   const handleImgUpload = async (event) => {
-
-    const form = new FormData()
-    form.append("image", event.target.files[0])
-    //image tiene que ser el mismo nombre que el uploader.single del BE
+    const form = new FormData();
+    form.append("image", event.target.files[0]);
 
     try {
       const response = await uploadService(form);
-      setImageUrl(response.data)
+      setImageUrl(response.data);
     } catch {
       navigate("/error");
     }
   };
-
-
+  console.log(profileData)
+  console.log(imageUrl.imageUrl);
   if (isFetching === true) {
     return <h3>Loading Fav Wods List</h3>;
   }
@@ -64,21 +67,14 @@ function MyProfile() {
       <img src={img} width="150px" alt="profile" />
       <p>{username}</p>
       <p>{email}</p>
-      <label for="image" class="form-label"></label>
-      <input
-        class="form-control"
-        name="image"
-        type="file"
-        id="formFile"
-      ></input>
+
       <br></br>
-      <button onClick={handleInfoChange}>Edit information</button>
 
       <div>
-        <h5>Añade una imagen:</h5>
         <input type="file" onChange={handleImgUpload} />
+        <br />
+        <button onClick={ handleInfoChange}>Edit picture</button>
       </div>
-      <img src={imageUrl.imageUrl} alt="imagen" width="150" />
     </div>
   );
 }

@@ -1,9 +1,11 @@
 import { useEffect, useState } from "react";
 import { Link, useParams, useNavigate } from "react-router-dom";
-import { searchUsersService } from "../services/profile.services";
+import { searchUsersService, addFriendService } from "../services/profile.services";
 
 function SearchResults() {
   const { search } = useParams();
+  const navigate = useNavigate();
+
 
   const [userSearch, setUserSearch] = useState(null);
   const [isFetching, setIsFetching] = useState(true);
@@ -22,6 +24,16 @@ function SearchResults() {
     setIsFetching(false);
   };
 
+const handleFriend = async (userId) =>{
+try{
+ await addFriendService(userId)
+ console.log("friendaddar")
+} catch (error) {
+  navigate("/error");
+}
+
+}
+
   if (isFetching === true) {
     return <h3>Search in process...</h3>;
   }
@@ -35,7 +47,7 @@ function SearchResults() {
           <Link to= {`/benchmarks/${eachUser._id}`}><img src={eachUser.img} alt="user" width="100px"/></Link>
             <p>{eachUser.role}</p>
             <p>{eachUser.username}</p>
-            <button>Add friend</button>
+            <button onClick={()=>handleFriend(eachUser._id)}>Add friend</button>
           </div>
         );
       })}

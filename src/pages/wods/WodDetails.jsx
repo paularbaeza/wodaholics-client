@@ -15,6 +15,7 @@ import { getFavWodsService } from "../../services/profile.services";
 import LineChart from "../../Components/LineChart";
 import Ranking from "../../Components/Ranking";
 import MyBestTime from "../../Components/MyBestTime";
+import UsersBenchmarks from "../benchmarks/UsersBenchmarks";
 
 function WodDetails() {
   const navigate = useNavigate();
@@ -128,6 +129,7 @@ function WodDetails() {
     }
   };
 
+  //console.log(userBenchmarks)
 
   handleFavButton();
 
@@ -153,9 +155,8 @@ function WodDetails() {
         <Ranking topScores={topScores}/>
 
         {userBenchmarks.length !== 0 && dateOfBenchmark.length !== 0 && category !== "for time" && <LineChart userBenchmarks={userBenchmarks} dateOfBenchmark={dateOfBenchmark} chartFunction={getMyBenchmarks}/>}
-        {category === "for time" && <MyBestTime/>}
+        {userBenchmarks.length >=1 && dateOfBenchmark.length >=1 && category === "for time" && <MyBestTime/>}
         
-
 
         <br />
         <button className="benchmark-btn" onClick={toggleFormShowing}>

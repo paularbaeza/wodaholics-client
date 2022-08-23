@@ -4,12 +4,16 @@ const getAllFriendsService = () => {
   return service.get("/profile/friends");
 };
 
+const getAllFriendsIdsService = () => {
+  return service.get("/profile/friendsIds");
+};
+
 const deleteFriendService = (userId) => {
   return service.post(`/profile/${userId}/delete-friend`);
 };
 
 const addFriendService = (userId) => {
-  return service.post(`/profile/${userId}/delete-friend`);
+  return service.post(`/profile/${userId}/add-friend`);
 };
 
 const getFavWodsService = () => {
@@ -20,8 +24,8 @@ const getProfileDataService = () => {
   return service.get("/profile/info");
 };
 
-const changeProfileDataService = () => {
-  return service.patch("/profile/info");
+const changeProfileDataService = (updatedProfile) => {
+  return service.patch("/profile/info", updatedProfile);
 };
 
 const searchUsersService = () => {
@@ -32,6 +36,11 @@ const getAllMyBenchmarksService = () => {
  return service.get ("profile/mybenchmarks")
 }
 
+const getUsersInfoService = (userId) => {
+  return service.get (`/profile/${userId}/info`)
+
+}
+
 export {
   getAllFriendsService,
   deleteFriendService,
@@ -40,5 +49,7 @@ export {
   getProfileDataService,
   changeProfileDataService,
   searchUsersService,
-  getAllMyBenchmarksService
+  getAllMyBenchmarksService,
+  getAllFriendsIdsService,
+  getUsersInfoService
 };
