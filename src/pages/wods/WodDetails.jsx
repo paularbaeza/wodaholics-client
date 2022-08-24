@@ -22,7 +22,7 @@ function WodDetails() {
 
   const { wodId } = useParams();
 
-  const [allWodDetails, setAllWodDetails] = useState("");
+  const [allWodDetails, setAllWodDetails] = useState([]);
   const [isFetching, setIsFetching] = useState(true);
   const [isFormShowed, setIsFormShowed] = useState(false);
 
@@ -35,6 +35,7 @@ function WodDetails() {
   useEffect(() => {
     getWodDetails();
     getMyBenchmarks();
+    getTopScores()
   }, []);
 
   //* traer los detalles del wod
@@ -43,12 +44,13 @@ function WodDetails() {
     try {
       const response = await getWodDetailsService(wodId);
       setAllWodDetails(response.data);
-      getTopScores(response.data);
       setIsFetching(false);
     } catch (error) {
       navigate("/error");
     }
   };
+  
+  console.log(topScores)
 
   //*traer las mejores puntuaciones del wod
   const getTopScores = async () => {
