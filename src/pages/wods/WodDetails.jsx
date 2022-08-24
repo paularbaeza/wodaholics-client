@@ -140,7 +140,6 @@ function WodDetails() {
   };
 
 
-  handleFavButton();
 
   return (
     <div>
