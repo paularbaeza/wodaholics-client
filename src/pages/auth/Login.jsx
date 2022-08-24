@@ -49,11 +49,12 @@ function Login() {
   };
 
   return (
-    <div>
+    <div id="login" className="blackboard-bg">
 
-      <h1>Log In</h1>
+      <h1 className="dirt-font">Log In</h1>
 
       <form onSubmit={handleLogin}>
+      <div className="login-input">
         <label>Username or email:</label>
         <input
           type="access"
@@ -61,7 +62,9 @@ function Login() {
           value={access}
           onChange={handleAccessChange}
         />
+        </div>
         <br />
+          <div className="login-input">
         <label>Password:</label>
         <input
           type="password"
@@ -69,6 +72,7 @@ function Login() {
           value={password}
           onChange={handlePasswordChange}
         />
+        </div>
         <br />
         {errorMessage ? <p>{errorMessage}</p> : null}
         <br />

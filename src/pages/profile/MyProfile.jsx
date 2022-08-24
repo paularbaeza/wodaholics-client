@@ -58,7 +58,7 @@ function MyProfile() {
 
   return (
     <div id="profile-info" className="blackboard-bg">
-      <h1>My profile</h1>
+      <h1 className="dirt-font">My profile</h1>
       <img src={img} width="150px" alt="profile" />
       <h3>{username}</h3>
       <p>{email}</p>

@@ -49,6 +49,7 @@ function WodDetails() {
   useEffect(() => {
     getWodDetails();
     //getMyBenchmarks();
+
     getTopScores();
   }, []);
 
@@ -74,6 +75,7 @@ function WodDetails() {
         return eachBenchmark.date;
       });
       setDateOfBenchmark(onlyDates);
+
       setIsFetching(false);
     } catch (error) {
       navigate("/error");
@@ -141,15 +143,17 @@ function WodDetails() {
       let isWodFav = favWods.filter((favWods) => favWods._id === _id);
       if (isWodFav.length === 1) {
         setIsFav(true);
+        getWodDetails()
       } else {
         setIsFav(false);
+        getWodDetails()
       }
     } catch (error) {
       navigate("/error");
     }
   };
-
   handleFavButton();
+
 
   //*funciones para los comentarios
 

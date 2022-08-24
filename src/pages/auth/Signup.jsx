@@ -47,11 +47,12 @@ function Signup() {
     }
 }
   return (
-    <div>
+    <div id="signup" className="blackboard-bg">
 
-    <h1>Sign Up</h1>
+    <h1 className="dirt-font">Sign Up</h1>
 
     <form onSubmit={handleSignup}>
+    <div className="login-input">
       <label>Name:</label>
       <input
         type="text"
@@ -59,7 +60,9 @@ function Signup() {
         value={username}
         onChange={handleUsernameChange}
       />
+      </div>
       <br />
+      <div className="login-input">
       <label>Email:</label>
       <input
         type="email"
@@ -67,7 +70,9 @@ function Signup() {
         value={email}
         onChange={handleEmailChange}
       />
+      </div>
       <br />
+      <div className="login-input">
       <label>Password:</label>
       <input
         type="password"
@@ -75,6 +80,7 @@ function Signup() {
         value={password}
         onChange={handlePasswordChange}
       />
+      </div>
       <br />
       {errorMessage ? <p>{errorMessage}</p> : null}
       <br />

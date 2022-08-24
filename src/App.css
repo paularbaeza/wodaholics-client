@@ -13,7 +13,7 @@
   color: white;
   text-decoration: none;
   font-weight: bold;
-  font-size: 2vw;
+  font-size: 150%;
   height: 9vh;
 }
 
@@ -27,6 +27,7 @@
   border: none;
   margin: 10px;
   padding: 7px;
+  width: 12vw
 }
 .profile-dropdown {
   margin-left: -30px;
@@ -37,6 +38,8 @@
   border: none;
   box-shadow: 2px 2px 10px rgb(159, 159, 159);
   padding: 7px 15px;
+  font-size: 45%;
+
 }
 
 .link-home {
@@ -57,8 +60,9 @@
   border: none;
   color: white;
   font-weight: bold;
-  width: 100%;
-  font-size: 2vw;
+  width: 120%;
+  font-size: 100%;
+  height:50px;
   text-transform: capitalize;
 }
 
@@ -244,18 +248,63 @@
   margin-top: 40px;
   border-radius: 70px;
   width: 40%;
+  box-shadow: 3px 3px 5px 10px rgb(106, 106, 106, 0.2);
+
 }
 
 .landing-btn {
   padding: 20px 50px;
   border: none;
   border-radius: 20px;
-  background-color: #f7b655;
+  background-color: #ffb000;
   font-size: 20px;
   font-weight: bold;
   color: blackwhite;
   margin: 30px;
-  box-shadow: 3px 3px 5px rgb(189, 189, 189, 0.9);
+  box-shadow: 3px 3px 5px rgb(106, 106, 106, 0.9);
+}
+
+#login{
+  padding-bottom: 400px
+}
+
+.login-input{
+display:flex;
+flex-direction: column;
+}
+.login-input input{
+  border-radius:5px;
+  margin:10px
+}
+
+
+#login button{
+  padding: 15px 40px;
+  border: none;
+  border-radius: 20px;
+  background-color: #ffb000;
+  font-size: 20px;
+  font-weight: bold;
+  width:80%;
+  color: Black;
+  margin: 30px 30px 30px 15px;
+  box-shadow: 3px 3px 5px rgb(106, 106, 106, 0.9);
+}
+#signup{
+  padding-bottom: 400px
+}
+
+#signup button{
+  padding: 15px 40px;
+  border: none;
+  border-radius: 20px;
+  background-color: #ffb000;
+  font-size: 20px;
+  font-weight: bold;
+  width:90%;
+  color: black;
+  margin: 30px 30px 30px 15px;
+  box-shadow: 3px 3px 5px rgb(106, 106, 106, 0.9);
 }
 
 .highscores {
