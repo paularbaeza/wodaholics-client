@@ -34,7 +34,7 @@ function WodDetails() {
 
   useEffect(() => {
     getWodDetails();
-    getMyBenchmarks();
+
   }, []);
 
   //* traer los detalles del wod
@@ -42,26 +42,13 @@ function WodDetails() {
   const getWodDetails = async () => {
     try {
       const response = await getWodDetailsService(wodId);
-
       setAllWodDetails(response.data);
+
       const response2 = await getHighscoresService(wodId);
       setTopScores(response2.data);
-      setIsFetching(false);
-    } catch (error) {
-      navigate("/error");
-    }
-  };
-  
-  console.log(topScores)
-
-  //*traer las mejores puntuaciones del wod
-
-
-  //* traer mis benchmarks de este wod para la gráfica
-  const getMyBenchmarks = async () => {
-    try {
-      const response = await getUserBenchmarksOfAWod(wodId);
-      const benchmarksArr = response.data;
+      
+      const response3 = await getUserBenchmarksOfAWod(wodId);
+      const benchmarksArr = response3.data;
       const onlyScores = benchmarksArr.map((eachBenchmark) => {
         return eachBenchmark.score;
       });
@@ -74,10 +61,19 @@ function WodDetails() {
       setDateOfBenchmark(onlyDates);
       setIsFetching(false);
 
+      setIsFetching(false);
     } catch (error) {
       navigate("/error");
     }
   };
+  
+  console.log(topScores)
+
+  //*traer las mejores puntuaciones del wod
+ 
+
+  //* traer mis benchmarks de este wod para la gráfica
+  
 
   if (isFetching === true) {
     return <h3>Loading wod details</h3>;
@@ -156,7 +152,7 @@ function WodDetails() {
             <LineChart
               userBenchmarks={userBenchmarks}
               dateOfBenchmark={dateOfBenchmark}
-              chartFunction={getMyBenchmarks}
+              chartFunction={getWodDetails}
             />
             </div>
           )}
@@ -170,9 +166,9 @@ function WodDetails() {
         </button>
         {isFormShowed === true ? (
           <AddBenchmarkForm
-            chartFunction={getMyBenchmarks}
             toggleFormFunction={toggleFormShowing}
             category={category}
+            getTopScores={getWodDetails}
           />
         ) : null}
       </div>

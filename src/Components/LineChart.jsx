@@ -31,6 +31,7 @@ function LineChart(props) {
   const labels = dateOfBenchmark;
   const scores = userBenchmarks;
 
+
   const options = {
     fill: true,
     responsive: true,
