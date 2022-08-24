@@ -19,8 +19,11 @@ import {
   getWodDetailsService,
 } from "../../services/wod.services";
 import { getFavWodsService } from "../../services/profile.services";
-import {createCommentService, getCommentsOfWodService, deleteOwnCommentService} from "../../services/comment.services"
-
+import {
+  createCommentService,
+  getCommentsOfWodService,
+  deleteOwnCommentService,
+} from "../../services/comment.services";
 
 function WodDetails() {
   const navigate = useNavigate();
@@ -36,18 +39,17 @@ function WodDetails() {
 
   const [userBenchmarks, setUserBenchmarks] = useState([]);
   const [dateOfBenchmark, setDateOfBenchmark] = useState([]);
-  const [title, setTitle] = useState("")
-  const [comment, setComment] = useState("")
-  const [allComments, setAllComments] = useState ([])
+  const [title, setTitle] = useState("");
+  const [comment, setComment] = useState("");
+  const [allComments, setAllComments] = useState([]);
   const [errorMessage, setErrorMessage] = useState("");
 
   const { user } = useContext(AuthContext);
 
-
   useEffect(() => {
     getWodDetails();
     //getMyBenchmarks();
-    getTopScores()
+    getTopScores();
   }, []);
 
   //* traer los detalles del wod
@@ -55,9 +57,8 @@ function WodDetails() {
   const getWodDetails = async () => {
     try {
       const response = await getWodDetailsService(wodId);
-      const response2 = await getCommentsOfWodService(wodId)
+      const response2 = await getCommentsOfWodService(wodId);
       const response3 = await getUserBenchmarksOfAWod(wodId);
-
 
       setAllWodDetails(response.data);
       const benchmarksArr = response3.data;
@@ -65,7 +66,7 @@ function WodDetails() {
         return eachBenchmark.score;
       });
 
-      setAllComments(response2.data)
+      setAllComments(response2.data);
 
       setUserBenchmarks(onlyScores);
 
@@ -78,7 +79,6 @@ function WodDetails() {
       navigate("/error");
     }
   };
-  
 
   //*traer las mejores puntuaciones del wod
   const getTopScores = async () => {
@@ -118,25 +118,17 @@ function WodDetails() {
     setIsFormShowed(!isFormShowed);
   };
 
-  const {
-    name,
-    category,
-    description,
-    exercises,
-    equipment,
-    _id,
-  } = allWodDetails;
+  const { name, category, description, exercises, equipment, _id } =
+    allWodDetails;
 
-//* añadir/eliminar de favoritos
+  //* añadir/eliminar de favoritos
   const addFav = async () => {
-    
     try {
       if (isFav === true) {
         await deleteFavWodService(_id);
       } else if (isFav === false) {
         await addFavWodService(_id);
       }
-      ;
     } catch (error) {
       navigate("/error");
     }
@@ -157,62 +149,57 @@ function WodDetails() {
     }
   };
 
- handleFavButton()
- 
-//*funciones para los comentarios
+  handleFavButton();
 
- const handleComment = async (event) => {
-  event.preventDefault();
+  //*funciones para los comentarios
 
-  const newComment = {
-    title: title,
-    comment: comment,
-  };
-  try {
-    await createCommentService(wodId, newComment);
-    console.log(newComment)
-    setComment("")
-    setTitle("")
-    getWodDetails()
-  } catch (error) {
-    if (error.response.status === 400) {
-      console.log(error.response.data.errorMessage);
-      setErrorMessage(error.response.data.errorMessage);
-    } else {
-      navigate("/error");
+  const handleComment = async (event) => {
+    event.preventDefault();
+
+    const newComment = {
+      title: title,
+      comment: comment,
+    };
+    try {
+      await createCommentService(wodId, newComment);
+      setComment("");
+      setTitle("");
+      getWodDetails();
+    } catch (error) {
+      if (error.response.status === 400) {
+        console.log(error.response.data.errorMessage);
+        setErrorMessage(error.response.data.errorMessage);
+      } else {
+        navigate("/error");
+      }
     }
-  }
- }
+  };
 
-
- const handleTitleChange = (event) => {
+  const handleTitleChange = (event) => {
     setTitle(event.target.value);
   };
 
+  const handleCommentChange = (event) => {
+    setComment(event.target.value);
+  };
 
- const handleCommentChange = (event) => {
-  setComment(event.target.value);
-}
+  const deleteOwnComment = async (commentId) => {
+    await deleteOwnCommentService(commentId);
+    getWodDetails();
+  };
 
-
-const deleteOwnComment = async(commentId) => {
-  await deleteOwnCommentService(commentId)
-  getWodDetails()
-}
-
-console.log(userBenchmarks)
   return (
     <div>
-      <div id="wod-explanation">
-      <div id="wodname-favbtn">
-        <h1 className="wodType">{name} </h1>
-        <button
-          onClick={addFav}
-          style={{ fontSize: 35, background: "none", border: "none" }}
-        >
-          {isFav === true ? "❤️" : "🤍"}
-        </button>
-</div>
+      <div className="blackboard-bg">
+        <div id="wodname-favbtn">
+          <h1 className="wodType">{name} </h1>
+          <button
+            onClick={addFav}
+            style={{ fontSize: 35, background: "none", border: "none" }}
+          >
+            {isFav === true ? "❤️" : "🤍"}
+          </button>
+        </div>
         <h4>{description}</h4>
         {exercises.map((eachExercise) => {
           return (
@@ -221,16 +208,16 @@ console.log(userBenchmarks)
             </p>
           );
         })}
-        <Ranking topScores={topScores}/>
+        <Ranking topScores={topScores} />
 
         {userBenchmarks.length !== 0 &&
           dateOfBenchmark.length !== 0 &&
           category !== "for time" && (
             <div id="line-chart">
-            <LineChart
-              userBenchmarks={userBenchmarks}
-              dateOfBenchmark={dateOfBenchmark}
-            />
+              <LineChart
+                userBenchmarks={userBenchmarks}
+                dateOfBenchmark={dateOfBenchmark}
+              />
             </div>
           )}
         {userBenchmarks.length >= 1 &&
@@ -249,46 +236,53 @@ console.log(userBenchmarks)
           />
         ) : null}
 
-
-        <div id= "comments">
-          {allComments.map ((eachComment)=> {
-            return <div id="each-comment">
-            <div id="username-img">
-            <img src={eachComment.user[0].img} alt="profile" />
-            <p className="bold">{eachComment.user[0].username}</p>
-            </div>
-              <p className="bold">{eachComment.title}</p>
-              <p>{eachComment.comment}</p>
-              {eachComment.user[0]._id === user._id && <button onClick={() => deleteOwnComment(eachComment._id)}>Delete</button>}
-            </div>
+        <div id="comments">
+          {allComments.map((eachComment) => {
+            return (
+              <div id="each-comment">
+                <div id="username-img">
+                  <img src={eachComment.user[0].img} alt="profile" />
+                  <p className="bold">{eachComment.user[0].username}</p>
+                </div>
+                <p className="bold">{eachComment.title}</p>
+                <p>{eachComment.comment}</p>
+                {eachComment.user[0]._id === user._id && (
+                  <button
+                    onClick={() => deleteOwnComment(eachComment._id)}
+                    id="delete-comment-btn"
+                  >
+                    Delete
+                  </button>
+                )}
+              </div>
+            );
           })}
         </div>
 
         <form onSubmit={handleComment} id="comment-form">
-        <div id="comments">
-          <input
-            type= "text"
-            name="score"
-            value={title}
-            onChange={handleTitleChange}
-            placeholder= "  Title"
-          />
-
-        </div>
-        <div id="comment">
-          <input
-            type="text"
-            name="comment"
-            value={comment}
-            placeholder= "  Comment"
-            onChange={handleCommentChange}
-          />
-        </div>
-        <div id="error-message">
-          {errorMessage ? <p>{errorMessage}</p> : null}
-        </div>
-        <button  className="benchmark-form-btn">Add Comment</button>
-      </form>
+          <div id="comments">
+            <input
+              type="text"
+              name="score"
+              value={title}
+              onChange={handleTitleChange}
+              placeholder="  Title"
+            />
+          </div>
+          <div id="comment">
+            <input
+              type="text"
+              name="comment"
+              value={comment}
+              placeholder="  Comment"
+              onChange={handleCommentChange}
+            />
+          </div>
+          <div id="error-message">
+            {errorMessage ? <p>{errorMessage}</p> : null}
+          </div>
+          <button className="benchmark-form-btn">Add Comment</button>
+        </form>
       </div>
     </div>
   );

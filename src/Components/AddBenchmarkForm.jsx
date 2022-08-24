@@ -8,7 +8,6 @@ function AddBenchmarkForm(props) {
   const { wodId } = useParams();
   const { toggleFormFunction, category, getTopScores } = props;
 
-
   const [score, setScore] = useState("");
   const [date, setDate] = useState("");
   const [errorMessage, setErrorMessage] = useState("");

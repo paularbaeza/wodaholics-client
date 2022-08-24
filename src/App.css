@@ -105,18 +105,27 @@
   margin: 1% 5%;
 }
 
-#wod-explanation {
+.blackboard-bg {
   background-image: url("../src/assets/images/blackboard-modified.png");
   background-repeat: no-repeat;
   background-size: cover;
   background-position: center;
-  height: 100%;
+  height: fit-content ;
   background-color: black;
   padding: 100px;
   color: white;
   display: flex;
   flex-direction: column;
   align-items: center;
+}
+
+#search-results {
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+  margin: 5%;
+  justify-content: center;
+  flex-wrap: wrap;
 }
 
 #wod-explanation h4 {
@@ -261,15 +270,24 @@
 
 .highscores img {
   border-radius: 100px;
+  margin-top: 10px;
 }
 
 .ranking-username {
   font-weight: bold;
 }
 
+#profile-info {
+  padding:150px
+}
+
 #profile-info img {
   border-radius: 100px;
   box-shadow: 3px 3px 5px rgb(189, 189, 189, 0.9);
+}
+
+#profile-info h1 {
+  margin-top: -20px;
 }
 
 #wodname-favbtn {
@@ -313,15 +331,6 @@
   margin-left: 20%;
 }
 
-#search-results {
-  display: flex;
-  flex-direction: row;
-  align-items: center;
-  margin: 5%;
-  justify-content: center;
-  flex-wrap: wrap;
-}
-
 #search-results img {
   border-radius: 50px;
   box-shadow: 3px 3px 5px rgb(189, 189, 189, 0.9);
@@ -350,6 +359,7 @@
   background-color: #f3f3f3;
   padding: 20px;
   border-radius: 20px;
+  color: black;
 }
 
 .user-benchmarks {
@@ -363,11 +373,16 @@
   margin: 20px;
   border-radius: 15px;
   padding: 20px;
+  color: black;
   box-shadow: 3px 3px 5px rgb(189, 189, 189, 0.9);
+  text-decoration: none;
+}
+.each-benchmark p {
+  color: black;
 }
 
-#user-profile {
-  margin: 30px;
+.no-decoration-link {
+  text-decoration: none;
 }
 
 #role {
@@ -379,12 +394,11 @@
   box-shadow: 3px 3px 5px rgb(189, 189, 189, 0.9);
 }
 
-#each-friend {
-}
+
 
 #each-friend img {
   border-radius: 50%;
-  box-shadow: 3px 3px 5px rgb(189, 189, 189, 0.9);
+  box-shadow: 3px 3px 5px rgb(164, 164, 164 , 0.9);
 }
 
 #each-friend button {
@@ -392,7 +406,7 @@
   border: none;
   padding: 15px;
   font-weight: bold;
-  box-shadow: 3px 3px 5px rgb(189, 189, 189, 0.9);
+  box-shadow: 3px 3px 5px rgb(106, 106, 106, 0.9);
   background-color: #ff4f15;
   color: white;
 }
@@ -404,6 +418,7 @@
   margin: 5%;
   justify-content: center;
   flex-wrap: wrap;
+  padding-bottom:40px;
 }
 
 .dirt-font {
@@ -412,12 +427,19 @@
   font-size: 40px;
 }
 
+.dirt-font-links {
+  font-family: Rubik Dirt;
+  font-weight: lighter;
+  color: black;
+  font-size: 25px;
+}
+
 #delete-benchmark {
   border-radius: 15px;
   border: none;
   padding: 10px;
   font-weight: bold;
-  box-shadow: 3px 3px 5px rgb(189, 189, 189, 0.9);
+  box-shadow: 3px 3px 5px rgb(106, 106, 106, 0.9);
   background-color: #ff4f15;
   color: white;
   margin-left: 10px;
@@ -428,7 +450,7 @@
   border: none;
   padding: 10px;
   font-weight: bold;
-  box-shadow: 3px 3px 5px rgb(189, 189, 189, 0.9);
+  box-shadow: 3px 3px 5px rgb(106, 106, 106, 0.9);
   background-color: #ffb000;
   color: white;
 }
@@ -462,7 +484,7 @@
   font-family: Rubik Dirt;
   font-weight: lighter;
   font-size: 20px;
-  color: black;
+  color: white;
   margin-bottom: 20px;
 }
 
@@ -471,7 +493,7 @@
   border: none;
   padding: 10px;
   font-weight: bold;
-  box-shadow: 3px 3px 5px rgb(189, 189, 189, 0.9);
+  box-shadow: 3px 3px 5px rgb(106, 106, 106, 0.9);
   background-color: #ff4f15;
   color: white;
   width: 60px;
@@ -483,7 +505,7 @@
   border: none;
   padding: 15px;
   font-weight: bold;
-  box-shadow: 3px 3px 5px rgb(189, 189, 189, 0.9);
+  box-shadow: 3px 3px 5px rgb(106, 106, 106, 0.9);
   background-color: #ffb000;
   color: white;
 }
@@ -521,7 +543,7 @@
   border: none;
   border-radius: 10px;
   margin: 5px;
-  height:25px;
+  height: 25px;
   box-shadow: 3px 3px 5px rgb(106, 106, 106, 0.9);
 }
 
@@ -532,15 +554,27 @@
   flex-wrap: wrap;
 }
 
-#username-img{
-  display:flex;
+#username-img {
+  display: flex;
   flex-direction: row;
   justify-content: center;
   align-items: flex-start;
 }
 
-#username-img img{
+#username-img img {
   margin-right: 10px;
-  width:55px;
+  width: 55px;
   border-radius: 50%;
+}
+
+#delete-comment-btn {
+  border-radius: 15px;
+  border: none;
+  padding: 10px;
+  font-weight: bold;
+  box-shadow: 3px 3px 5px rgb(106, 106, 106, 0.9);
+  background-color: #ff4f15;
+  color: white;
+  width: 60px;
+  margin: 20px;
 }

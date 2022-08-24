@@ -11,7 +11,7 @@ function Ranking(props) {
         <h1>Top Athletes</h1>
         <div className="highscores">
           <div>
-            <img src={gold} alt="gold" width="30px" />
+            <img src={gold} alt="gold" width="40px" />
             <br />
 
             <Link to={`/benchmarks/${topScores[0].user[0]._id}`}>
@@ -30,19 +30,19 @@ function Ranking(props) {
         <h1>Ranking</h1>
         <div className="highscores">
         <div>
-          <img src={gold} alt="gold" width="30px" />
+          <img src={gold} alt="gold" width="40px" />
           <br />
           <Link to={`/benchmarks/${topScores[0].user[0]._id}`}>
-            <img src={topScores[0].user[0].img} alt="user" width="100px" />
+            <img src={topScores[0].user[0].img} alt="user" width="150px" />
           </Link>
           <p className="ranking-username">{topScores[0].user[0].username}</p>
           <p>{topScores[0].score}</p>
         </div>
         <div>
-          <img src={silver} alt="silver" width="30px" />
+          <img src={silver} alt="silver" width="40px" />
           <br />
           <Link to={`/benchmarks/${topScores[1].user[0]._id}`}>
-            <img src={topScores[1].user[0].img} alt="user" width="100px" />
+            <img src={topScores[1].user[0].img} alt="user" width="150px" />
           </Link>
           <p className="ranking-username">{topScores[1].user[0].username}</p>
           <p>{topScores[1].score}</p>
@@ -58,7 +58,7 @@ function Ranking(props) {
         <h1>Ranking</h1>
         <div className="highscores">
           <div>
-            <img src={gold} alt="gold" width="30px" />
+            <img src={gold} alt="gold" width="40px" />
             <br />
             <Link to={`/benchmarks/${topScores[0].user[0]._id}`}>
               <img src={topScores[0].user[0].img} alt="user" width="100px" />
@@ -67,7 +67,7 @@ function Ranking(props) {
             <p>{topScores[0].score}</p>
           </div>
           <div>
-            <img src={silver} alt="silver" width="30px" />
+            <img src={silver} alt="silver" width="40px" />
             <br />
             <Link to={`/benchmarks/${topScores[1].user[0]._id}`}>
               <img src={topScores[1].user[0].img} alt="user" width="100px" />
@@ -76,7 +76,7 @@ function Ranking(props) {
             <p>{topScores[1].score}</p>
           </div>
           <div>
-            <img src={bronze} alt="bronze" width="30px" />
+            <img src={bronze} alt="bronze" width="40px" />
             <br />
             <Link to={`/benchmarks/${topScores[2].user[0]._id}`}>
               <img src={topScores[2].user[0].img} alt="user" width="100px" />

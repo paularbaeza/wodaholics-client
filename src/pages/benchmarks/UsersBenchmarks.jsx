@@ -1,6 +1,4 @@
-import {
-  getBenchmarksOfUsersService,
-} from "../../services/benchmark.services";
+import { getBenchmarksOfUsersService } from "../../services/benchmark.services";
 import { getUsersInfoService } from "../../services/profile.services";
 import { useParams, Link, useNavigate } from "react-router-dom";
 import { useEffect, useState } from "react";
@@ -13,14 +11,13 @@ function UsersBenchmarks() {
 
   const [benchmarks, setBenchmarks] = useState([]);
   const [isFetching, setIsFetching] = useState(true);
-  const [ userInfo, setUserInfo] = useState ([])
+  const [userInfo, setUserInfo] = useState([]);
 
   useEffect(() => {
     getUserInfo();
   }, []);
 
-
-//*traer los benchmarks de otros usuarios
+  //*traer los benchmarks de otros usuarios
   const getUserInfo = async () => {
     try {
       const response = await getBenchmarksOfUsersService(userId);
@@ -37,23 +34,19 @@ function UsersBenchmarks() {
     return <h3>Loading user's benchmarks</h3>;
   }
 
-//* traer la info de usuarios
+  //* traer la info de usuarios
 
+  const { username, role, img, favWods, friends } = userInfo;
 
+  return (
+    <div className="blackboard-bg" id="user-profile">
+      <img src={img} alt="profile" width="150px" />
+      <h1>{username}</h1>
+      <p id="role">{role}</p>
 
-  const {username, role, img, favWods, friends} = userInfo
-
-
-
-  return <div id="user-profile">
-  <img src={img} alt="profile" width="150px"/>
-  <h1>{username}</h1>
-  <p id="role">{role}</p>
-
-
-<UserBenchmarks benchmarks={benchmarks}/>
-
-  </div>;
+      <UserBenchmarks benchmarks={benchmarks} />
+    </div>
+  );
 }
 
 export default UsersBenchmarks;

@@ -40,7 +40,7 @@ function SearchResults() {
   }
 
   return (
-    <div>
+    <div className="blackboard-bg">
       <h1 className="h1-search">Search results for "{search}"</h1>
       <div id="search-results">
         {userSearch.map((eachUser) => {

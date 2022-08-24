@@ -4,7 +4,7 @@ import {
   changeProfileDataService,
 } from "../../services/profile.services";
 
-import { Link, useNavigate } from "react-router-dom";
+import { useNavigate } from "react-router-dom";
 import { uploadService } from "../../services/upload.services";
 
 function MyProfile() {
@@ -29,19 +29,16 @@ function MyProfile() {
   };
 
   const handleInfoChange = async () => {
-
-    const updatedProfile= {
-      img:imageUrl.imageUrl
-    }
+    const updatedProfile = {
+      img: imageUrl.imageUrl,
+    };
     try {
       await changeProfileDataService(updatedProfile);
-
       getProfileData();
     } catch (error) {
       navigate("/error");
     }
   };
-
   const handleImgUpload = async (event) => {
     const form = new FormData();
     form.append("image", event.target.files[0]);
@@ -60,7 +57,7 @@ function MyProfile() {
   const { username, email, img } = profileData;
 
   return (
-    <div id="profile-info">
+    <div id="profile-info" className="blackboard-bg">
       <h1>My profile</h1>
       <img src={img} width="150px" alt="profile" />
       <h3>{username}</h3>
@@ -71,7 +68,9 @@ function MyProfile() {
       <div>
         <input type="file" onChange={handleImgUpload} />
         <br />
-        <button className="benchmark-form-btn" onClick={ handleInfoChange}>Edit picture</button>
+        <button className="benchmark-form-btn" onClick={handleInfoChange}>
+          Edit picture
+        </button>
       </div>
     </div>
   );

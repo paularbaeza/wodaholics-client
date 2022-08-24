@@ -43,7 +43,7 @@ function FriendsList() {
   }
 
   return (
-    <div>
+    <div className="blackboard-bg">
     <h2 className="dirt-font">My friends</h2>
     <div id="friends-list">
       {friendsList.map((eachFriend) => {

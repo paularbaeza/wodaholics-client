@@ -44,7 +44,7 @@ function FavWods() {
   }
 
   return (
-    <div>
+    <div className="blackboard-bg">
       <h2 className="dirt-font">My favWods</h2>
       <div id="all-favWods">
       {favWodsList.map((eachWod) => {

@@ -46,9 +46,8 @@ function Benchmarks() {
   };
 
 
-  const toggleFormShowing = (eachBenchmarkId, benchmarkId) => {
-    if(eachBenchmarkId === benchmarkId)
-    {setIsFormShowed(!isFormShowed);}
+  const toggleFormShowing = () => {
+    setIsFormShowed(!isFormShowed);
     
   };
 
@@ -57,7 +56,7 @@ function Benchmarks() {
   }
 
   return (
-    <div id="my-benchmarks">
+    <div id="my-benchmarks" className="blackboard-bg">
     <h1 className="dirt-font">My benchmarks</h1>
     <div className="user-benchmarks">
     
@@ -65,7 +64,7 @@ function Benchmarks() {
     return <div className="each-benchmark" key={eachBenchmark._id}>
     <p id="wod-name">{eachBenchmark.wod[0].name}</p>
     <p>{eachBenchmark.score}</p>
-    <button id="edit-benchmark" key={eachBenchmark._id} onClick={()=> toggleFormShowing(eachBenchmark._id)}>
+    <button id="edit-benchmark" key={eachBenchmark._id} onClick={toggleFormShowing}>
           {isFormShowed === true ? "x" : "Edit"}
         </button>
         {isFormShowed === true ? (

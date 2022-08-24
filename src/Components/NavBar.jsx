@@ -3,7 +3,6 @@ import { Link, useNavigate } from "react-router-dom";
 import { useContext } from "react";
 
 import { AuthContext } from "../context/auth.context";
-import { searchUsersService } from "../services/profile.services";
 
 import Button from "../../node_modules/@mui/material/Button";
 import Menu from "../../node_modules/@mui/material/Menu";
@@ -45,11 +44,11 @@ function NavBar() {
     setSearch(searchValue);
   };
 
-const handleSearchBtn = async (event) => {
-  event.preventDefault()
-  navigate(`/search/${search}`)
-  setSearch("");
-}
+  const handleSearchBtn = async (event) => {
+    event.preventDefault();
+    navigate(`/search/${search}`);
+    setSearch("");
+  };
 
   if (isUserActive === true) {
     return (
@@ -109,25 +108,22 @@ const handleSearchBtn = async (event) => {
               name="search"
               onChange={handleSearch}
             />
-         
-              <button type="submit" id="search-btn" onClick={handleSearchBtn}>Search users</button>
- 
+
+            <button type="submit" id="search-btn" onClick={handleSearchBtn}>
+              Search users
+            </button>
           </form>
         </div>
 
         <div>
-          <Button 
+          <Button
             id="demo-positioned-button"
             aria-controls={openProfile ? "demo-positioned-menu" : undefined}
             aria-haspopup="true"
             aria-expanded={openProfile ? "true" : undefined}
             onClick={handleProfileClick}
           >
-            <img
-              src={user.img}
-              width="50px"
-              alt="profile"
-            />
+            <img src={user.img} width="50px" alt="profile" />
           </Button>
           <Menu
             id="demo-positioned-menu"
