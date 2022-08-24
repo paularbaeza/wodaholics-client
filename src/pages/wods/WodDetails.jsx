@@ -35,7 +35,6 @@ function WodDetails() {
   useEffect(() => {
     getWodDetails();
     getMyBenchmarks();
-    getTopScores()
   }, []);
 
   //* traer los detalles del wod
@@ -43,7 +42,10 @@ function WodDetails() {
   const getWodDetails = async () => {
     try {
       const response = await getWodDetailsService(wodId);
+
       setAllWodDetails(response.data);
+      const response2 = await getHighscoresService(wodId);
+      setTopScores(response2.data);
       setIsFetching(false);
     } catch (error) {
       navigate("/error");
@@ -53,15 +55,7 @@ function WodDetails() {
   console.log(topScores)
 
   //*traer las mejores puntuaciones del wod
-  const getTopScores = async () => {
-    try {
-      const response = await getHighscoresService(wodId);
-      setTopScores(response.data);
-      setIsFetching(false);
-    } catch (error) {
-      navigate("/error");
-    }
-  };
+
 
   //* traer mis benchmarks de este wod para la gráfica
   const getMyBenchmarks = async () => {
@@ -179,7 +173,6 @@ function WodDetails() {
             chartFunction={getMyBenchmarks}
             toggleFormFunction={toggleFormShowing}
             category={category}
-            getTopScores={getTopScores}
           />
         ) : null}
       </div>

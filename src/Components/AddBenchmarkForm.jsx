@@ -6,7 +6,7 @@ import { createBenchmarkService } from "../services/benchmark.services";
 function AddBenchmarkForm(props) {
   const navigate = useNavigate();
   const { wodId } = useParams();
-  const { toggleFormFunction, category, getTopScores, chartFunction } = props;
+  const { toggleFormFunction, category, chartFunction } = props;
 
 
   const [score, setScore] = useState(null);
@@ -32,8 +32,6 @@ function AddBenchmarkForm(props) {
     try {
       await createBenchmarkService(wodId, newBenchmark);
       toggleFormFunction();
-
-      getTopScores();
       chartFunction()
     } catch (error) {
       if (error.response.status === 400) {
