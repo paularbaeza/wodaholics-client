@@ -53,7 +53,7 @@ function Signup() {
 
     <form onSubmit={handleSignup}>
     <div className="login-input">
-      <label>Name:</label>
+      <label>Username:</label>
       <input
         type="text"
         name="username"

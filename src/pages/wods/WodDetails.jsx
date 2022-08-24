@@ -48,10 +48,11 @@ function WodDetails() {
 
   useEffect(() => {
     getWodDetails();
-    //getMyBenchmarks();
-
     getTopScores();
   }, []);
+
+
+
 
   //* traer los detalles del wod
 
@@ -60,21 +61,37 @@ function WodDetails() {
       const response = await getWodDetailsService(wodId);
       const response2 = await getCommentsOfWodService(wodId);
       const response3 = await getUserBenchmarksOfAWod(wodId);
+      const response4 = await getFavWodsService();
 
+//detalles
       setAllWodDetails(response.data);
       const benchmarksArr = response3.data;
       const onlyScores = benchmarksArr.map((eachBenchmark) => {
         return eachBenchmark.score;
       });
 
+//comentarios
       setAllComments(response2.data);
 
+//benchmarks
       setUserBenchmarks(onlyScores);
 
       const onlyDates = benchmarksArr.map((eachBenchmark) => {
         return eachBenchmark.date;
       });
       setDateOfBenchmark(onlyDates);
+
+//favoritos
+      const favWods = response4.data;
+      let isWodFav = favWods.filter((favWods) => favWods._id === wodId);
+
+
+      if (isWodFav.length === 1) {
+        setIsFav(true);
+      } else {
+        setIsFav(false)
+      }
+
 
       setIsFetching(false);
     } catch (error) {
@@ -92,25 +109,6 @@ function WodDetails() {
     }
   };
 
-  //* traer mis benchmarks de este wod para la gráfica
-  // const getMyBenchmarks = async () => {
-  //   try {
-  //     const response = await getUserBenchmarksOfAWod(wodId);
-  //     const benchmarksArr = response.data;
-  //     const onlyScores = benchmarksArr.map((eachBenchmark) => {
-  //       return eachBenchmark.score;
-  //     });
-  //     setUserBenchmarks(onlyScores);
-
-  //     const onlyDates = benchmarksArr.map((eachBenchmark) => {
-  //       return eachBenchmark.date;
-  //     });
-  //     setDateOfBenchmark(onlyDates);
-
-  //   } catch (error) {
-  //     navigate("/error");
-  //   }
-  // };
 
   if (isFetching === true) {
     return <h3>Loading wod details</h3>;
@@ -123,37 +121,24 @@ function WodDetails() {
   const { name, category, description, exercises, equipment, _id } =
     allWodDetails;
 
-  //* añadir/eliminar de favoritos
-  const addFav = async () => {
-    try {
+
+    //añadir y eliminar favoritos
+  const handleFavButton = async () => {
+    try {      
+
       if (isFav === true) {
         await deleteFavWodService(_id);
-      } else if (isFav === false) {
-        await addFavWodService(_id);
-      }
-    } catch (error) {
-      navigate("/error");
-    }
-  };
-
-  const handleFavButton = async () => {
-    try {
-      const response = await getFavWodsService();
-      const favWods = response.data;
-      let isWodFav = favWods.filter((favWods) => favWods._id === _id);
-      if (isWodFav.length === 1) {
-        setIsFav(true);
-        getWodDetails()
-      } else {
         setIsFav(false);
-        getWodDetails()
+        getWodDetails();
+      } else {
+        await addFavWodService(_id);
+        setIsFav(true);
+        getWodDetails();
       }
     } catch (error) {
       navigate("/error");
     }
   };
-  handleFavButton();
-
 
   //*funciones para los comentarios
 
@@ -198,7 +183,7 @@ function WodDetails() {
         <div id="wodname-favbtn">
           <h1 className="wodType">{name} </h1>
           <button
-            onClick={addFav}
+            onClick={handleFavButton}
             style={{ fontSize: 35, background: "none", border: "none" }}
           >
             {isFav === true ? "❤️" : "🤍"}

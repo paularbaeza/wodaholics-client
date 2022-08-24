@@ -265,7 +265,7 @@
 }
 
 #login{
-  padding-bottom: 400px
+  padding-bottom: 180px
 }
 
 .login-input{
@@ -291,7 +291,7 @@ flex-direction: column;
   box-shadow: 3px 3px 5px rgb(106, 106, 106, 0.9);
 }
 #signup{
-  padding-bottom: 400px
+  padding-bottom: 100px
 }
 
 #signup button{
