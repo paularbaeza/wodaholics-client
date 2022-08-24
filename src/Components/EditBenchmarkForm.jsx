@@ -5,7 +5,7 @@ import { updateBenchmarkService } from "../services/benchmark.services";
 
 function EditBenchmarkForm(props) {
   const navigate = useNavigate();
-  const { toggleFormFunction, getBenchmarks, benchmarkId, category } = props;
+  const { getBenchmarks, benchmarkId, category, setBenchmarkId } = props;
 
 
 
@@ -32,7 +32,7 @@ function EditBenchmarkForm(props) {
 
     try {
       await updateBenchmarkService(benchmarkId, updatedBenchmark);
-      toggleFormFunction();
+      setBenchmarkId("")
       getBenchmarks();
     } catch (error) {
       if (error.response.status === 400) {
@@ -54,7 +54,7 @@ function EditBenchmarkForm(props) {
 
   return (
     <div id="benchmark-form">
-      <form >
+      <form>
         <div id="score">
           <label htmlFor="score">Score:</label>
           <input
@@ -81,7 +81,7 @@ function EditBenchmarkForm(props) {
         <div id="error-message">
           {errorMessage ? <p>{errorMessage}</p> : null}
         </div>
-        <button  onClick={handleBenchmark} className="benchmark-form-btn">Edit Benchmark</button>
+        <button onClick={handleBenchmark} className="benchmark-form-btn">Edit Benchmark</button>
       </form>
     </div>
   );

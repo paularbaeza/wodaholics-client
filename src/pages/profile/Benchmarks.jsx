@@ -14,8 +14,7 @@ function Benchmarks() {
 
   const [benchmarksList, setBenchmarksList] = useState(null);
   const [isFetching, setIsFetching] = useState(true);
-  const [isFormShowed, setIsFormShowed] = useState(false);
-  const [benchmarkId, setBenchmarId]= useState (null)
+  const [benchmarkId, setBenchmarkId]= useState (null)
 
 
   const navigate = useNavigate();
@@ -46,10 +45,7 @@ function Benchmarks() {
   };
 
 
-  const toggleFormShowing = () => {
-    setIsFormShowed(!isFormShowed);
-    
-  };
+
 
   if (isFetching === true) {
     return <h3>Loading Benchmark List</h3>;
@@ -64,14 +60,14 @@ function Benchmarks() {
     return <div className="each-benchmark" key={eachBenchmark._id}>
     <p id="wod-name">{eachBenchmark.wod[0].name}</p>
     <p>{eachBenchmark.score}</p>
-    <button id="edit-benchmark" key={eachBenchmark._id} onClick={toggleFormShowing}>
-          {isFormShowed === true ? "x" : "Edit"}
+    <button id="edit-benchmark" key={eachBenchmark._id} onClick={()=>setBenchmarkId(eachBenchmark._id)}>
+          {eachBenchmark._id === benchmarkId ? "x" : "Edit"}
         </button>
-        {isFormShowed === true ? (
+        {eachBenchmark._id === benchmarkId ? (
           <EditBenchmarkForm
-            toggleFormFunction={toggleFormShowing}
             getBenchmarks={getBenchmarks}
             benchmarkId={eachBenchmark._id}
+            setBenchmarkId={setBenchmarkId}
             category={eachBenchmark.wod[0].category}
           />
         ) : null}
