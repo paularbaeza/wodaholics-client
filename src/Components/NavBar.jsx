@@ -110,7 +110,7 @@ const handleSearchBtn = async (event) => {
               onChange={handleSearch}
             />
          
-              <button type="submit" id="search-btn" onClick={handleSearchBtn}>Search</button>
+              <button type="submit" id="search-btn" onClick={handleSearchBtn}>Search users</button>
  
           </form>
         </div>

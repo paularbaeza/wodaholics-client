@@ -51,7 +51,7 @@ function LineChart(props) {
     return {
       datasets: [
         {
-          label: "Score:",
+          label: "Score",
           data: scores,
           tension: 0.4,
           borderColor: "#FFB000",

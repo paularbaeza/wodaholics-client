@@ -9,8 +9,12 @@ const getCommentsOfWodService = (wodId) => {
     return service.get (`comment/${wodId}`)
 }
 
+const deleteOwnCommentService = (commentId) => {
+    return service.delete(`comment/${commentId}/user-delete`)
+}
 export {
     createCommentService,
-    getCommentsOfWodService
+    getCommentsOfWodService,
+    deleteOwnCommentService
   }
   

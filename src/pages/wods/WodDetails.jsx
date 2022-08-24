@@ -4,6 +4,9 @@ import AddBenchmarkForm from "../../Components/AddBenchmarkForm";
 import LineChart from "../../Components/LineChart";
 import Ranking from "../../Components/Ranking";
 import MyBestTime from "../../Components/MyBestTime";
+import { useContext } from "react";
+
+import { AuthContext } from "../../context/auth.context";
 
 //all services
 import {
@@ -16,7 +19,8 @@ import {
   getWodDetailsService,
 } from "../../services/wod.services";
 import { getFavWodsService } from "../../services/profile.services";
-import {createCommentService, getCommentsOfWodService} from "../../services/comment.services"
+import {createCommentService, getCommentsOfWodService, deleteOwnCommentService} from "../../services/comment.services"
+
 
 function WodDetails() {
   const navigate = useNavigate();
@@ -37,6 +41,7 @@ function WodDetails() {
   const [allComments, setAllComments] = useState ([])
   const [errorMessage, setErrorMessage] = useState("");
 
+  const { user } = useContext(AuthContext);
 
 
   useEffect(() => {
@@ -124,13 +129,14 @@ function WodDetails() {
 
 //* añadir/eliminar de favoritos
   const addFav = async () => {
+    
     try {
       if (isFav === true) {
         await deleteFavWodService(_id);
       } else if (isFav === false) {
         await addFavWodService(_id);
       }
-      handleFavButton();
+      ;
     } catch (error) {
       navigate("/error");
     }
@@ -150,6 +156,10 @@ function WodDetails() {
       navigate("/error");
     }
   };
+
+ handleFavButton()
+ 
+//*funciones para los comentarios
 
  const handleComment = async (event) => {
   event.preventDefault();
@@ -184,7 +194,13 @@ function WodDetails() {
   setComment(event.target.value);
 }
 
-console.log(allComments)
+
+const deleteOwnComment = async(commentId) => {
+  await deleteOwnCommentService(commentId)
+  getWodDetails()
+}
+
+console.log(userBenchmarks)
   return (
     <div>
       <div id="wod-explanation">
@@ -237,8 +253,13 @@ console.log(allComments)
         <div id= "comments">
           {allComments.map ((eachComment)=> {
             return <div id="each-comment">
+            <div id="username-img">
+            <img src={eachComment.user[0].img} alt="profile" />
+            <p className="bold">{eachComment.user[0].username}</p>
+            </div>
               <p className="bold">{eachComment.title}</p>
               <p>{eachComment.comment}</p>
+              {eachComment.user[0]._id === user._id && <button onClick={() => deleteOwnComment(eachComment._id)}>Delete</button>}
             </div>
           })}
         </div>
@@ -250,16 +271,16 @@ console.log(allComments)
             name="score"
             value={title}
             onChange={handleTitleChange}
-            placeholder= "Title"
+            placeholder= "  Title"
           />
 
         </div>
         <div id="comment">
           <input
-            type="texxt"
+            type="text"
             name="comment"
             value={comment}
-            placeholder= "Comment"
+            placeholder= "  Comment"
             onChange={handleCommentChange}
           />
         </div>
