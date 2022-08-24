@@ -8,7 +8,7 @@
   display: flex;
   flex-direction: row;
   align-items: center;
-  justify-content: space-evenly;
+  justify-content:space-evenly;
   background-color: #ffb000;
   color: white;
   text-decoration: none;
@@ -118,6 +118,7 @@
   background-color: black;
   padding: 100px;
   color: white;
+  min-height: 65vh;
   display: flex;
   flex-direction: column;
   align-items: center;
@@ -264,9 +265,7 @@
   box-shadow: 3px 3px 5px rgb(106, 106, 106, 0.9);
 }
 
-#login{
-  padding-bottom: 180px
-}
+
 
 .login-input{
 display:flex;
@@ -290,9 +289,7 @@ flex-direction: column;
   margin: 30px 30px 30px 15px;
   box-shadow: 3px 3px 5px rgb(106, 106, 106, 0.9);
 }
-#signup{
-  padding-bottom: 100px
-}
+
 
 #signup button{
   padding: 15px 40px;
@@ -409,6 +406,7 @@ flex-direction: column;
   padding: 20px;
   border-radius: 20px;
   color: black;
+  margin:10px
 }
 
 .user-benchmarks {
@@ -467,7 +465,6 @@ flex-direction: column;
   margin: 5%;
   justify-content: center;
   flex-wrap: wrap;
-  padding-bottom:40px;
 }
 
 .dirt-font {
@@ -526,6 +523,9 @@ flex-direction: column;
   flex-direction: column;
   margin: 15px;
   align-items: center;
+  background-color: rgb(194, 194, 194, 0.4);
+  padding:10px;
+  border-radius: 15px;
 }
 
 #wods-link {
@@ -626,4 +626,31 @@ flex-direction: column;
   color: white;
   width: 60px;
   margin: 20px;
+}
+
+
+#profile-btns{
+  display:flex;
+  flex-direction: row;
+  margin-left:80px;
+}
+
+#profile-btns button{
+  margin:15px;
+  padding:15px;
+  border-radius: 15px;
+  border:none;
+  background-color: #ffb000;
+  color: white;
+  font-weight: bold;
+  font-size: 20px;
+  box-shadow: 3px 3px 5px rgb(106, 106, 106, 0.9);
+
+}
+
+.user-lists{
+  display:flex;
+  flex-direction: row;
+  flex-wrap: wrap;
+  justify-content: center;
 }

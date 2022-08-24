@@ -41,6 +41,14 @@ const getUsersInfoService = (userId) => {
 
 }
 
+
+
+
+const getUserBenchmarksOfFavWods = (userId, wodId) => {
+  return service.get (`/profile/${userId}/${wodId}/benchmarks`)
+
+}
+
 export {
   getAllFriendsService,
   deleteFriendService,
@@ -51,5 +59,6 @@ export {
   searchUsersService,
   getAllMyBenchmarksService,
   getAllFriendsIdsService,
-  getUsersInfoService
+  getUsersInfoService,
+  getUserBenchmarksOfFavWods
 };

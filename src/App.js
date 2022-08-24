@@ -16,7 +16,7 @@ import FavWods from "./pages/profile/FavWods";
 import Benchmarks from "./pages/profile/Benchmarks";
 
 import SearchResults from "./pages/SearchResults";
-import UsersBenchmarks from "./pages/benchmarks/UsersBenchmarks";
+import UsersProfile from "./pages/profile/UsersProfile";
 
 
 function App() {
@@ -36,7 +36,7 @@ function App() {
         <Route path="/profile/fav-wods" element={<FavWods/>} />
         <Route path="/profile/benchmarks" element={<Benchmarks/>} />
         <Route path="/search/:search" element={<SearchResults/>} />
-        <Route path="/benchmarks/:userId" element={<UsersBenchmarks/>} />
+        <Route path="/profile/:userId" element={<UsersProfile/>} />
 
 
 

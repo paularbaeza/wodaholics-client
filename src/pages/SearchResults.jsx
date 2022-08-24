@@ -46,7 +46,7 @@ function SearchResults() {
         {userSearch.map((eachUser) => {
           return (
             <div key={eachUser._id} id="each-user">
-              <Link to={`/benchmarks/${eachUser._id}`}>
+              <Link to={`/profile/${eachUser._id}`}>
                 <img src={eachUser.img} alt="user" width="100px" />
               </Link>
               <p>{eachUser.role}</p>
