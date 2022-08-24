@@ -34,7 +34,7 @@ function WodDetails() {
 
   useEffect(() => {
     getWodDetails();
-    getMyBenchmarks();
+    //getMyBenchmarks();
     getTopScores()
   }, []);
 
@@ -43,8 +43,19 @@ function WodDetails() {
   const getWodDetails = async () => {
     try {
       const response = await getWodDetailsService(wodId);
+      const response3 = await getUserBenchmarksOfAWod(wodId);
+
       setAllWodDetails(response.data);
-      
+      const benchmarksArr = response3.data;
+      const onlyScores = benchmarksArr.map((eachBenchmark) => {
+        return eachBenchmark.score;
+      });
+      setUserBenchmarks(onlyScores);
+
+      const onlyDates = benchmarksArr.map((eachBenchmark) => {
+        return eachBenchmark.date;
+      });
+      setDateOfBenchmark(onlyDates);
       setIsFetching(false);
     } catch (error) {
       navigate("/error");
@@ -64,24 +75,24 @@ function WodDetails() {
   };
 
   //* traer mis benchmarks de este wod para la gráfica
-  const getMyBenchmarks = async () => {
-    try {
-      const response = await getUserBenchmarksOfAWod(wodId);
-      const benchmarksArr = response.data;
-      const onlyScores = benchmarksArr.map((eachBenchmark) => {
-        return eachBenchmark.score;
-      });
-      setUserBenchmarks(onlyScores);
+  // const getMyBenchmarks = async () => {
+  //   try {
+  //     const response = await getUserBenchmarksOfAWod(wodId);
+  //     const benchmarksArr = response.data;
+  //     const onlyScores = benchmarksArr.map((eachBenchmark) => {
+  //       return eachBenchmark.score;
+  //     });
+  //     setUserBenchmarks(onlyScores);
 
-      const onlyDates = benchmarksArr.map((eachBenchmark) => {
-        return eachBenchmark.date;
-      });
-      setDateOfBenchmark(onlyDates);
+  //     const onlyDates = benchmarksArr.map((eachBenchmark) => {
+  //       return eachBenchmark.date;
+  //     });
+  //     setDateOfBenchmark(onlyDates);
 
-    } catch (error) {
-      navigate("/error");
-    }
-  };
+  //   } catch (error) {
+  //     navigate("/error");
+  //   }
+  // };
 
   if (isFetching === true) {
     return <h3>Loading wod details</h3>;

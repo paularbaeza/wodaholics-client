@@ -184,6 +184,8 @@
   font-weight: bold;
   color: black;
   margin-bottom: 60px;
+  box-shadow: 3px 3px 5px rgb(189, 189, 189, 0.9);
+
 }
 
 #benchmark-form {
@@ -203,6 +205,8 @@
   font-weight: bold;
   color: black;
   margin: 30px;
+  box-shadow: 3px 3px 5px rgb(189, 189, 189, 0.9);
+
 }
 
 #score {
@@ -244,6 +248,8 @@
   font-weight: bold;
   color: blackwhite;
   margin: 30px;
+  box-shadow: 3px 3px 5px rgb(189, 189, 189, 0.9);
+
 }
 
 .highscores {
@@ -266,6 +272,8 @@
 
 #profile-info img {
   border-radius: 100px;
+  box-shadow: 3px 3px 5px rgb(189, 189, 189, 0.9);
+
 }
 
 #wodname-favbtn {
