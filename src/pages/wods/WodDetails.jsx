@@ -16,6 +16,7 @@ import {
   getWodDetailsService,
 } from "../../services/wod.services";
 import { getFavWodsService } from "../../services/profile.services";
+import {createCommentService, getCommentsOfWodService} from "../../services/comment.services"
 
 function WodDetails() {
   const navigate = useNavigate();
@@ -31,6 +32,12 @@ function WodDetails() {
 
   const [userBenchmarks, setUserBenchmarks] = useState([]);
   const [dateOfBenchmark, setDateOfBenchmark] = useState([]);
+  const [title, setTitle] = useState("")
+  const [comment, setComment] = useState("")
+  const [allComments, setAllComments] = useState ([])
+  const [errorMessage, setErrorMessage] = useState("");
+
+
 
   useEffect(() => {
     getWodDetails();
@@ -43,13 +50,18 @@ function WodDetails() {
   const getWodDetails = async () => {
     try {
       const response = await getWodDetailsService(wodId);
+      const response2 = await getCommentsOfWodService(wodId)
       const response3 = await getUserBenchmarksOfAWod(wodId);
+
 
       setAllWodDetails(response.data);
       const benchmarksArr = response3.data;
       const onlyScores = benchmarksArr.map((eachBenchmark) => {
         return eachBenchmark.score;
       });
+
+      setAllComments(response2.data)
+
       setUserBenchmarks(onlyScores);
 
       const onlyDates = benchmarksArr.map((eachBenchmark) => {
@@ -62,7 +74,6 @@ function WodDetails() {
     }
   };
   
-  console.log(topScores)
 
   //*traer las mejores puntuaciones del wod
   const getTopScores = async () => {
@@ -111,6 +122,7 @@ function WodDetails() {
     _id,
   } = allWodDetails;
 
+//* añadir/eliminar de favoritos
   const addFav = async () => {
     try {
       if (isFav === true) {
@@ -139,8 +151,40 @@ function WodDetails() {
     }
   };
 
+ const handleComment = async (event) => {
+  event.preventDefault();
+
+  const newComment = {
+    title: title,
+    comment: comment,
+  };
+  try {
+    await createCommentService(wodId, newComment);
+    console.log(newComment)
+    setComment("")
+    setTitle("")
+    getWodDetails()
+  } catch (error) {
+    if (error.response.status === 400) {
+      console.log(error.response.data.errorMessage);
+      setErrorMessage(error.response.data.errorMessage);
+    } else {
+      navigate("/error");
+    }
+  }
+ }
 
 
+ const handleTitleChange = (event) => {
+    setTitle(event.target.value);
+  };
+
+
+ const handleCommentChange = (event) => {
+  setComment(event.target.value);
+}
+
+console.log(allComments)
   return (
     <div>
       <div id="wod-explanation">
@@ -188,6 +232,42 @@ function WodDetails() {
             getTopScores={getTopScores}
           />
         ) : null}
+
+
+        <div id= "comments">
+          {allComments.map ((eachComment)=> {
+            return <div id="each-comment">
+              <p className="bold">{eachComment.title}</p>
+              <p>{eachComment.comment}</p>
+            </div>
+          })}
+        </div>
+
+        <form onSubmit={handleComment} id="comment-form">
+        <div id="comments">
+          <input
+            type= "text"
+            name="score"
+            value={title}
+            onChange={handleTitleChange}
+            placeholder= "Title"
+          />
+
+        </div>
+        <div id="comment">
+          <input
+            type="texxt"
+            name="comment"
+            value={comment}
+            placeholder= "Comment"
+            onChange={handleCommentChange}
+          />
+        </div>
+        <div id="error-message">
+          {errorMessage ? <p>{errorMessage}</p> : null}
+        </div>
+        <button  className="benchmark-form-btn">Add Comment</button>
+      </form>
       </div>
     </div>
   );

@@ -9,8 +9,8 @@ function AddBenchmarkForm(props) {
   const { toggleFormFunction, category, getTopScores } = props;
 
 
-  const [score, setScore] = useState(null);
-  const [date, setDate] = useState(null);
+  const [score, setScore] = useState("");
+  const [date, setDate] = useState("");
   const [errorMessage, setErrorMessage] = useState("");
 
   const handleScoreChange = (event) => {
