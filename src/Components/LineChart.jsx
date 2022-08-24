@@ -26,7 +26,6 @@ ChartJS.register(
 
 function LineChart(props) {
   const { userBenchmarks, dateOfBenchmark } = props;
-  
 
   const labels = dateOfBenchmark;
   const scores = userBenchmarks;

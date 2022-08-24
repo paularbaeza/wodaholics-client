@@ -34,7 +34,8 @@ function WodDetails() {
 
   useEffect(() => {
     getWodDetails();
-
+    getMyBenchmarks();
+    getTopScores()
   }, []);
 
   //* traer los detalles del wod
@@ -43,24 +44,7 @@ function WodDetails() {
     try {
       const response = await getWodDetailsService(wodId);
       setAllWodDetails(response.data);
-
-      const response2 = await getHighscoresService(wodId);
-      setTopScores(response2.data);
       
-      const response3 = await getUserBenchmarksOfAWod(wodId);
-      const benchmarksArr = response3.data;
-      const onlyScores = benchmarksArr.map((eachBenchmark) => {
-        return eachBenchmark.score;
-      });
-      setUserBenchmarks(onlyScores);
-      setIsFetching(false);
-
-      const onlyDates = benchmarksArr.map((eachBenchmark) => {
-        return eachBenchmark.date;
-      });
-      setDateOfBenchmark(onlyDates);
-      setIsFetching(false);
-
       setIsFetching(false);
     } catch (error) {
       navigate("/error");
@@ -70,10 +54,34 @@ function WodDetails() {
   console.log(topScores)
 
   //*traer las mejores puntuaciones del wod
- 
+  const getTopScores = async () => {
+    try {
+      const response = await getHighscoresService(wodId);
+      setTopScores(response.data);
+    } catch (error) {
+      navigate("/error");
+    }
+  };
 
   //* traer mis benchmarks de este wod para la gráfica
-  
+  const getMyBenchmarks = async () => {
+    try {
+      const response = await getUserBenchmarksOfAWod(wodId);
+      const benchmarksArr = response.data;
+      const onlyScores = benchmarksArr.map((eachBenchmark) => {
+        return eachBenchmark.score;
+      });
+      setUserBenchmarks(onlyScores);
+
+      const onlyDates = benchmarksArr.map((eachBenchmark) => {
+        return eachBenchmark.date;
+      });
+      setDateOfBenchmark(onlyDates);
+
+    } catch (error) {
+      navigate("/error");
+    }
+  };
 
   if (isFetching === true) {
     return <h3>Loading wod details</h3>;
@@ -152,7 +160,6 @@ function WodDetails() {
             <LineChart
               userBenchmarks={userBenchmarks}
               dateOfBenchmark={dateOfBenchmark}
-              chartFunction={getWodDetails}
             />
             </div>
           )}
@@ -168,7 +175,7 @@ function WodDetails() {
           <AddBenchmarkForm
             toggleFormFunction={toggleFormShowing}
             category={category}
-            getTopScores={getWodDetails}
+            getTopScores={getTopScores}
           />
         ) : null}
       </div>
