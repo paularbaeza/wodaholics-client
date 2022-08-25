@@ -274,14 +274,14 @@
   background-size: cover;
   background-position: center;
   color: white;
-  height: 100vh;
-  min-height: 100vh;
+  height: 90vh;
+  min-height: 80vh;
 }
 
 #landing-page img {
   margin-top:0px;
   border-radius: 70px;
-  width: 50%;
+  width: 40%;
  
 }
 
@@ -730,7 +730,7 @@ flex-direction: column;
 }
 
 #banner{
-  width:50vw;
+  width:40vw;
   border-radius: 20px;
   margin-top: -70px
 }
