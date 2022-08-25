@@ -7,6 +7,11 @@ import { useEffect, useState } from "react";
 import BenchmarksList from "../../Components/BenchmarksList";
 import FriendsList from "../../Components/FriendsList";
 import FavWodsList from "../../Components/FavWodsList";
+import {
+  addFriendService,
+  getAllFriendsService,
+  deleteFriendService,
+} from "../../services/profile.services";
 
 
 function UsersProfile() {
@@ -20,10 +25,14 @@ function UsersProfile() {
   const [isFriendsListShowed, setIsFriendsListShowed] = useState(false);
   const [isBenchmarksListShowed, setIsBenchmarksListShowed] = useState(false);
   const [isFavWodsListShowed, setIsFavWodsListShowed] = useState(false);
+  const [friendList, setFriendsList] = useState([]);
+
 
   useEffect(() => {
     getUserInfo();
     setIsFriendsListShowed(false)
+    getFriendsList();
+
   }, [userId]);
 
   //*traer los benchmarks de otros usuarios
@@ -41,8 +50,20 @@ function UsersProfile() {
     }
   };
 
-  console.log(userInfo)
+  const getFriendsList = async () => {
+    try {
+      const response = await getAllFriendsService();
+      const userFriends = response.data;
 
+      const friendsIds = userFriends.map((eachFriend) => {
+        return eachFriend._id;
+      });
+
+      setFriendsList(friendsIds);
+    } catch (error) {
+      navigate("/error");
+    }
+  };
 
   if (isFetching === true) {
     return <h3>Loading user's benchmarks</h3>;
@@ -79,15 +100,43 @@ function UsersProfile() {
     }
   }
 
+
+
+  const handleFriendBtn = async () => {
+    try {
+      const response = await getAllFriendsService();
+      const userFriends = response.data;
+      const userId = userInfo._id
+      const friendsIds = userFriends.map((eachFriend) => {
+        return eachFriend._id;
+      });
+      if (response && friendsIds.includes(userId)) {
+        await deleteFriendService(userId);
+        getFriendsList()
+      } else {
+        await addFriendService(userId);
+        getFriendsList()
+      }
+    } catch (error) {
+      navigate("/error");
+    }
+  };
+
+
   //* traer la info de usuarios
 
-  const { username, role, img, favWods, friends } = userInfo;
+  const { username, role, img, favWods, friends,_id } = userInfo;
 
   return (
     <div className="blackboard-bg" id="user-profile">
-      <img src={img} alt="profile" width="150px" />
+      <img src={img} alt="profile" />
       <h1>{username}</h1>
       <p id="role">{role}</p>
+      <button onClick={()=> handleFriendBtn()} id={ friendList.includes(_id)? "deletefriend-btn": "addfriend-btn"}>
+                {friendList.includes(_id)
+                  ? "Delete friend" 
+                  : "Add friend"}
+              </button>
       <div id="profile-btns">
       <button onClick={showFriends}>
           {isFriendsListShowed === true ? "x" : "Friends"}

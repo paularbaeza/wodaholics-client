@@ -1,14 +1,13 @@
 import Banner from "../assets/images/banner.png";
 import { getRandomWodService } from "../services/wod.services";
 import { getFiveRandomUsers } from "../services/profile.services";
-import { useEffect, useState } from "react"
+import { useEffect, useState } from "react";
 import { Link, useNavigate } from "react-router-dom";
 
 function Home() {
   const [randomWod, setRandomWod] = useState("");
   const [randomUsers, setRandomUsers] = useState([]);
-  const [ isFetching, setIsFetching ] = useState(true)
-
+  const [isFetching, setIsFetching] = useState(true);
 
   const navigate = useNavigate();
 
@@ -19,10 +18,8 @@ function Home() {
   const getRandomUsers = async () => {
     try {
       const response = await getFiveRandomUsers();
-      console.log(response.data);
-      setRandomUsers(response.data)
-      setIsFetching(false)
-
+      setRandomUsers(response.data);
+      setIsFetching(false);
     } catch (error) {
       navigate("/error");
     }
@@ -41,26 +38,28 @@ function Home() {
   };
 
   if (isFetching === true) {
-    return <h3>Loading Home page</h3>
+    return <h3>Loading Home page</h3>;
   }
 
   return (
     <div className="blackboard-bg">
       <img id="banner" src={Banner} alt="banner" />
       <div id="random-wod">
-        <p>Don't know what to do today?</p>
+        <p className="dirt-font">Don't know what to do today?</p>
         <button onClick={getAWod}>Get a random Wod</button>
-
-        <p>Discover users</p>
-        <div id="random-users">
-        {randomUsers.map((eachUser)=> {
-          return <div id="each-randomuser">
-            <Link to={`/profile/${eachUser._id}`}><img src = {eachUser.img} alt={eachUser._id} width="100px"/>
-            <p>{eachUser.username}</p>
-            </Link>
-          </div>
+      </div>
+      <p className="dirt-font">Discover users</p>
+      <div id="random-users">
+        {randomUsers.map((eachUser) => {
+          return (
+            <div id="each-randomuser">
+              <Link to={`/profile/${eachUser._id}`}>
+                <img src={eachUser.img} alt={eachUser._id} />
+              </Link>
+              <p>{eachUser.username}</p>
+            </div>
+          );
         })}
-        </div>
       </div>
     </div>
   );

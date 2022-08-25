@@ -16,7 +16,7 @@
   font-size: 150%;
   height: 9vh;
   text-shadow: 3px 3px 5px rgb(106, 106, 106, 0.9);
-
+  
 }
 
 .nav-bar img {
@@ -24,6 +24,7 @@
   width:50px;
   height:50px;
   box-shadow: 3px 3px 5px rgb(78, 77, 77, 0.9);
+  margin-right: 20px;
 }
 
 .nav-bar input {
@@ -33,10 +34,9 @@
   padding: 7px;
   width: 12vw;
   box-shadow: 3px 3px 5px rgb(106, 106, 106, 0.9);
-
 }
 .profile-dropdown {
-  margin-left: -30px;
+  margin-left: -40px;
 }
 
 #search-btn {
@@ -45,6 +45,7 @@
   box-shadow: 2px 2px 10px rgb(159, 159, 159);
   padding: 7px 15px;
   font-size: 45%;
+  font-weight: bold;
 
 }
 
@@ -72,6 +73,7 @@
   height:50px;
   text-transform: capitalize;
   text-shadow: 3px 3px 5px rgb(106, 106, 106, 0.9);
+  width:fit-content
 
 }
 
@@ -272,14 +274,14 @@
   background-size: cover;
   background-position: center;
   color: white;
-  height: 88vh;
-  min-height: 88vh;
+  height: 100vh;
+  min-height: 100vh;
 }
 
 #landing-page img {
-  margin-top: 5px;
+  margin-top:0px;
   border-radius: 70px;
-  width: 80%;
+  width: 60%;
  
 }
 
@@ -392,8 +394,10 @@ flex-direction: column;
 }
 
 #profile-info img {
-  border-radius: 150px;
+  border-radius: 50%;
   box-shadow: 3px 3px 5px rgb(189, 189, 189, 0.9);
+  width:150px;
+  height:150px;
 }
 
 #profile-info h1 {
@@ -442,18 +446,13 @@ flex-direction: column;
 }
 
 #search-results img {
-  border-radius: 50px;
+  border-radius: 50%;
   box-shadow: 3px 3px 5px rgb(189, 189, 189, 0.9);
+  width:100px;
+  height:100px
 }
 
-#search-results button {
-  border-radius: 15px;
-  border: none;
-  padding: 15px;
-  font-weight: bold;
-  box-shadow: 3px 3px 5px rgb(189, 189, 189, 0.9);
-  background-color: #e4e3e1;
-}
+
 .h1-search {
   font-size: 180%;
 }
@@ -503,6 +502,8 @@ flex-direction: column;
 #user-profile img {
   border-radius: 50%;
   box-shadow: 3px 3px 5px rgb(189, 189, 189, 0.9);
+  width:150px;
+  height:150px
 }
 
 
@@ -674,11 +675,13 @@ flex-direction: column;
   flex-direction: row;
   justify-content: center;
   align-items: flex-start;
+  
 }
 
 #username-img img {
   margin-right: 10px;
   width: 55px;
+  height:55px;
   border-radius: 50%;
 }
 
@@ -698,7 +701,9 @@ flex-direction: column;
 #profile-btns{
   display:flex;
   flex-direction: row;
+  flex-wrap: wrap;
   margin-left:80px;
+  margin-top:20px;
 }
 
 #profile-btns button{
@@ -724,7 +729,7 @@ flex-direction: column;
 }
 
 #banner{
-  width:70vw;
+  width:50vw;
   border-radius: 20px;
   margin-top: -70px
 }
@@ -733,6 +738,7 @@ flex-direction: column;
   display:flex;
   flex-direction: row;
   justify-content: center;
+  flex-wrap: wrap;
 }
 
 #random-users img{
@@ -750,10 +756,45 @@ flex-direction: column;
 
 #each-randomuser p{
   margin-top:0px;
-  text-decoration: none;
   color:white;
   font-weight: bold;
   text-shadow: 3px 3px 5px rgb(106, 106, 106, 0.9);
 
+}
 
+#random-wod button{
+  margin:15px;
+  padding:15px;
+  border-radius: 15px;
+  border:none;
+  background-color: #ffb000;
+  color: white;
+  font-weight: bold;
+  text-shadow: 3px 3px 5px rgb(106, 106, 106, 0.9);
+
+  font-size: 20px;
+  box-shadow: 3px 3px 5px rgb(106, 106, 106, 0.9);
+}
+
+
+#deletefriend-btn{
+  border-radius: 15px;
+  border: none;
+  padding: 15px;
+  font-weight: bold;
+  box-shadow: 3px 3px 5px rgb(189, 189, 189, 0.3);
+  text-shadow: 3px 3px 5px rgb(106, 106, 106, 0.9);
+
+  background-color: #E66815;
+}
+
+#addfriend-btn{
+  border-radius: 15px;
+  border: none;
+  padding: 15px;
+  font-weight: bold;
+  box-shadow: 3px 3px 5px rgb(189, 189, 189, 0.5);
+  text-shadow: 3px 3px 8px rgb(195, 195, 195, 0.8);
+
+  background-color: #99D064;
 }
