@@ -49,6 +49,10 @@ const getUserBenchmarksOfFavWods = (userId, wodId) => {
 
 }
 
+const getFiveRandomUsers = () => {
+  return service.get ("/profile/random-users")
+}
+
 export {
   getAllFriendsService,
   deleteFriendService,
@@ -60,5 +64,6 @@ export {
   getAllMyBenchmarksService,
   getAllFriendsIdsService,
   getUsersInfoService,
-  getUserBenchmarksOfFavWods
+  getUserBenchmarksOfFavWods,
+  getFiveRandomUsers
 };

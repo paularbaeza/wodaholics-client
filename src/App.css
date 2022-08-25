@@ -20,7 +20,9 @@
 }
 
 .nav-bar img {
-  border-radius: 50px;
+  border-radius: 50%;
+  width:50px;
+  height:50px;
   box-shadow: 3px 3px 5px rgb(78, 77, 77, 0.9);
 }
 
@@ -371,9 +373,11 @@ flex-direction: column;
 }
 
 .highscores img {
-  border-radius: 100px;
+  border-radius: 50%;
   margin-top: 10px;
   box-shadow: 3px 3px 5px rgb(106, 106, 106, 0.9);
+  width: 100px;
+  height: 100px;
 
 }
 
@@ -723,4 +727,33 @@ flex-direction: column;
   width:70vw;
   border-radius: 20px;
   margin-top: -70px
+}
+
+#random-users {
+  display:flex;
+  flex-direction: row;
+  justify-content: center;
+}
+
+#random-users img{
+  border-radius: 50%;
+  margin-top: 10px;
+  box-shadow: 3px 3px 5px rgb(106, 106, 106, 0.9);
+  width: 100px;
+  height: 100px;
+
+}
+
+#each-randomuser {
+  margin:10px;
+}
+
+#each-randomuser p{
+  margin-top:0px;
+  text-decoration: none;
+  color:white;
+  font-weight: bold;
+  text-shadow: 3px 3px 5px rgb(106, 106, 106, 0.9);
+
+
 }

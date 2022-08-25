@@ -123,7 +123,7 @@ function NavBar() {
             aria-expanded={openProfile ? "true" : undefined}
             onClick={handleProfileClick}
           >
-            <img src={user.img} width="50px" alt="profile" />
+            <img src={user.img} alt="profile" />
           </Button>
           <Menu
             id="demo-positioned-menu"
