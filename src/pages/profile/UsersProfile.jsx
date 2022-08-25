@@ -48,17 +48,33 @@ function UsersProfile() {
 
   const showBenchmarks = () => {
     setIsBenchmarksListShowed(!isBenchmarksListShowed);
-
+    if( isFriendsListShowed ){
+      setIsFriendsListShowed(false)
+    }
+    if(isFavWodsListShowed){
+      setIsFavWodsListShowed(false)
+    }
   }
 
   const showFavWods = () => {
     setIsFavWodsListShowed(!isFavWodsListShowed);
+    if( isFriendsListShowed ){
+      setIsFriendsListShowed(false)
+    }
+    if(isBenchmarksListShowed){
+      setIsBenchmarksListShowed(false)
+    }
 
   }
 
   const showFriends = () => {
     setIsFriendsListShowed(!isFriendsListShowed);
-
+    if( isBenchmarksListShowed ){
+      setIsBenchmarksListShowed(false)
+    }
+    if(isFavWodsListShowed){
+      setIsFavWodsListShowed(false)
+    }
   }
 
   //* traer la info de usuarios
@@ -85,6 +101,13 @@ function UsersProfile() {
         </button>
        
         </div>
+        {isFriendsListShowed === true ? (
+          <FriendsList
+            toggleFriendsFunction={showFriends}
+            friends={friends}
+          />
+        ) : null}
+
         {isBenchmarksListShowed === true ? (
           <BenchmarksList
             toggleBenchmarksFunction={showBenchmarks}
@@ -99,12 +122,7 @@ function UsersProfile() {
           />
         ) : null}
 
-        {isFriendsListShowed === true ? (
-          <FriendsList
-            toggleFriendsFunction={showFriends}
-            friends={friends}
-          />
-        ) : null}
+        
     </div>
   );
 }
