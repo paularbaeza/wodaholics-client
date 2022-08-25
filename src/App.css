@@ -281,7 +281,7 @@
 #landing-page img {
   margin-top:0px;
   border-radius: 70px;
-  width: 60%;
+  width: 50%;
  
 }
 
@@ -487,6 +487,7 @@ flex-direction: column;
   box-shadow: 3px 3px 5px rgb(189, 189, 189, 0.9);
   text-decoration: none;
 }
+
 .each-benchmark p {
   color: black;
 }

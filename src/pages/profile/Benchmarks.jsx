@@ -1,9 +1,10 @@
 import { useEffect, useState } from "react";
-import { useNavigate } from "react-router-dom";
+import { useNavigate, Link } from "react-router-dom";
 import EditBenchmarkForm from "../../Components/EditBenchmarkForm.jsx";
 //all services
 import { getAllMyBenchmarksService } from "../../services/profile.services.js";
 import { deleteBenchmarkService } from "../../services/benchmark.services.js";
+
 
 function Benchmarks() {
   const [benchmarksList, setBenchmarksList] = useState(null);
@@ -56,8 +57,11 @@ function Benchmarks() {
         {benchmarksList.map((eachBenchmark) => {
           return (
             <div className="each-benchmark" key={eachBenchmark._id}>
-              <p id="wod-name">{eachBenchmark.wod[0].name}</p>
-              <p>{eachBenchmark.score}</p>
+            <Link to={`/${eachBenchmark.wod[0]._id}/details`} className= "no-decoration-link">
+              <p  id="wod-name">{eachBenchmark.wod[0].name}</p>
+              <p >{eachBenchmark.score}</p>
+              <p>{eachBenchmark.date}</p>
+              </Link>
               <button
                 id="edit-benchmark"
                 key={eachBenchmark._id}
