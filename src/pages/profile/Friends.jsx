@@ -5,7 +5,7 @@ import {
 } from "../../services/profile.services";
 import { Link, useNavigate } from "react-router-dom";
 
-function FriendsList() {
+function Friends() {
   const [friendsList, setFriendsList] = useState("");
   const [isFetching, setIsFetching] = useState(true);
 
@@ -46,13 +46,13 @@ function FriendsList() {
     <div className="blackboard-bg">
     <h2 className="dirt-font">My friends</h2>
     <div id="friends-list">
-      {friendsList.map((eachFriend) => {
+      {friendsList.map((eachFriendInProfile) => {
         return (
-          <div id="each-friend" key={eachFriend._id}>
+          <div id="each-friend" key={eachFriendInProfile._id}>
             
-          <Link to= {`/profile/${eachFriend._id}`}><img src={eachFriend.img} width="150px" alt="profile" /></Link>
-            <p>{eachFriend.username}</p>
-            <button onClick={() => deleteFriend(eachFriend._id)}>Delete</button>
+          <Link to= {`/profile/${eachFriendInProfile._id}`}><img src={eachFriendInProfile.img} width="150px" alt="profile" /></Link>
+            <p>{eachFriendInProfile.username}</p>
+            <button onClick={() => deleteFriend(eachFriendInProfile._id)}>Delete</button>
           </div>
         );
       })}
@@ -61,4 +61,4 @@ function FriendsList() {
   );
 }
 
-export default FriendsList;
+export default Friends;

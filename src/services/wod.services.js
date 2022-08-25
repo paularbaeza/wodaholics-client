@@ -17,7 +17,9 @@ const addFavWodService = (wodId) => {
 return service.post (`/wods/${wodId}/add-fav`)
 }
 
+const getRandomWodService = () => {
+  return service.get ("/wods/random/get/")
+}
 
 
-
-export { getWodsListService, getWodDetailsService, deleteFavWodService, addFavWodService };
+export { getWodsListService, getWodDetailsService, deleteFavWodService, addFavWodService, getRandomWodService };

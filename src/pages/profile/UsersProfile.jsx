@@ -23,10 +23,11 @@ function UsersProfile() {
 
   useEffect(() => {
     getUserInfo();
-  }, []);
+    setIsFriendsListShowed(false)
+  }, [userId]);
 
   //*traer los benchmarks de otros usuarios
-  const getUserInfo = async () => {
+  const getUserInfo = async (event) => {
     try {
       const response = await getBenchmarksOfUsersService(userId);
       setBenchmarks(response.data);
@@ -34,6 +35,7 @@ function UsersProfile() {
       const response2 = await getUsersInfoService(userId);
       setUserInfo(response2.data);
       setIsFetching(false);
+      
     } catch (error) {
       navigate("/error");
     }
@@ -112,6 +114,7 @@ function UsersProfile() {
           <BenchmarksList
             toggleBenchmarksFunction={showBenchmarks}
             benchmarks = {benchmarks}
+
           />
         ) : null}
         
@@ -119,6 +122,7 @@ function UsersProfile() {
           <FavWodsList
             toggleFormFunction={showFavWods} 
             favWods={favWods}
+
           />
         ) : null}
 

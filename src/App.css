@@ -271,12 +271,13 @@
   background-position: center;
   color: white;
   height: 88vh;
+  min-height: 88vh;
 }
 
 #landing-page img {
-  margin-top: 40px;
+  margin-top: 5px;
   border-radius: 70px;
-  width: 40%;
+  width: 80%;
  
 }
 

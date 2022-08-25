@@ -11,10 +11,9 @@ import WodsList from "./pages/wods/WodsList";
 import WodDetails from "./pages/wods/WodDetails";
 import LandingPage from "./pages/LandingPage";
 import MyProfile from "./pages/profile/MyProfile";
-import FriendsList from "./pages/profile/FriendsList";
+import Friends from "./pages/profile/Friends";
 import FavWods from "./pages/profile/FavWods";
 import Benchmarks from "./pages/profile/Benchmarks";
-
 import SearchResults from "./pages/SearchResults";
 import UsersProfile from "./pages/profile/UsersProfile";
 
@@ -32,7 +31,7 @@ function App() {
         <Route path="/signup" element={<Signup />} />
         <Route path="/login" element={<Login />} />
         <Route path="/profile" element= {<MyProfile/>} />
-        <Route path="/profile/friends" element={<FriendsList/>} />
+        <Route path="/profile/friends" element={<Friends/>} />
         <Route path="/profile/fav-wods" element={<FavWods/>} />
         <Route path="/profile/benchmarks" element={<Benchmarks/>} />
         <Route path="/search/:search" element={<SearchResults/>} />
