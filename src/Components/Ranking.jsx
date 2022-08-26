@@ -29,25 +29,25 @@ function Ranking(props) {
       <div>
         <h1>Ranking</h1>
         <div className="highscores">
-        <div>
-          <img src={gold} alt="gold" width="40px" />
-          <br />
-          <Link to={`/profile/${topScores[0].user[0]._id}`}>
-            <img src={topScores[0].user[0].img} alt="user" width="150px" />
-          </Link>
-          <p className="ranking-username">{topScores[0].user[0].username}</p>
-          <p>{topScores[0].score}</p>
+          <div>
+            <img src={gold} alt="gold" width="40px" />
+            <br />
+            <Link to={`/profile/${topScores[0].user[0]._id}`}>
+              <img src={topScores[0].user[0].img} alt="user" width="150px" />
+            </Link>
+            <p className="ranking-username">{topScores[0].user[0].username}</p>
+            <p>{topScores[0].score}</p>
+          </div>
+          <div>
+            <img src={silver} alt="silver" width="40px" />
+            <br />
+            <Link to={`/profile/${topScores[1].user[0]._id}`}>
+              <img src={topScores[1].user[0].img} alt="user" width="150px" />
+            </Link>
+            <p className="ranking-username">{topScores[1].user[0].username}</p>
+            <p>{topScores[1].score}</p>
+          </div>
         </div>
-        <div>
-          <img src={silver} alt="silver" width="40px" />
-          <br />
-          <Link to={`/profile/${topScores[1].user[0]._id}`}>
-            <img src={topScores[1].user[0].img} alt="user" width="150px" />
-          </Link>
-          <p className="ranking-username">{topScores[1].user[0].username}</p>
-          <p>{topScores[1].score}</p>
-        </div>
-      </div>
       </div>
     );
   }

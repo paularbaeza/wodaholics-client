@@ -7,13 +7,12 @@ function EditBenchmarkForm(props) {
   const navigate = useNavigate();
   const { getBenchmarks, benchmarkId, category, setBenchmarkId } = props;
 
-
-
-
   const [score, setScore] = useState(null);
   const [date, setDate] = useState(null);
   const [errorMessage, setErrorMessage] = useState("");
 
+
+  //edit benchmark
   const handleScoreChange = (event) => {
     setScore(event.target.value);
   };
@@ -32,7 +31,7 @@ function EditBenchmarkForm(props) {
 
     try {
       await updateBenchmarkService(benchmarkId, updatedBenchmark);
-      setBenchmarkId("")
+      setBenchmarkId("");
       getBenchmarks();
     } catch (error) {
       if (error.response.status === 400) {
@@ -44,13 +43,13 @@ function EditBenchmarkForm(props) {
     }
   };
 
-   const handlePlaceholder = () => {
-     if (category === "for time") {
-       return "00:00";
-     } else if (category === "max-kg") {
+  const handlePlaceholder = () => {
+    if (category === "for time") {
+      return "00:00";
+    } else if (category === "max-kg") {
       return "0";
-     } else if (category === "AMRAP" || category === "EMOM") return "0 ";
-   };
+    } else if (category === "AMRAP" || category === "EMOM") return "0 ";
+  };
 
   return (
     <div id="benchmark-form">
@@ -62,7 +61,7 @@ function EditBenchmarkForm(props) {
             name="score"
             value={score}
             onChange={handleScoreChange}
-             placeholder={handlePlaceholder()}
+            placeholder={handlePlaceholder()}
           />
           <label htmlFor="score">
             {category === "max-kg" && "KG"}
@@ -81,7 +80,9 @@ function EditBenchmarkForm(props) {
         <div id="error-message">
           {errorMessage ? <p>{errorMessage}</p> : null}
         </div>
-        <button onClick={handleBenchmark} className="benchmark-form-btn">Edit Benchmark</button>
+        <button onClick={handleBenchmark} className="benchmark-form-btn">
+          Edit Benchmark
+        </button>
       </form>
     </div>
   );

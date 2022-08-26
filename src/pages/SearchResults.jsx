@@ -20,16 +20,19 @@ function SearchResults() {
     getFriendsList();
   }, [search]);
 
+  //filter friends
+
   const filterFriends = async () => {
     let response = await searchUsersService();
     let users = response.data;
     let searchResults = users.filter((eachUser) => {
-      return (eachUser.username.toLowerCase()).includes(search.toLowerCase());
+      return eachUser.username.toLowerCase().includes(search.toLowerCase());
     });
     setUserSearch(searchResults);
     setIsFetching(false);
   };
 
+  //get the list of friends
   const getFriendsList = async () => {
     try {
       const response = await getAllFriendsService();
@@ -45,6 +48,7 @@ function SearchResults() {
     }
   };
 
+  //handle friend button
   const handleFriendBtn = async (userToAddId) => {
     try {
       const response = await getAllFriendsService();
@@ -55,19 +59,18 @@ function SearchResults() {
       });
       if (response && friendsIds.includes(userToAddId)) {
         await deleteFriendService(userToAddId);
-        getFriendsList()
+        getFriendsList();
       } else {
         await addFriendService(userToAddId);
-        getFriendsList()
+        getFriendsList();
       }
     } catch (error) {
       navigate("/error");
     }
   };
 
-
   if (isFetching === true) {
-    return <h3>Search in process...</h3>;
+    return <h3>...Search in process...</h3>;
   }
 
   return (
@@ -82,9 +85,16 @@ function SearchResults() {
               </Link>
               <p>{eachUser.role}</p>
               <p className="username">{eachUser.username}</p>
-              <button onClick={() => handleFriendBtn(eachUser._id)} id={ friendList.includes(eachUser._id)? "deletefriend-btn": "addfriend-btn"}>
+              <button
+                onClick={() => handleFriendBtn(eachUser._id)}
+                id={
+                  friendList.includes(eachUser._id)
+                    ? "deletefriend-btn"
+                    : "addfriend-btn"
+                }
+              >
                 {friendList.includes(eachUser._id)
-                  ? "Delete friend" 
+                  ? "Delete friend"
                   : "Add friend"}
               </button>
             </div>

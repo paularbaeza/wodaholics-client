@@ -18,6 +18,7 @@ function MyProfile() {
     getProfileData();
   }, []);
 
+  //get user's information
   const getProfileData = async () => {
     try {
       const response = await getProfileDataService();
@@ -28,6 +29,7 @@ function MyProfile() {
     }
   };
 
+  //edit user's information
   const handleInfoChange = async () => {
     const updatedProfile = {
       img: imageUrl.imageUrl,
@@ -39,6 +41,8 @@ function MyProfile() {
       navigate("/error");
     }
   };
+
+  //handle Img upload with cloudinary
   const handleImgUpload = async (event) => {
     const form = new FormData();
     form.append("image", event.target.files[0]);
@@ -50,8 +54,9 @@ function MyProfile() {
       navigate("/error");
     }
   };
+
   if (isFetching === true) {
-    return <h3>Loading Fav Wods List</h3>;
+    return <h3>...Loading user's info...</h3>;
   }
 
   const { username, email, img } = profileData;
@@ -59,7 +64,7 @@ function MyProfile() {
   return (
     <div id="profile-info" className="blackboard-bg">
       <h1 className="dirt-font">My profile</h1>
-      <img src={img}  alt="profile" />
+      <img src={img} alt="profile" />
       <h3>{username}</h3>
       <p>{email}</p>
 

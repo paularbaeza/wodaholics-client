@@ -51,9 +51,6 @@ function WodDetails() {
     getTopScores();
   }, []);
 
-
-
-
   //* traer los detalles del wod
 
   const getWodDetails = async () => {
@@ -63,17 +60,17 @@ function WodDetails() {
       const response3 = await getUserBenchmarksOfAWod(wodId);
       const response4 = await getFavWodsService();
 
-//detalles
+      //get wod details
       setAllWodDetails(response.data);
       const benchmarksArr = response3.data;
       const onlyScores = benchmarksArr.map((eachBenchmark) => {
         return eachBenchmark.score;
       });
 
-//comentarios
+      //get wod comments
       setAllComments(response2.data);
 
-//benchmarks
+      //get wod benchmarks
       setUserBenchmarks(onlyScores);
 
       const onlyDates = benchmarksArr.map((eachBenchmark) => {
@@ -81,17 +78,15 @@ function WodDetails() {
       });
       setDateOfBenchmark(onlyDates);
 
-//favoritos
+      //check if the wod is Favorite
       const favWods = response4.data;
       let isWodFav = favWods.filter((favWods) => favWods._id === wodId);
-
 
       if (isWodFav.length === 1) {
         setIsFav(true);
       } else {
-        setIsFav(false)
+        setIsFav(false);
       }
-
 
       setIsFetching(false);
     } catch (error) {
@@ -99,7 +94,7 @@ function WodDetails() {
     }
   };
 
-  //*traer las mejores puntuaciones del wod
+  //get wod's best benchmarks
   const getTopScores = async () => {
     try {
       const response = await getHighscoresService(wodId);
@@ -109,9 +104,8 @@ function WodDetails() {
     }
   };
 
-
   if (isFetching === true) {
-    return <h3>Loading wod details</h3>;
+    return <h3>...Loading wod details...</h3>;
   }
 
   const toggleFormShowing = () => {
@@ -121,11 +115,9 @@ function WodDetails() {
   const { name, category, description, exercises, equipment, _id } =
     allWodDetails;
 
-
-    //añadir y eliminar favoritos
+  //add and delete favorites
   const handleFavButton = async () => {
-    try {      
-
+    try {
       if (isFav === true) {
         await deleteFavWodService(_id);
         setIsFav(false);
@@ -140,8 +132,7 @@ function WodDetails() {
     }
   };
 
-  //*funciones para los comentarios
-
+  //comment's functions
   const handleComment = async (event) => {
     event.preventDefault();
 

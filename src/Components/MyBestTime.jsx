@@ -4,33 +4,28 @@ import { Link, useParams, useNavigate } from "react-router-dom";
 
 function MyBestTime() {
   const navigate = useNavigate();
-  const {wodId} = useParams()
+  const { wodId } = useParams();
 
   const [bestTime, setBestTime] = useState([]);
   const [isFetching, setIsFetching] = useState(true);
-
 
   useEffect(() => {
     getBestTime();
   }, []);
 
+  //get user's best time in a for time wod
   const getBestTime = async () => {
     try {
-
-        const response = await getBestTimeOfUserService(wodId)
-        setBestTime(response.data)
-        setIsFetching(false);
-
-
+      const response = await getBestTimeOfUserService(wodId);
+      setBestTime(response.data);
+      setIsFetching(false);
     } catch (error) {
       navigate("/error");
     }
-    
   };
 
-
   if (isFetching === true) {
-    return <h3>Loading wod details</h3>;
+    return <h3>...Loading info...</h3>;
   }
 
   return (

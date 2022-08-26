@@ -15,6 +15,7 @@ function Home() {
     getRandomUsers();
   }, []);
 
+  //get random users
   const getRandomUsers = async () => {
     try {
       const response = await getFiveRandomUsers();
@@ -25,10 +26,10 @@ function Home() {
     }
   };
 
+  //get a random wod
   const getAWod = async () => {
     try {
       const response = await getRandomWodService();
-      console.log(response.data);
       setRandomWod(response.data);
       const randomWodId = response.data._id;
       navigate(`/${randomWodId}/details`);
@@ -38,7 +39,7 @@ function Home() {
   };
 
   if (isFetching === true) {
-    return <h3>Loading Home page</h3>;
+    return <h3>...Loading Home page...</h3>;
   }
 
   return (

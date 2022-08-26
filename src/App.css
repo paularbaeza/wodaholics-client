@@ -8,7 +8,7 @@
   display: flex;
   flex-direction: row;
   align-items: center;
-  justify-content:space-evenly;
+  justify-content: space-evenly;
   background-color: #ffb000;
   color: white;
   text-decoration: none;
@@ -16,13 +16,12 @@
   font-size: 150%;
   height: 9vh;
   text-shadow: 3px 3px 5px rgb(106, 106, 106, 0.9);
-  
 }
 
 .nav-bar img {
   border-radius: 50%;
-  width:50px;
-  height:50px;
+  width: 50px;
+  height: 50px;
   box-shadow: 3px 3px 5px rgb(78, 77, 77, 0.9);
   margin-right: 20px;
 }
@@ -46,13 +45,11 @@
   padding: 7px 15px;
   font-size: 45%;
   font-weight: bold;
-
 }
 
 .link-home {
   text-decoration: none;
   color: white;
-
 }
 
 .link-dropdown {
@@ -70,11 +67,10 @@
   font-weight: bold;
   width: 120%;
   font-size: 100%;
-  height:50px;
+  height: 50px;
   text-transform: capitalize;
   text-shadow: 3px 3px 5px rgb(106, 106, 106, 0.9);
-  width:fit-content
-
+  width: fit-content;
 }
 
 #demo-positioned-menu {
@@ -88,7 +84,6 @@
   color: black;
   background-color: #f3f2f2;
   text-shadow: 3px 3px 5px rgb(106, 106, 106, 0.9);
-
 }
 
 #demo-positioned-menu button {
@@ -114,7 +109,6 @@
   font-size: 350%;
   color: white;
   text-shadow: 3px 3px 5px rgb(106, 106, 106, 0.9);
-
 }
 
 #exercises {
@@ -130,7 +124,7 @@
   background-repeat: no-repeat;
   background-size: cover;
   background-position: center;
-  height: fit-content ;
+  height: fit-content;
   background-color: black;
   padding: 100px;
   color: white;
@@ -152,7 +146,6 @@
 #wod-explanation h4 {
   font-size: 200%;
   text-shadow: 3px 3px 5px rgb(106, 106, 106, 0.9);
-
 }
 
 #wods-list {
@@ -169,7 +162,6 @@
   border-radius: 25px;
   text-decoration: none;
   box-shadow: 3px 3px 10px 6px rgb(106, 106, 106, 0.6);
-
 }
 
 #wod-list-link {
@@ -191,7 +183,6 @@
   background-size: cover;
   background-position: center;
   min-height: 100vh;
-
 }
 
 #heroes {
@@ -201,8 +192,7 @@
   background-size: cover;
   background-position: center;
   min-height: 100vh;
-  min-width: 100vw
-
+  min-width: 100vw;
 }
 
 #weights {
@@ -213,7 +203,6 @@
   background-size: cover;
   background-position: center;
   min-height: 100vh;
-
 }
 
 .benchmark-btn {
@@ -227,7 +216,6 @@
   margin-bottom: 60px;
   box-shadow: 3px 3px 5px rgb(106, 106, 106, 0.9);
   text-shadow: 3px 3px 5px rgb(106, 106, 106, 0.9);
-
 }
 
 #benchmark-form {
@@ -249,7 +237,6 @@
   margin: 30px;
   box-shadow: 3px 3px 5px rgb(106, 106, 106, 0.9);
   text-shadow: 3px 3px 5px rgb(106, 106, 106, 0.9);
-
 }
 
 #score {
@@ -260,7 +247,6 @@
   margin-left: 15px;
   border-radius: 5px;
   border: none;
-
 }
 
 #benchmark-form label {
@@ -279,23 +265,20 @@
 }
 
 #landing-page img {
-  margin-top:0px;
+  margin-top: 0px;
   border-radius: 70px;
   width: 40%;
- 
 }
-
 
 #landing-page p {
   font-size: 40px;
   font-weight: bold;
-text-align: center;
- color:#ffb000;
- margin:-5px;
- font-family: Rubik Dirt ;
- font-weight: lighter;
- text-shadow: 3px 3px 5px rgb(106, 106, 106, 0.9);
-
+  text-align: center;
+  color: #ffb000;
+  margin: -5px;
+  font-family: Rubik Dirt;
+  font-weight: lighter;
+  text-shadow: 3px 3px 5px rgb(106, 106, 106, 0.9);
 }
 
 .landing-btn {
@@ -309,55 +292,49 @@ text-align: center;
   margin: 30px;
   box-shadow: 3px 3px 5px rgb(106, 106, 106, 0.9);
   text-shadow: 3px 3px 5px rgb(106, 106, 106, 0.9);
-
 }
 
-
-
-.login-input{
-display:flex;
-flex-direction: column;
+.login-input {
+  display: flex;
+  flex-direction: column;
 }
 
-.login-input input{
-  border-radius:5px;
-  margin:10px;
+.login-input input {
+  border-radius: 5px;
+  margin: 10px;
   box-shadow: 3px 3px 5px rgb(106, 106, 106, 0.9);
-
 }
 
-#login h1{
+#login h1 {
   text-shadow: 3px 3px 5px rgb(106, 106, 106, 0.9);
 }
 
-#signup h1{
+#signup h1 {
   text-shadow: 3px 3px 5px rgb(106, 106, 106, 0.9);
 }
 
-#login button{
+#login button {
   padding: 15px 40px;
   border: none;
   border-radius: 20px;
   background-color: #ffb000;
   font-size: 20px;
   font-weight: bold;
-  width:80%;
+  width: 80%;
   color: Black;
   margin: 30px 30px 30px 15px;
   box-shadow: 3px 3px 5px rgb(106, 106, 106, 0.9);
   text-shadow: 3px 3px 5px rgb(106, 106, 106, 0.9);
-
 }
 
-
-#signup button{
+#signup button {
   padding: 15px 40px;
   border: none;
   border-radius: 20px;
   background-color: #ffb000;
   font-size: 20px;
   font-weight: bold;
-  width:90%;
+  width: 90%;
   color: black;
   margin: 30px 30px 30px 15px;
   box-shadow: 3px 3px 5px rgb(106, 106, 106, 0.9);
@@ -380,24 +357,22 @@ flex-direction: column;
   box-shadow: 3px 3px 5px rgb(106, 106, 106, 0.9);
   width: 100px;
   height: 100px;
-
 }
 
 .ranking-username {
   font-weight: bold;
   text-shadow: 3px 3px 5px rgb(106, 106, 106, 0.9);
-
 }
 
 #profile-info {
-  padding:150px
+  padding: 150px;
 }
 
 #profile-info img {
   border-radius: 50%;
   box-shadow: 3px 3px 5px rgb(189, 189, 189, 0.9);
-  width:150px;
-  height:150px;
+  width: 150px;
+  height: 150px;
 }
 
 #profile-info h1 {
@@ -448,10 +423,9 @@ flex-direction: column;
 #search-results img {
   border-radius: 50%;
   box-shadow: 3px 3px 5px rgb(189, 189, 189, 0.9);
-  width:100px;
-  height:100px
+  width: 100px;
+  height: 100px;
 }
-
 
 .h1-search {
   font-size: 180%;
@@ -469,7 +443,7 @@ flex-direction: column;
   padding: 20px;
   border-radius: 20px;
   color: black;
-  margin:10px
+  margin: 10px;
 }
 
 .user-benchmarks {
@@ -503,19 +477,19 @@ flex-direction: column;
 #user-profile img {
   border-radius: 50%;
   box-shadow: 3px 3px 5px rgb(189, 189, 189, 0.9);
-  width:150px;
-  height:150px
+  width: 150px;
+  height: 150px;
 }
 
-
-
-#each-friend{margin:15px}
+#each-friend {
+  margin: 15px;
+}
 
 #each-friend img {
   border-radius: 50%;
   width: 150px;
   height: 150px;
-  box-shadow: 3px 3px 5px rgb(164, 164, 164 , 0.9);
+  box-shadow: 3px 3px 5px rgb(164, 164, 164, 0.9);
 }
 
 #each-friend button {
@@ -594,7 +568,7 @@ flex-direction: column;
   margin: 15px;
   align-items: center;
   background-color: rgb(194, 194, 194, 0.4);
-  padding:10px;
+  padding: 10px;
   border-radius: 15px;
 }
 
@@ -678,13 +652,13 @@ flex-direction: column;
   flex-direction: row;
   justify-content: center;
   align-items: flex-start;
-  margin-top:10px
+  margin-top: 10px;
 }
 
 #username-img img {
   margin-right: 10px;
   width: 55px;
-  height:55px;
+  height: 55px;
   border-radius: 50%;
 }
 
@@ -700,20 +674,19 @@ flex-direction: column;
   margin: 20px;
 }
 
-
-#profile-btns{
-  display:flex;
+#profile-btns {
+  display: flex;
   flex-direction: row;
   flex-wrap: wrap;
-  margin-left:80px;
-  margin-top:20px;
+  margin-left: 80px;
+  margin-top: 20px;
 }
 
-#profile-btns button{
-  margin:15px;
-  padding:15px;
+#profile-btns button {
+  margin: 15px;
+  padding: 15px;
   border-radius: 15px;
-  border:none;
+  border: none;
   background-color: #ffb000;
   color: white;
   font-weight: bold;
@@ -721,55 +694,52 @@ flex-direction: column;
 
   font-size: 20px;
   box-shadow: 3px 3px 5px rgb(106, 106, 106, 0.9);
-
 }
 
-.user-lists{
-  display:flex;
+.user-lists {
+  display: flex;
   flex-direction: row;
   flex-wrap: wrap;
   justify-content: center;
 }
 
-#banner{
-  width:40vw;
+#banner {
+  width: 40vw;
   border-radius: 20px;
-  margin-top: -70px
+  margin-top: -70px;
 }
 
 #random-users {
-  display:flex;
+  display: flex;
   flex-direction: row;
   justify-content: center;
   flex-wrap: wrap;
 }
 
-#random-users img{
+#random-users img {
   border-radius: 50%;
   margin-top: 10px;
   box-shadow: 3px 3px 5px rgb(106, 106, 106, 0.9);
   width: 100px;
   height: 100px;
-
 }
 
 #each-randomuser {
-  margin:10px;
+  margin: 10px;
 }
 
-#each-randomuser p{
-  margin-top:0px;
-  color:white;
+#each-randomuser p {
+  margin-top: 0px;
+  color: white;
   font-weight: bold;
   text-shadow: 3px 3px 5px rgb(106, 106, 106, 0.9);
-
 }
 
-#random-wod button{
-  margin:15px;
-  padding:15px;
+#random-wod button {
+  margin: 15px;
+  padding: 15px;
   border-radius: 15px;
-  border:none;
+  border: none;
   background-color: #ffb000;
   color: white;
   font-weight: bold;
@@ -779,8 +749,7 @@ flex-direction: column;
   box-shadow: 3px 3px 5px rgb(106, 106, 106, 0.9);
 }
 
-
-#deletefriend-btn{
+#deletefriend-btn {
   border-radius: 15px;
   border: none;
   padding: 15px;
@@ -788,10 +757,10 @@ flex-direction: column;
   box-shadow: 3px 3px 5px rgb(189, 189, 189, 0.3);
   text-shadow: 3px 3px 5px rgb(106, 106, 106, 0.9);
 
-  background-color: #E66815;
+  background-color: #e66815;
 }
 
-#addfriend-btn{
+#addfriend-btn {
   border-radius: 15px;
   border: none;
   padding: 15px;
@@ -799,5 +768,5 @@ flex-direction: column;
   box-shadow: 3px 3px 5px rgb(189, 189, 189, 0.5);
   text-shadow: 3px 3px 8px rgb(195, 195, 195, 0.8);
 
-  background-color: #99D064;
+  background-color: #99d064;
 }

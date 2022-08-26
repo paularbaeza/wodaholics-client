@@ -5,7 +5,6 @@ import EditBenchmarkForm from "../../Components/EditBenchmarkForm.jsx";
 import { getAllMyBenchmarksService } from "../../services/profile.services.js";
 import { deleteBenchmarkService } from "../../services/benchmark.services.js";
 
-
 function Benchmarks() {
   const [benchmarksList, setBenchmarksList] = useState(null);
   const [isFetching, setIsFetching] = useState(true);
@@ -17,8 +16,8 @@ function Benchmarks() {
     getBenchmarks();
   }, []);
 
-  console.log(benchmarkId);
 
+  //get user's benchmarks
   const getBenchmarks = async () => {
     try {
       const response = await getAllMyBenchmarksService();
@@ -29,6 +28,7 @@ function Benchmarks() {
     }
   };
 
+//delete benchmark
   const handleDelete = async (benchmarkId) => {
     try {
       await deleteBenchmarkService(benchmarkId);
@@ -38,6 +38,7 @@ function Benchmarks() {
     }
   };
 
+//handle edit form 
   const handleFormShowing = (benchmarkFormId) => {
     if (benchmarkId !== benchmarkFormId) {
       setBenchmarkId(benchmarkFormId);
@@ -47,7 +48,7 @@ function Benchmarks() {
   };
 
   if (isFetching === true) {
-    return <h3>Loading Benchmark List</h3>;
+    return <h3>...Loading the list os benchmarks...</h3>;
   }
 
   return (
@@ -57,10 +58,13 @@ function Benchmarks() {
         {benchmarksList.map((eachBenchmark) => {
           return (
             <div className="each-benchmark" key={eachBenchmark._id}>
-            <Link to={`/${eachBenchmark.wod[0]._id}/details`} className= "no-decoration-link">
-              <p  id="wod-name">{eachBenchmark.wod[0].name}</p>
-              <p >{eachBenchmark.score}</p>
-              <p>{eachBenchmark.date}</p>
+              <Link
+                to={`/${eachBenchmark.wod[0]._id}/details`}
+                className="no-decoration-link"
+              >
+                <p id="wod-name">{eachBenchmark.wod[0].name}</p>
+                <p>{eachBenchmark.score}</p>
+                <p>{eachBenchmark.date}</p>
               </Link>
               <button
                 id="edit-benchmark"

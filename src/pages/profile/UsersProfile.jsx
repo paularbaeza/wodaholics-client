@@ -35,7 +35,7 @@ function UsersProfile() {
 
   }, [userId]);
 
-  //*traer los benchmarks de otros usuarios
+  //get users' benchmarks
   const getUserInfo = async (event) => {
     try {
       const response = await getBenchmarksOfUsersService(userId);
@@ -50,6 +50,7 @@ function UsersProfile() {
     }
   };
 
+  //get users' friends list
   const getFriendsList = async () => {
     try {
       const response = await getAllFriendsService();
@@ -66,9 +67,10 @@ function UsersProfile() {
   };
 
   if (isFetching === true) {
-    return <h3>Loading user's benchmarks</h3>;
+    return <h3>...Loading user's info...</h3>;
   }
 
+  //functions for toggling buttons
   const showBenchmarks = () => {
     setIsBenchmarksListShowed(!isBenchmarksListShowed);
     if( isFriendsListShowed ){
@@ -101,7 +103,7 @@ function UsersProfile() {
   }
 
 
-
+//handle add friend button
   const handleFriendBtn = async () => {
     try {
       const response = await getAllFriendsService();
@@ -123,7 +125,6 @@ function UsersProfile() {
   };
 
 
-  //* traer la info de usuarios
 
   const { username, role, img, favWods, friends,_id } = userInfo;
 

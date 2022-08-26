@@ -15,7 +15,7 @@ function Friends() {
     getFriends();
   }, []);
 
-  //*traer todos los amigos del usuario conectado
+  //get user's friends
 
   const getFriends = async () => {
     try {
@@ -27,36 +27,39 @@ function Friends() {
     }
   };
 
-  //*eliminar amigos de la lista de amigos
-  
+  //delete a friend from the list
+
   const deleteFriend = async (userId) => {
     try {
-        await deleteFriendService(userId)
-        getFriends()
+      await deleteFriendService(userId);
+      getFriends();
     } catch (error) {
       navigate("/error");
     }
   };
 
   if (isFetching === true) {
-    return <h3>Loading Friends List</h3>;
+    return <h3>...Loading the list of friends...</h3>;
   }
 
   return (
     <div className="blackboard-bg">
-    <h2 className="dirt-font">My friends</h2>
-    <div id="friends-list">
-      {friendsList.map((eachFriendInProfile) => {
-        return (
-          <div id="each-friend" key={eachFriendInProfile._id}>
-            
-          <Link to= {`/profile/${eachFriendInProfile._id}`}><img src={eachFriendInProfile.img}  alt="profile" /></Link>
-            <p>{eachFriendInProfile.username}</p>
-            <button onClick={() => deleteFriend(eachFriendInProfile._id)}>Delete</button>
-          </div>
-        );
-      })}
-    </div>
+      <h2 className="dirt-font">My friends</h2>
+      <div id="friends-list">
+        {friendsList.map((eachFriendInProfile) => {
+          return (
+            <div id="each-friend" key={eachFriendInProfile._id}>
+              <Link to={`/profile/${eachFriendInProfile._id}`}>
+                <img src={eachFriendInProfile.img} alt="profile" />
+              </Link>
+              <p>{eachFriendInProfile.username}</p>
+              <button onClick={() => deleteFriend(eachFriendInProfile._id)}>
+                Delete
+              </button>
+            </div>
+          );
+        })}
+      </div>
     </div>
   );
 }

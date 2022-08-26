@@ -11,7 +11,6 @@ function FriendsList(props) {
             <Link
               to={`/profile/${eachFriend._id}`}
               className="no-decoration-link"
-              
             >
               <img src={eachFriend.img} width="80px" alt="" />
               <h3 className="dirt-font-links">{eachFriend.username}</h3>

@@ -12,6 +12,8 @@ function AddBenchmarkForm(props) {
   const [date, setDate] = useState("");
   const [errorMessage, setErrorMessage] = useState("");
 
+  //create benchmark
+
   const handleScoreChange = (event) => {
     setScore(event.target.value);
   };
@@ -43,6 +45,7 @@ function AddBenchmarkForm(props) {
     }
   };
 
+  //assign placeholder depending on wod's category
   const handlePlaceholder = () => {
     if (category === "for time") {
       return "00:00";
