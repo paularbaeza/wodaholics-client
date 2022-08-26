@@ -513,6 +513,8 @@ flex-direction: column;
 
 #each-friend img {
   border-radius: 50%;
+  width: 150px;
+  height: 150px;
   box-shadow: 3px 3px 5px rgb(164, 164, 164 , 0.9);
 }
 

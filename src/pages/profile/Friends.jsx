@@ -50,7 +50,7 @@ function Friends() {
         return (
           <div id="each-friend" key={eachFriendInProfile._id}>
             
-          <Link to= {`/profile/${eachFriendInProfile._id}`}><img src={eachFriendInProfile.img} width="150px" alt="profile" /></Link>
+          <Link to= {`/profile/${eachFriendInProfile._id}`}><img src={eachFriendInProfile.img}  alt="profile" /></Link>
             <p>{eachFriendInProfile.username}</p>
             <button onClick={() => deleteFriend(eachFriendInProfile._id)}>Delete</button>
           </div>
