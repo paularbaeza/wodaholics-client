@@ -24,7 +24,7 @@ function SearchResults() {
     let response = await searchUsersService();
     let users = response.data;
     let searchResults = users.filter((eachUser) => {
-      return eachUser.username.includes(search);
+      return (eachUser.username.toLowerCase()).includes(search.toLowerCase());
     });
     setUserSearch(searchResults);
     setIsFetching(false);
